@@ -1,23 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import { fetchAnimes } from "./store/reducers/Animes";
 
 function App() {
+  const [animes, setAnimes] = useState([]);
+
+  const buttonHandler = async () => {
+    const animesArray = await fetchAnimes();
+    setAnimes(animesArray);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <button onClick={buttonHandler}>Click me</button>
+        <ul>
+          {animes.map((post: any) => (
+            <li key={post.id}>{post.name}</li>
+          ))}
+        </ul>
       </header>
     </div>
   );
