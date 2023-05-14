@@ -1,26 +1,15 @@
 import { useState } from "react";
 import "./App.css";
-import { fetchAnimes } from "./store/reducers/Animes";
+import { createBrowserRouter, RouterProvider} from "react-router-dom";
+import { publicRoutes } from "./router";
+import Spinner from "./components/UI/Spinner/Spinner";
 
 function App() {
-  const [animes, setAnimes] = useState([]);
-
-  const buttonHandler = async () => {
-    const animesArray = await fetchAnimes();
-    setAnimes(animesArray);
-  };
+  const [isLoading, setIsLoading] = useState(false);
+  const router = createBrowserRouter(publicRoutes);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <button onClick={buttonHandler}>Click me</button>
-        <ul>
-          {animes.map((post: any) => (
-            <li key={post.id}>{post.name}</li>
-          ))}
-        </ul>
-      </header>
-    </div>
+    <div>{isLoading ? <Spinner/> : <RouterProvider router={router} />}</div>
   );
 }
 

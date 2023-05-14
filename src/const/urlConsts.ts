@@ -1,6 +1,8 @@
-export const hostUrl = "https://shikimori.me/api";
+export const hostUrl = "https://shikimori.me";
 
 export enum UrlParts {
-  ANIMES = '/animes?limit=50',
-  ANIME_ID = '/animes/'
+  API = '/api',
+  ANIMES = '/animes',
+  ANIME_ID = '/animes/',
+  MANGAS = '/mangas'
 }
