@@ -1,11 +1,11 @@
 import EmptyCatalogItem from "./EmptyCatalogItem";
-import classes from "./../AnimesCatalog/AnimesCatalog.module.scss";
 import { UrlParts, hostUrl } from "../../../const/urlConsts";
+import './../../../styles/app.scss';
 
 const EmptyCatalog = ({elements}) => {
 
   return (
-    <section className={classes.catalog_items}>
+    <section className="catalog-section">
       {elements.map((element) => (
         <EmptyCatalogItem
           key={element.id}

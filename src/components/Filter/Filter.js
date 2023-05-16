@@ -1,8 +1,8 @@
-import classes from './Filter.module.scss';
+import './../../styles/app.scss'
 
 const Filter = ({filter}) => {
   return (
-    <aside className={classes.catalog_filter}>
+    <aside className="l-menu">
       <div>
         <div>Recomendations</div>
         <ul>

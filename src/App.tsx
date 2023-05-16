@@ -1,5 +1,5 @@
-import { useState } from "react";
-import "./App.css";
+import { Fragment, useState } from "react";
+import "./styles/app.scss";
 import { createBrowserRouter, RouterProvider} from "react-router-dom";
 import { publicRoutes } from "./router";
 import Spinner from "./components/UI/Spinner/Spinner";
@@ -9,7 +9,7 @@ function App() {
   const router = createBrowserRouter(publicRoutes);
 
   return (
-    <div>{isLoading ? <Spinner/> : <RouterProvider router={router} />}</div>
+    <Fragment>{isLoading ? <Spinner/> : <RouterProvider router={router} />}</Fragment>
   );
 }
 

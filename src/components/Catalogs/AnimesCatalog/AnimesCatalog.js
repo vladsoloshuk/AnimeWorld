@@ -5,10 +5,11 @@ import EmptyCatalog from "../EmptyCatalog/EmptyCatalog";
 import { useObserver } from "../../../hooks/useObserver";
 import useFetching from "../../../hooks/useFetching";
 import Filter from "../../Filter/Filter";
+import "./../../../styles/app.scss";
 
 const AnimesCatalog = () => {
   const [animes, setAnimes] = useState([]);
-  const [limit, setLimit] = useState(50);
+  const [limit, setLimit] = useState(15);
   const [page, setPage] = useState(1);
 
   const lastElement = useRef();
@@ -24,7 +25,7 @@ const AnimesCatalog = () => {
       ongoing: "Ongoing",
       released: "Released"
     }
-  }
+  };
 
   // const getPagesCount = (totalCount, limit) => {
   //   return Math.ceil(totalCount / limit);
@@ -50,14 +51,20 @@ const AnimesCatalog = () => {
   }, [page, limit]);
 
   return (
-    <div className={classes.catalog}>
-      <section className={classes.catalog_section}>
-        <EmptyCatalog elements={animes} />
-
+    <section className="l-page">
+      <div>
+        <header className="head">
+          <h1>Anime</h1>
+          <div className="notice">Description</div>
+        </header>
+        <div className="pagination">Pagination</div>
+        <div className="menu-slide-outer">
+            <EmptyCatalog elements={animes}/>
+            <Filter filter={animeFilters} />
+        </div>
         <div ref={lastElement}></div>
-      </section>
-      <Filter filter={animeFilters}/>
-    </div>
+      </div>
+    </section>
   );
 };
 

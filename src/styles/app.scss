@@ -1,0 +1,151 @@
+@use "fonts";
+@use "colors";
+@use "sizes";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+  list-style-type: none;
+}
+
+body {
+  font-family: fonts.$font-main;
+  color: colors.$white-color;
+  background-image: url("./../assets/images/wallhaven-571998.png");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-size: sizes.$font-size-base;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+article {
+  display: block;
+}
+
+a {
+  cursor: pointer;
+  color: colors.$white-color;
+  text-decoration: none;
+}
+
+a:hover {
+  color: colors.$hover-color;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(colors.$light-color, 0.5);
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+::-webkit-scrollbar-track {
+  display: none;
+  width: 6px;
+  background: transparent;
+}
+
+.l-page {
+  background-color: rgba(colors.$menu-back, 0.98);
+  max-width: 1200px;
+  border-radius: 10px;
+  min-height: 50px;
+  z-index: 1;
+  margin: 15px auto 15px;
+  box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.3);
+  padding: 10px 15px;
+}
+
+.head {
+  margin-bottom: 15px;
+}
+
+.notice {
+  color: colors.$dark-color;
+  line-height: 1.5;
+}
+
+.pagination {
+  margin-bottom: 15px;
+  margin-top: -5px;
+}
+
+.menu-slide-outer {
+  display: flex;
+}
+
+.catalog-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-right: 2%;
+  width: 75.5%;
+}
+
+.l-menu {
+  width: 23%;
+}
+
+.catalog-item {
+  display: flex;
+  min-width: 150px;
+  width: 150px;
+  margin: 0 1% 25px 1%;
+  transition: 0.25s ease-out;
+
+}
+
+.catalog-item:hover {
+  transform: scale(1.03);
+  z-index: 10;
+  margin-top: 0;
+  box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.2);
+  transition: 0.25s ease-out;
+}
+
+.catalog-item:hover a {
+  color: colors.$hover-color;
+  transition: 0.25s ease-out;
+}
+
+.catalog-item_cover {
+  display: block;
+  width: 100%;
+}
+
+.catalog-item_image {
+  background-size: cover;
+  width: 100%;
+  height: 210px;
+  border-radius: sizes.$border-radius-base;
+}
+
+.catalog-item_title {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap;
+  font-weight: bold;
+  line-height: 1.65;
+  margin-top: 5px;
+}
+
+.catalog-item_description {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  color: colors.$dark-color;
+}
+
