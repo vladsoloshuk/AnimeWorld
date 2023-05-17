@@ -11,7 +11,7 @@ const EmptyCatalog = ({elements}) => {
           key={element.id}
           title={element.name}
           preview={element.image.preview}
-          year={element.aired_on.split("-")[0]}
+          year={element.aired_on ? element.aired_on.split("-")[0] : ""}
           kind={element.kind}
           url={hostUrl + UrlParts.API + element.url}
         />

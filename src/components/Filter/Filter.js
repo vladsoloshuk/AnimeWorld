@@ -1,22 +1,32 @@
+import { useRef, useState } from 'react';
 import './../../styles/app.scss'
 
-const Filter = ({filter}) => {
+const Filter = ({filter, changeStatusHandler, changeOrderHandler}) => {
+
   return (
     <aside className="l-menu">
-      <div>
-        <div>Recomendations</div>
-        <ul>
-          <li>{filter.recomendations.favorites}</li>
-          <li>{filter.recomendations.community}</li>
-          <li>{filter.recomendations.personal}</li>
+      <div className='block'>
+        <div className='subheadline'>Recomendations</div>
+        <div className='b-list'>
+          <li><a href="https://shikimori.me/kakie-anime-postmotret">{filter.recomendations.favorites}</a></li>
+          <li><a href="https://shikimori.me/kakie-anime-postmotret">{filter.recomendations.community}</a></li>
+          <li><a href="https://shikimori.me/kakie-anime-postmotret">{filter.recomendations.personal}</a></li>
+        </div>
+      </div>
+      <div className='block'>
+        <div className='subheadline'>Status</div>
+        <ul className='b-block_list'>
+          <li data-value="anons"><input data-value="anons" onChange={changeStatusHandler} type='checkbox' />{filter.status.anons}</li>
+          <li data-value="ongoing"><input data-value="ongoing" onChange={changeStatusHandler} type='checkbox' />{filter.status.ongoing}</li>
+          <li data-value="released"><input type='checkbox' />{filter.status.released}</li>
         </ul>
       </div>
-      <div>
-        <div>Status</div>
-        <ul>
-          <li><input type='checkbox' />{filter.status.anons}</li>
-          <li><input type='checkbox' />{filter.status.ongoing}</li>
-          <li><input type='checkbox' />{filter.status.released}</li>
+      <div className='block'>
+      <div className='subheadline'>Sorting</div>
+        <ul className='b-block_list'>
+          <li><input data-value="id" onChange={changeOrderHandler} type='checkbox' />id  </li>
+          <li><input data-value="ranked" onChange={changeOrderHandler} type='checkbox' />ranked</li>
+          <li><input data-value="kind" onChange={changeOrderHandler} type='checkbox' />kind</li>
         </ul>
       </div>
     </aside>

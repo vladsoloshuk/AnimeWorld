@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import AnimeServices from "../../../api/AnimeService";
-import classes from "./AnimesCatalog.module.scss";
 import EmptyCatalog from "../EmptyCatalog/EmptyCatalog";
 import { useObserver } from "../../../hooks/useObserver";
 import useFetching from "../../../hooks/useFetching";
@@ -10,7 +9,9 @@ import "./../../../styles/app.scss";
 const AnimesCatalog = () => {
   const [animes, setAnimes] = useState([]);
   const [limit, setLimit] = useState(15);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
+  const [order, setOrder] = useState("ranked");
+  const [status, setStatus] = useState("");
 
   const lastElement = useRef();
 
@@ -27,13 +28,22 @@ const AnimesCatalog = () => {
     }
   };
 
+  const changeStatusHandler = (event) => {
+    event.target.checked ? setStatus(event.target.getAttribute("data-value")) : setStatus("");
+  };
+
+  const changeOrderHandler = (event) => {
+    event.target.checked ? setOrder(event.target.getAttribute("data-value")) : setOrder("ranked");
+  };
+
   // const getPagesCount = (totalCount, limit) => {
   //   return Math.ceil(totalCount / limit);
   // };
 
-  const [fetchAnimes, isAnimesLoading, animeError] = useFetching(async (limit, page) => {
-    const response = await AnimeServices.getAnimes(limit, page);
-    setAnimes([...animes, ...response.data]);
+  const [fetchAnimes, isAnimesLoading, animeError] = useFetching(async (limit, page, order, status) => {
+    const response = await AnimeServices.getAnimes({ limit, page, order, status});
+    //setAnimes([...animes, ...response.data]);
+    setAnimes([...response.data]);
   });
 
   useObserver(lastElement, isAnimesLoading, () => setPage(page + 1));
@@ -47,8 +57,8 @@ const AnimesCatalog = () => {
   // };
 
   useEffect(() => {
-    fetchAnimes(limit, page);
-  }, [page, limit]);
+    fetchAnimes(limit, page, order, status);
+  }, [limit, page, order, status]);
 
   return (
     <section className="l-page">
@@ -57,10 +67,14 @@ const AnimesCatalog = () => {
           <h1>Anime</h1>
           <div className="notice">Description</div>
         </header>
-        <div className="pagination">Pagination</div>
+        <div className="pagination">{page}</div>
         <div className="menu-slide-outer">
-            <EmptyCatalog elements={animes}/>
-            <Filter filter={animeFilters} />
+          <EmptyCatalog elements={animes} />
+          <Filter
+            filter={animeFilters}
+            changeStatusHandler={changeStatusHandler}
+            changeOrderHandler={changeOrderHandler}
+          />
         </div>
         <div ref={lastElement}></div>
       </div>

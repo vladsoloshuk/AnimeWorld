@@ -22,8 +22,8 @@ const EmptyCatalogItem = ({ title, preview, year, kind, url }) => {
           {title}
         </a>
         <span className="catalog-item_description">
-          <span>{year}</span>
           <span>{kind}</span>
+          <span>{year}</span>
         </span>
       </a>
     </article>

@@ -1,8 +1,4 @@
 :root {
-  --white-color: rgb(219, 219, 219);
-  --light-color: rgb(184, 184, 184);
-  --dark-color: rgb(155, 155, 155);
-  --bright-color: rgb(217, 217, 217);
   --dull-color: rgb(116, 116, 116);
   --input-color: rgb(120, 120, 120);
   --hover-bottoms-1: rgb(43, 43, 43);
@@ -18,10 +14,7 @@
   --anime-complete: rgb(41, 107, 47);
   --manga-inprocess: rgb(189, 15, 86);
   --manga-complete: rgb(153, 0, 62);
-  --hover-color: rgb(255, 153, 51);
   --shadows-color: rgb(150, 150, 150);
-  --block-color: rgb(69, 69, 69);
-  --menu-back: rgb(21, 21, 21);
   --nick-cover: rgb(69, 69, 69);
   --popup-color: rgb(39, 39, 39);
   --hundred: 1;
