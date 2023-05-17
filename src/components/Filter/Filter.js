@@ -1,11 +1,29 @@
 import { useRef, useState } from 'react';
 import './../../styles/app.scss'
 
-const Filter = ({filter, changeStatusHandler, changeOrderHandler}) => {
+const Filter = ({filter}) => {
 
   return (
     <aside className="l-menu">
       <div className='block'>
+          <div className='subheadline'>{filter.recomendations.name}</div>
+          <div className='b-list'>
+          {filter.recomendations.params.map((recomendation) => (
+            <li key={recomendation.title}><a href = {recomendation.link}>{recomendation.title}</a></li>
+          ))}
+          </div>
+        </div>
+      {filter.sorting.map((sortType) => (
+        <div key={sortType.name} className='block'>
+          <div className='subheadline'>{sortType.name}</div>
+          <ul className='b-block_list'>
+            {sortType.params.map((param) => (
+              <li key={param.title} data-value={param.value} ><input data-value={param.value} type={sortType.type} onChange={sortType.method} name={sortType.name}/>{param.title}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+      {/* <div className='block'>
         <div className='subheadline'>Recomendations</div>
         <div className='b-list'>
           <li><a href="https://shikimori.me/kakie-anime-postmotret">{filter.recomendations.favorites}</a></li>
@@ -28,7 +46,7 @@ const Filter = ({filter, changeStatusHandler, changeOrderHandler}) => {
           <li><input data-value="ranked" onChange={changeOrderHandler} type='checkbox' />ranked</li>
           <li><input data-value="kind" onChange={changeOrderHandler} type='checkbox' />kind</li>
         </ul>
-      </div>
+      </div> */}
     </aside>
   );
 }

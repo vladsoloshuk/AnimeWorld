@@ -4,5 +4,7 @@ export enum UrlParts {
   API = '/api',
   ANIMES = '/animes',
   ANIME_ID = '/animes/',
-  MANGAS = '/mangas'
+  MANGAS = '/mangas',
+  CONSTANTS = '/constants',
+  ANIME = '/anime'
 }

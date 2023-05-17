@@ -7,7 +7,7 @@ export default class AnimeServices {
     return response;
   }
   static async getAnimeConstants() {
-    const respnse = await axios.get(hostUrl + UrlParts.API + '/constants/anime');
+    const respnse = await axios.get(hostUrl + UrlParts.API + UrlParts.CONSTANTS + UrlParts.ANIME);
     return respnse
   }
   static async getAnimeById(id) {

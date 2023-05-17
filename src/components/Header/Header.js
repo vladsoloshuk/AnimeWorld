@@ -15,7 +15,6 @@ const Header = () => {
           </div>
         </div>
         <Link to={RoutesNames.HOME}></Link>
-        <a></a>
     </header>
   )
 }

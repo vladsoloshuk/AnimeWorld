@@ -5,6 +5,7 @@ import { useObserver } from "../../../hooks/useObserver";
 import useFetching from "../../../hooks/useFetching";
 import Filter from "../../Filter/Filter";
 import "./../../../styles/app.scss";
+import { multipleCheckboxFilter } from "../../../utils/filter";
 
 const AnimesCatalog = () => {
   const [animes, setAnimes] = useState([]);
@@ -12,37 +13,17 @@ const AnimesCatalog = () => {
   const [page, setPage] = useState(0);
   const [order, setOrder] = useState("ranked");
   const [status, setStatus] = useState("");
+  const [kind, setKind] = useState("");
 
   const lastElement = useRef();
-
-  const animeFilters = {
-    recomendations: {
-      favorites: "Favorites",
-      community: "From the community",
-      personal: "Personalized"
-    },
-    status: {
-      anons: "Announced",
-      ongoing: "Ongoing",
-      released: "Released"
-    }
-  };
-
-  const changeStatusHandler = (event) => {
-    event.target.checked ? setStatus(event.target.getAttribute("data-value")) : setStatus("");
-  };
-
-  const changeOrderHandler = (event) => {
-    event.target.checked ? setOrder(event.target.getAttribute("data-value")) : setOrder("ranked");
-  };
 
   // const getPagesCount = (totalCount, limit) => {
   //   return Math.ceil(totalCount / limit);
   // };
 
-  const [fetchAnimes, isAnimesLoading, animeError] = useFetching(async (limit, page, order, status) => {
-    const response = await AnimeServices.getAnimes({ limit, page, order, status});
-    //setAnimes([...animes, ...response.data]);
+  const [fetchAnimes, isAnimesLoading, animeError] = useFetching(async (limit, page, order, status, kind) => {
+    const response = await AnimeServices.getAnimes({ limit, page, order, status, kind });
+    // setAnimes([...animes, ...response.data]);
     setAnimes([...response.data]);
   });
 
@@ -57,8 +38,76 @@ const AnimesCatalog = () => {
   // };
 
   useEffect(() => {
-    fetchAnimes(limit, page, order, status);
-  }, [limit, page, order, status]);
+    fetchAnimes(limit, page, order, status, kind);
+  }, [limit, page, order, status, kind]);
+
+  const changeOrderHandler = (event) => {
+    if (event.target.checked) {
+      setOrder(event.target.getAttribute("data-value"));
+    } else {
+      setOrder("ranked");
+    }
+  };
+
+  const changeStatusHandler = (event, s = status) => {
+    const result = multipleCheckboxFilter(event, s);
+    setStatus(result);
+  };
+
+  const changeKindHandler = (event, k = kind) => {
+    const result = multipleCheckboxFilter(event, k);
+    setKind(result);
+  };
+
+  const animeFilters = {
+    recomendations: {
+      name: "recomendations",
+      params: [
+        { title: "Favorites", link: "" },
+        { title: "From the community", link: "" },
+        { title: "Personalized", link: "" }
+      ]
+    },
+    sorting: [
+      {
+        name: "order",
+        type: "radio",
+        params: [
+          { title: "By rank", value: "ranked" },
+          { title: "By popularity", value: "popularity" },
+          { title: "In alphabetical order", value: "name" },
+          { title: "By release date", value: "aired_on" },
+          { title: "Random", value: "random" },
+          { title: "By ID", value: "id" }
+        ],
+        method: changeOrderHandler
+      },
+      {
+        name: "status",
+        type: "checkbox",
+        params: [
+          { title: "Announced", value: "anons" },
+          { title: "Ongoing", value: "ongoing" },
+          { title: "Released", value: "released" },
+          { title: "Latest", value: "latest" }
+        ],
+        method: changeStatusHandler
+      },
+      {
+        name: "kind",
+        type: "checkbox",
+        params: [
+          { title: "TV Series", value: "tv" },
+          { title: "Movie", value: "movie" },
+          { title: "Ova", value: "ova" },
+          { title: "Ona", value: "ona" },
+          { title: "Special", value: "special" },
+          { title: "Music", value: "music" }
+        ],
+        method: changeKindHandler
+      }
+    ]
+  };
 
   return (
     <section className="l-page">
@@ -73,7 +122,7 @@ const AnimesCatalog = () => {
           <Filter
             filter={animeFilters}
             changeStatusHandler={changeStatusHandler}
-            changeOrderHandler={changeOrderHandler}
+            changeKindHandler={changeKindHandler}
           />
         </div>
         <div ref={lastElement}></div>
