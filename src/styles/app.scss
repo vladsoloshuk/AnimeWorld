@@ -223,6 +223,37 @@ a:hover {
 }  
 }
 
+.b-block_list li:hover {
+  color: colors.$hover-color;
+  transition: 0s ease-out;
+  background: rgba(colors.$shadows-color, 0.15);
+  border-radius: 10px;
+  box-shadow: display.$shadow-base;
+}
+
+.b-block_list li.selected {
+  color: colors.$light-color;
+  transition: 0s ease-out;
+  background: rgba(colors.$shadows-color, 0.15);
+  border-radius: 10px;
+  box-shadow: display.$shadow-base;
+}
+
+.b-block_list li.selected:hover {
+  color: colors.$hover-color;
+}
+
+.b-block_list li.selected:before {
+  content: "\f05d";
+  color: colors.$light-color;
+  font-size: 19px;
+  margin: 0px 18px 2px 1px;
+}
+
+.b-block_list li > input {
+  appearance: none;
+}
+
 // input {
 //   position: absolute;
 //   opacity: 0;

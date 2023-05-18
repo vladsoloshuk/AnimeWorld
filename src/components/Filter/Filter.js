@@ -18,7 +18,7 @@ const Filter = ({filter}) => {
           <div className='subheadline'>{sortType.name}</div>
           <ul className='b-block_list'>
             {sortType.params.map((param) => (
-              <li key={param.title} data-value={param.value} ><input data-value={param.value} type={sortType.type} onChange={sortType.method} name={sortType.name}/>{param.title}</li>
+              <li key={param.title} data-field={sortType.name} data-value={param.value} ><input data-value={param.value} type={sortType.type} onChange={sortType.method} name={sortType.name}/>{param.title}</li>
             ))}
           </ul>
         </div>
