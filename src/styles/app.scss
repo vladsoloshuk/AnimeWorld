@@ -34,11 +34,10 @@ a {
   cursor: pointer;
   color: colors.$white-color;
   text-decoration: none;
-}
-
-a:hover {
-  text-decoration: none;
-  color: colors.$hover-color;
+  :hover {
+    text-decoration: none;
+    color: colors.$hover-color;
+  }
 }
 
 ::-webkit-scrollbar {
@@ -151,7 +150,7 @@ a:hover {
 }
 
 .block {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   line-height: 1.65;
   position: relative;
 }
@@ -172,25 +171,22 @@ a:hover {
 
 .b-list {
   margin-left: 15px;
-}
-
-.b-list {
   li {
+    position: relative;
     margin-bottom: 5px;
   }
-
+  li > input {
+    appearance: none;
+  }
   li:before {
     content: "\f111";
     display: inline-flex;
     align-content: center;
     align-items: flex-start;
-    height: 100%;
     padding-top: 2px;
     font: normal normal normal 7px/1 FontAwesome;
     color: colors.$bright-color;
-    background: none;
-    width: 5px;
-    height: 5px;
+    height: 100%;
     margin-top: 0.615em;
     position: absolute;
     margin-left: -12px;
@@ -205,53 +201,39 @@ a:hover {
     color: colors.$dark-color;
     margin: 1px 0 2px;
     padding: 1px 3px 0 3px;
+    transition: 0.1s ease-out;
   }
   li:before {
     content: "\f10c";
-    color: colors.$dark-color;
-    display: inline-block;
+    display: inline-flex;
     vertical-align: top;
-    width: 10px;
-    margin: 0px 18px 2px 2px;
-    font: normal normal normal 14px/1 FontAwesome;
-    direction: ltr;
-    line-height: 1;
-    text-transform: none;
-    font-size: 17px;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-}  
-}
-
-.b-block_list li:hover {
-  color: colors.$hover-color;
-  transition: 0s ease-out;
-  background: rgba(colors.$shadows-color, 0.15);
-  border-radius: 10px;
-  box-shadow: display.$shadow-base;
-}
-
-.b-block_list li.selected {
-  color: colors.$light-color;
-  transition: 0s ease-out;
-  background: rgba(colors.$shadows-color, 0.15);
-  border-radius: 10px;
-  box-shadow: display.$shadow-base;
-}
-
-.b-block_list li.selected:hover {
-  color: colors.$hover-color;
-}
-
-.b-block_list li.selected:before {
-  content: "\f05d";
-  color: colors.$light-color;
-  font-size: 19px;
-  margin: 0px 18px 2px 1px;
-}
-
-.b-block_list li > input {
-  appearance: none;
+    margin: 2px 10px 2px 2px;
+    font: normal normal normal 17px/1 FontAwesome;
+  }
+  li:hover {
+    cursor: pointer;
+    color: colors.$hover-color;
+    transition: 0s ease-out;
+    background: rgba(colors.$shadows-color, 0.15);
+    border-radius: sizes.$border-radius-base;
+    box-shadow: display.$shadow-base;
+  }
+  li.selected {
+    color: colors.$light-color;
+    transition: 0s ease-out;
+    background: rgba(colors.$shadows-color, 0.15);
+    border-radius: sizes.$border-radius-base;
+    box-shadow: display.$shadow-base;
+  }
+  li.selected:hover {
+    color: colors.$hover-color;
+  }
+  li.selected:before {
+    content: "\f05d";
+  }
+  li > input {
+    appearance: none;
+  }
 }
 
 // input {

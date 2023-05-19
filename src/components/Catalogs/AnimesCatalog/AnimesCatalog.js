@@ -5,7 +5,7 @@ import { useObserver } from "../../../hooks/useObserver";
 import useFetching from "../../../hooks/useFetching";
 import Filter from "../../Filter/Filter";
 import "./../../../styles/app.scss";
-import { multipleCheckboxFilter } from "../../../utils/filter";
+import { multipleCheckboxFilter, singleRadioFilter, newFilter} from "../../../utils/filter";
 
 const AnimesCatalog = () => {
   const [animes, setAnimes] = useState([]);
@@ -14,6 +14,7 @@ const AnimesCatalog = () => {
   const [order, setOrder] = useState("ranked");
   const [status, setStatus] = useState("");
   const [kind, setKind] = useState("");
+  // const [filter, setFilter] = useState({});
 
   const lastElement = useRef();
 
@@ -23,7 +24,7 @@ const AnimesCatalog = () => {
 
   const [fetchAnimes, isAnimesLoading, animeError] = useFetching(async (limit, page, order, status, kind) => {
     const response = await AnimeServices.getAnimes({ limit, page, order, status, kind });
-    // setAnimes([...animes, ...response.data]);
+    //setAnimes([...animes, ...response.data]);
     setAnimes([...response.data]);
   });
 
@@ -41,22 +42,29 @@ const AnimesCatalog = () => {
     fetchAnimes(limit, page, order, status, kind);
   }, [limit, page, order, status, kind]);
 
-  const changeOrderHandler = (event) => {
-    if (event.target.checked) {
-      setOrder(event.target.getAttribute("data-value"));
-    } else {
-      setOrder("ranked");
-    }
+  const changeOrderHandler = (event, o = order) => {
+    setAnimes([]);
+    setOrder(singleRadioFilter(event, o));
   };
 
   const changeStatusHandler = (event, s = status) => {
-    const result = multipleCheckboxFilter(event, s);
-    setStatus(result);
+    setAnimes([]);
+    setStatus(multipleCheckboxFilter(event, s));
   };
 
+  // const changeStatusHandler = (event, f = filter) => {
+  //   setFilter(animeFilters);
+  //   setAnimes([]);
+  //   setStatus(
+  //     setFilter(newFilter(event, f))
+  //   )
+
+  // };
+
   const changeKindHandler = (event, k = kind) => {
-    const result = multipleCheckboxFilter(event, k);
-    setKind(result);
+    setPage(0);
+    setAnimes([]);
+    setKind(multipleCheckboxFilter(event, k));
   };
 
   const animeFilters = {
@@ -73,7 +81,7 @@ const AnimesCatalog = () => {
         name: "order",
         type: "radio",
         params: [
-          { title: "By rank", value: "ranked" },
+          { title: "By rank", value: "ranked"},
           { title: "By popularity", value: "popularity" },
           { title: "In alphabetical order", value: "name" },
           { title: "By release date", value: "aired_on" },
@@ -86,10 +94,10 @@ const AnimesCatalog = () => {
         name: "status",
         type: "checkbox",
         params: [
-          { title: "Announced", value: "anons" },
-          { title: "Ongoing", value: "ongoing" },
-          { title: "Released", value: "released" },
-          { title: "Latest", value: "latest" }
+          { title: "Announced", value: "anons",  isChecked: false},
+          { title: "Ongoing", value: "ongoing",  isChecked: false},
+          { title: "Released", value: "released",  isChecked: false},
+          { title: "Latest", value: "latest",  isChecked: false}
         ],
         method: changeStatusHandler
       },
@@ -97,7 +105,7 @@ const AnimesCatalog = () => {
         name: "kind",
         type: "checkbox",
         params: [
-          { title: "TV Series", value: "tv" },
+          { title: "TV Series", value: "tv"},
           { title: "Movie", value: "movie" },
           { title: "Ova", value: "ova" },
           { title: "Ona", value: "ona" },
