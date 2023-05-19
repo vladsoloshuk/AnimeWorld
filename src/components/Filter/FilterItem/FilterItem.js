@@ -1,11 +1,13 @@
-const FilterItem = ({sortType, param}) => {
+import "./../../../styles/app.scss";
+
+const FilterItem = ({ sortType, param, filterParams, method }) => {
   return (
     <li
-      key={param.title}
       data-field={sortType.name}
       data-value={param.value}
-      onClick={sortType.method}
-      className={`${param.isClicked ? "selected" : ""}`}
+      onClick={(event) => method(event.target.getAttribute("data-field"), event.target.getAttribute("data-value"))}
+      
+      className={`${param.sub ? "sub" : ""}${filterParams[sortType.name].split(",").includes(param.value) ? " selected" : ""}`}
     >
       <input
         data-value={param.value}
