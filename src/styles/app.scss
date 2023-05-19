@@ -34,10 +34,11 @@ a {
   cursor: pointer;
   color: colors.$white-color;
   text-decoration: none;
-  :hover {
-    text-decoration: none;
-    color: colors.$hover-color;
-  }
+}
+
+a:hover {
+  text-decoration: none;
+  color: colors.$hover-color;
 }
 
 ::-webkit-scrollbar {
@@ -78,8 +79,14 @@ a {
 }
 
 .pagination {
+  display: inline-flex;
   margin-bottom: 15px;
   margin-top: -5px;
+  .link.disabled {
+    color: colors.$light-color;
+    pointer-events: none;
+    cursor: default;
+  }
 }
 
 .menu-slide-outer {
@@ -203,6 +210,9 @@ a {
     padding: 1px 3px 0 3px;
     transition: 0.1s ease-out;
   }
+  li.sub {
+    margin-left: 15px;
+  }
   li:before {
     content: "\f10c";
     display: inline-flex;
@@ -235,8 +245,3 @@ a {
     appearance: none;
   }
 }
-
-// input {
-//   position: absolute;
-//   opacity: 0;
-// }

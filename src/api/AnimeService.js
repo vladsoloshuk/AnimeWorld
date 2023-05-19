@@ -3,7 +3,7 @@ import { hostUrl, UrlParts } from "../const/urlConsts";
 
 export default class AnimeServices {
   static async getAnimes(params) {
-    const response = await axios.get(hostUrl + UrlParts.API + UrlParts.ANIMES, { params });
+    const response = await axios.get(hostUrl + UrlParts.API + UrlParts.ANIMES, {params});
     return response;
   }
   static async getAnimeConstants() {
