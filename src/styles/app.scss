@@ -1,7 +1,11 @@
 @use "fonts";
 @use "colors";
-@use "sizes";
+@use "units";
 @use "display";
+
+@use './mixins/responsive.scss';
+
+@use './layouts/l-top_menu.scss';
 
 * {
   box-sizing: border-box;
@@ -19,7 +23,12 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  font-size: sizes.$font-size-base;
+  font-size: units.$font-size-base-desktop;
+  min-height: 100vh;
+  
+  @include responsive.iphone{
+    font-size: units.$font-size-base-mobile;
+  }
 }
 
 h1 {
@@ -131,7 +140,7 @@ a:hover {
   background-size: cover;
   width: 100%;
   height: 210px;
-  border-radius: sizes.$border-radius-base;
+  border-radius: units.$border-radius-base;
 }
 
 .catalog-item_title {
@@ -225,14 +234,14 @@ a:hover {
     color: colors.$hover-color;
     transition: 0s ease-out;
     background: rgba(colors.$shadows-color, 0.15);
-    border-radius: sizes.$border-radius-base;
+    border-radius: units.$border-radius-base;
     box-shadow: display.$shadow-base;
   }
   li.selected {
     color: colors.$light-color;
     transition: 0s ease-out;
     background: rgba(colors.$shadows-color, 0.15);
-    border-radius: sizes.$border-radius-base;
+    border-radius: units.$border-radius-base;
     box-shadow: display.$shadow-base;
   }
   li.selected:hover {

@@ -1,0 +1,108 @@
+//transfered correctly
+
+@use "./../globals";
+
+@mixin iphone {
+  @media screen and (max-width: globals.$iphone_max) {
+    @content;
+  }
+}
+
+@mixin iphone-portrait {
+  @media screen and (max-width: globals.$iphone) {
+    @content;
+  }
+}
+
+@mixin iphone-landscape {
+  @media screen and (min-width: (globals.$iphone + 1px)) and (max-width: globals.$iphone_max) {
+    @content;
+  }
+}
+
+@mixin gte_iphone-landscape {
+  @include iphone-landscape {
+    @content;
+  }
+  @include gte_ipad {
+    @content;
+  }
+}
+
+@mixin iphone-landscape-ipad {
+  @include iphone-landscape {
+    @content;
+  }
+  @include ipad {
+    @content;
+  }
+}
+
+@mixin ipad {
+  @media screen and (min-width: globals.$ipad) and (max-width: globals.$ipad_max) {
+    @content;
+  }
+}
+
+@mixin ipad-portrait {
+  @media screen and (min-width: globals.$ipad) and (max-width: globals.$ipad_max) and (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin ipad-landscape {
+  @media screen and (min-width: globals.$ipad) and (max-width: globals.$ipad_max) and (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin lte_ipad {
+  @media screen and (max-width: globals.$ipad_max) {
+    @content;
+  }
+}
+
+@mixin gte_ipad {
+  @media screen and (min-width: globals.$ipad) {
+    @content;
+  }
+}
+
+@mixin gte_ipad-landscape {
+  @include ipad-landscape {
+    @content;
+  }
+  @include gte_laptop {
+    @content;
+  }
+}
+
+@mixin ipad_laptop {
+  @media screen and (min-width: globals.$ipad) and (max-width: globals.$laptop_max) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media screen and (min-width: (globals.$ipad_max + 1px)) and (max-width: globals.$laptop_max) {
+    @content;
+  }
+}
+
+@mixin lte_laptop {
+  @media screen and (max-width: globals.$laptop_max) {
+    @content;
+  }
+}
+
+@mixin gte_laptop {
+  @media screen and (min-width: (globals.$ipad_max + 1px)) {
+    @content;
+  }
+}
+
+@mixin gte_desktop {
+  @media screen and (min-width: (globals.$laptop_max+1)) {
+    @content;
+  }
+}

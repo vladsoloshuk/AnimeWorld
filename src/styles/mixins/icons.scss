@@ -1,0 +1,72 @@
+@use "./../units";
+@use "./responsive.scss";
+@use "./font_shikimori.scss";
+
+@mixin icon_style($desktop-font-size: 14px, $mobile-font-size: 17px) {
+  cursor: pointer;
+  display: inline-block;
+  font-size: $desktop-font-size;
+  line-height: $icon_desktop_size;
+  text-align: center;
+  width: $icon_desktop_size;
+
+  @include lte_ipad {
+    font-size: $mobile-font-size;
+    line-height: $icon_mobile_size;
+    width: $icon_mobile_size;
+  }
+}
+
+@mixin icon($content, $desktop-font-size: 14px, $mobile-font-size: 17px) {
+  cursor: pointer;
+
+  &:before,
+  &:after {
+    @include icon_style($desktop-font-size, $mobile-font-size);
+  }
+
+  &:before {
+    @include font_shikimori.font_shikimori($content);
+  }
+  
+  @include lte_ipad {
+    white-space: nowrap;
+
+    &:after {
+      font-size: 17px;
+      padding-left: 5px;
+    }
+  }
+}
+
+@mixin menu_icon($content, $font-size: 14px) {
+  @include icon($content, $font-size) {
+    &:before {
+      float: left;
+      margin-right: 2px;
+
+      @include iphone {
+        margin-right: 7px;
+      }
+    }
+  }
+}
+
+// =icon_left_margins
+//   +gte_laptop
+//     +ml(15px)
+
+//   +lte_ipad
+//     +ml(35px)
+
+// =icon_button($content)
+//   +icon($content, 13px)
+//   +link_color(#444)
+//   +icon_left_margins
+
+//   &.selected
+//     color: var(--link-hover-color)
+
+//   +gte_laptop
+//     &:after
+//       display: none

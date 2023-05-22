@@ -1,0 +1,101 @@
+@use "./l-top_menu/menu.scss";
+@use "./l-top_menu/submenu.scss";
+@use './l-top_menu/icons.scss';
+@use './l-top_menu/search.scss';
+
+@use "./../mixins/responsive.scss";
+
+@use "./../colors";
+@use "./../units";
+
+.l-top_menu {
+  background: rgba(colors.$menu-back, 0.75);
+  box-shadow: 0 0 20px 10px rgba(colors.$menu-back, 0.9);
+  color: colors.$white-color;
+  height: units.$top-menu-height;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  align-items: center;
+  display: flex;
+
+  &:hover {
+    background: rgba(colors.$menu-back, 0.9);
+    box-shadow: 0 0 20px 10px rgba(colors.$menu-back, 0.6);
+  }
+
+  .menu-logo {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+    @include responsive.gte_ipad {
+      padding: 0 10px;
+    }
+
+    // &.is-fullscreen-mode {
+    //   z-index: -1;
+    // }
+
+    // &.is-submenu {
+    //   @include responsive.iphone {
+    //     & + .l-page {
+    //       position: fixed;
+    //       width: 100vw;
+
+    //       & + .b-shade {
+    //         z-index: 9;
+    //         display: block;
+    //       }
+    //     }
+    //   }
+    // }
+
+    // &.is-search-shade {
+    //   & + .l-page {
+    //     & + .b-shade {
+    //       z-index: 9;
+    //       display: block;
+    //     }
+    //   }
+    // }
+
+    @include responsive.iphone {
+      flex-direction: row-reverse;
+      .menu-dropdown {
+        margin-right: 10px;
+      }
+    }
+
+    .logo-container {
+      align-items: center;
+      display: flex;
+      height: units.$top-menu-height;
+      padding: 0 15px;
+
+      @include responsive.gte_ipad {
+        margin-right: 15px;
+      }
+
+      .glyph {
+        background-image: url("./../../assets/layouts/l-top_menu/glyph.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 26px;
+        width: 26px;
+        margin-right: 5px;
+
+        @include responsive.iphone-portrait {
+          display: none;
+        }
+      }
+      .logo {
+        background-image: url("./../../assets/layouts/l-top_menu/logo.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 19px;
+        width: 151px;
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+//Adaptive variables
+/*320px for common smartphones including iPhone at portrait orientation */
+/*480px and below for iPhones at landscape orientation and many of the HTC handsets */
+/*768px – 1023px for iPad and other tablets */
+/*1023px and upwards for desktop monitors */
+/*1200px and upwards for larger desktop monitors */
+$phone: 320px;
+$iphone: 480px;
+$ipad: 768px;
+$iphone_max: 767px;
+$ipad_max: 1023px;
+$laptop_max: 1199px;
+
+//Icons
+$icon-planned: "\e838";
+$icon-on_hold: "\e836";
+$icon-watching: "\e823";
+$icon-rewatching: "\e825";
+$icon-completed: "\e824";
+$icon-dropped: "\e828";

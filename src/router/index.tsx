@@ -16,6 +16,10 @@ export const publicRoutes = [
       {
         path: RoutesNames.ANIMES,
         element: <Animes />
+      },
+      {
+        path: RoutesNames.MANGAS,
+        element: <Animes />
       }
     ]
   }
