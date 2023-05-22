@@ -1,6 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
 
-$font-family: "Comfortaa", sans-serif;
+@font-face {
+  font-family: "FontAwesome";
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css");
+  font-weight: normal;
+  font-style: normal;
+}
+
 $font-main: "Comfortaa", sans-serif;
-// $font-alt: $font-family;
-// $font-alt-text-letter-spacing: normal;
+$font-family: "Comfortaa", sans-serif;
+$font-alt: $font-family;
+
+$font-code: Monaco, Menlo, Consolas, Ubuntu Mono, Courier New, monospace;
+$font-alt-text-letter-spacing: normal;

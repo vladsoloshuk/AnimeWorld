@@ -1,0 +1,23 @@
+@use "./ellipsis.scss";
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @include ellipsis.ellipsis;
+    @content;
+  }
+
+  &:-moz-placeholder {
+    @include ellipsis.ellipsis;
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @include ellipsis.ellipsis;
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @include ellipsis.ellipsis;
+    @content;
+  }
+}

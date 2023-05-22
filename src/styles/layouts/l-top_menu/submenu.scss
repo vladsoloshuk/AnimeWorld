@@ -1,0 +1,150 @@
+@use "./../../colors";
+@use "./../../fonts";
+@use "./../../units";
+
+@use "./../../mixins/responsive.scss";
+@use "./../../mixins/ellipsis.scss";
+
+.l-top_menu {
+  .active .submenu {
+    top: auto;
+    display: block;
+
+    @include responsive.iphone {
+      left: 0;
+    }
+  }
+
+  .submenu {
+    border-radius: 0 0 units.$border-radius-menu units.$border-radius-menu;
+    background-color: rgba(colors.$menu-back, 0.9);
+    display: none;
+    font-family: fonts.$font-alt;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    top: -999px;
+
+    & > .legend {
+      border-radius: 13px;
+      background-color: rgba(colors.$block-color, 0.6);
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-top: 4px;
+      padding: 0 15px 0 10px;
+      pointer-events: none;
+      text-transform: uppercase;
+      user-select: none;
+      line-height: 26px;
+      margin-bottom: 4px;
+
+      &:first-child {
+        margin-top: 3px;
+      }
+
+      @include responsive.iphone {
+        &:first-child {
+          margin-top: 8px;
+        }
+      }
+
+      // @include responsive.gte_ipad {
+      //   &:first-child {
+      //     margin-top: 3px;
+      //   }
+      // }
+    }
+
+    & > a {
+      @include ellipsis.ellipsis;
+      border-radius: units.$border-radius-menu;
+      align-items: center;
+      color: colors.$white-color;
+      cursor: pointer;
+      display: flex;
+      outline: none;
+      padding-right: 10px;
+      position: relative;
+      user-select: none;
+
+      @include responsive.iphone {
+        font-size: 16px;
+        height: 48px;
+        line-height: 48px;
+      }
+
+      @include responsive.gte_ipad {
+        font-size: 13px;
+        height: 38px;
+        line-height: 38px;
+      }
+
+      &:hover::before {
+        color: colors.$hover-color;
+      }
+
+      &.active {
+        background-color: rgba(colors.$block-color, 0.6);
+      }
+
+      @include responsive.gte_ipad {
+        &:hover {
+          transition: background 0.25s ease;
+          background-color: rgba(colors.$block-color, 0.6);
+        }
+
+        &:active {
+          transition: background 0.25s ease;
+          background-color: rgba(colors.$block-color, 0.6);
+        }
+      }
+
+      &.icon-profile {
+        @include responsive.gte_laptop {
+          display: none;
+        }
+      }
+
+      &.icon-mail span.text {
+        align-items: baseline;
+        display: flex;
+        flex-grow: 1;
+      }
+
+      span.unread {
+        color: colors.$gray-1;
+        font-size: 11px;
+
+        @include responsive.iphone {
+          margin-left: 20px;
+        }
+
+        @include responsive.gte_ipad {
+          margin-left: auto;
+        }
+
+        span {
+          align-items: center;
+          color: #fff;
+          display: inline-flex;
+
+          &:not(:last-child):after {
+            content: "";
+            width: 1px;
+            background: colors.$gray-1;
+            height: 12px;
+            margin: 0px 5px 0;
+          }
+        }
+      }
+
+      @include responsive.gte_laptop {
+        &:hover {
+          span.unread span {
+            color: #123;
+          }
+        }
+      }
+    }
+  }
+}

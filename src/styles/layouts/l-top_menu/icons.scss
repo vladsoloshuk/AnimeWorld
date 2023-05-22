@@ -1,0 +1,277 @@
+//transfered correctly
+
+@use "./../../units";
+@use "./../../colors";
+
+@use "./../../mixins/responsive.scss";
+@use "./../../mixins/font_shikimori.scss";
+
+@mixin top_menu_icon($content) {
+  cursor: pointer;
+  line-height: inherit !important;
+
+  &:before {
+    @include font_shikimori.font_shikimori($content);
+    font-size: 18px;
+
+    line-height: units.$top-menu-height;
+    vertical-align: middle;
+  }
+}
+
+@mixin submenu_icon($content, $font-size: 18px) {
+  &:before {
+    @include font_shikimori.font_shikimori($content);
+    font-size: $font-size;
+    text-align: center;
+
+    @include responsive.iphone {
+      font-size: 22px;
+      width: 60px;
+    }
+    @include responsive.gte_ipad {
+      width: 50px;
+    }
+  }
+}
+
+.l-top_menu {
+  .menu-icon {
+    &.desktop {
+      @include responsive.lte_ipad {
+        display: none;
+      }
+    }
+
+    &:not(.mobile) {
+      @include responsive.iphone {
+        display: none;
+      }
+    }
+
+    &.contest {
+      @include top_menu_icon("\f5a2");
+    }
+
+    &.mail {
+      @include top_menu_icon("\e81f");
+    }
+
+    &.moderation {
+      @include top_menu_icon("\e80a");
+    }
+
+    &.forum {
+      @include top_menu_icon("\f086");
+    }
+
+    &.trigger {
+      width: 51px; // to prevent flicker of content at left
+      align-items: center;
+      cursor: pointer;
+      justify-content: center;
+
+      &:before {
+        background-image: url("./../../../assets/layouts/l-top_menu/trigger.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        content: "";
+        display: block;
+        height: 25px;
+        width: 25px;
+      }
+
+      &.search {
+        @include top_menu_icon("s");
+      }
+
+      @include responsive.lte_ipad {
+        &.trigger,
+        &.search {
+          &:before {
+            font-size: 25px;
+          }
+        }
+      }
+
+      &.sign_in {
+        display: flex; // overlap iphone &:not(.mobile) display: none
+
+        @include responsive.iphone {
+          @include top_menu_icon("\e826");
+        }
+
+        @include responsive.gte_ipad {
+          &:after {
+            content: attr(data-text);
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  .icon-anime,
+  .icon-manga,
+  .icon-ranobe {
+    &:before {
+      display: block;
+      text-align: center;
+      font-weight: 1000;
+
+      @include responsive.iphone {
+        width: 80px;
+      }
+
+      @include responsive.gte_ipad {
+        width: 70px;
+      }
+    }
+  }
+
+  .icon-anime:before {
+    content: "アニメ";
+  }
+
+  .icon-manga:before {
+    content: "マンガ";
+  }
+
+  .icon-ranobe:before {
+    content: "ラノベ";
+  }
+
+  .icon-avatar {
+    img {
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      margin: 0 15px;
+    }
+  }
+
+  .icon-characters {
+    &:before {
+      background-image: url("./../../../assets/layouts/l-top_menu/characters.svg");
+      background-size: contain;
+      content: "";
+      display: block;
+      height: 20px;
+      margin: 0 15px;
+      text-align: center;
+      width: 20px;
+
+      @include responsive.iphone {
+        height: 22px;
+        margin: 0 19px;
+        width: 22px;
+      }
+
+      @include responsive.gte_ipad {
+        height: 18px;
+        margin: 0 16px;
+        width: 18px;
+      }
+    }
+  }
+
+  .icon-anime_list {
+    @include submenu_icon("\41");
+  }
+
+  .icon-manga_list {
+    @include submenu_icon("\4d");
+  }
+
+  .icon-home {
+    @include submenu_icon("\f015");
+  }
+
+  .icon-play {
+    @include submenu_icon("\e84d");
+  }
+
+  .icon-clubs {
+    @include submenu_icon("\f0c0");
+  }
+
+  .icon-collections {
+    @include submenu_icon("\f00a");
+
+    &:before {
+      font-size: 16px;
+    }
+  }
+
+  .icon-critiques {
+    @include submenu_icon("\f56b");
+  }
+
+  .icon-articles {
+    @include submenu_icon("\f1ea");
+  }
+
+  .icon-forum {
+    @include submenu_icon("\f086");
+  }
+
+  .icon-calendar {
+    @include submenu_icon("\f073");
+  }
+
+  .icon-contests {
+    @include submenu_icon("\f5a2");
+  }
+
+  .icon-info {
+    @include submenu_icon("\f05a");
+  }
+
+  .icon-socials {
+    @include submenu_icon("\23");
+  }
+
+  .icon-moderation {
+    @include submenu_icon("\f071");
+  }
+
+  .icon-profile {
+    @include submenu_icon("\e82a");
+  }
+
+  .icon-mail {
+    @include submenu_icon("\f0e0");
+  }
+
+  .icon-achievements {
+    @include submenu_icon("\f091");
+  }
+
+  .icon-settings {
+    @include submenu_icon("\f085");
+  }
+
+  .icon-site_rules {
+    @include submenu_icon("!");
+  }
+
+  .icon-faq {
+    @include submenu_icon("?");
+  }
+
+  .icon-sign_out {
+    @include submenu_icon("q", 15px);
+  }
+
+  .icon-people {
+    @include submenu_icon("\e849");
+  }
+
+  .icon-users {
+    @include submenu_icon("\f500");
+  }
+
+  .icon-other {
+    @include submenu_icon("\e827");
+  }
+}
