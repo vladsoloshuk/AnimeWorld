@@ -6,9 +6,10 @@ import Logo from "./Logo";
 import Dropdown from "./Dropdown";
 
 const Header = () => {
+  const [isLogged, setIsLogged] = useState(false);
   const [isSubmenuOpened, setIsSubmenuOpened] = useState(false);
 
-  const mainMenu = [
+  const menuDropdown = [
     {
       title: "Database",
       items: [
@@ -45,6 +46,28 @@ const Header = () => {
     }
   ];
 
+  const profileDropdown = [
+    {
+      title: "Profile",
+      items: [
+        { icon: "anime_list", title: "Anime list", link: "" },
+        { icon: "manga_list", title: "Manga list", link: "" },
+        { icon: "mail", title: "Mail", link: "" },
+        { icon: "achievements", title: "Achievements", link: "" },
+        { icon: "clubs", title: "Clubs", link: "" },
+        { icon: "settings", title: "Settings", link: "" }
+      ]
+    },
+    {
+      title: "Website",
+      items: [
+        { icon: "site_rules", title: "Site ruled", link: "" },
+        { icon: "faq", title: "FAQ", link: "" },
+        { icon: "sign_out", title: "Sign out", link: "" }
+      ]
+    }
+  ];
+
   const mouseEnterMenuHandler = () => {
     setIsSubmenuOpened(true);
   };
@@ -57,12 +80,23 @@ const Header = () => {
     <header className={`l-top_menu${isSubmenuOpened ? " is-submenu" : ""}`}>
       <div className="menu-logo">
         <Logo />
-        <Dropdown
-          isSubmenuOpened={isSubmenuOpened}
-          mouseEnterMenuHandler={mouseEnterMenuHandler}
-          mouseLeaveMenuHandler={mouseLeaveMenuHandler}
-          dropdownParams={mainMenu}
-        />
+        <div
+          className={`menu-dropdown main${isSubmenuOpened ? " active" : ""}`}
+          onMouseEnter={mouseEnterMenuHandler}
+          onMouseLeave={mouseLeaveMenuHandler}
+        >
+          <span className="menu-icon trigger mobile"></span>
+          <span className="submenu-triangle icon-home">
+            <span>Home</span>
+          </span>
+
+          <Dropdown
+            isSubmenuOpened={isSubmenuOpened}
+            mouseEnterMenuHandler={mouseEnterMenuHandler}
+            mouseLeaveMenuHandler={mouseLeaveMenuHandler}
+            dropdownParams={menuDropdown}
+          />
+        </div>
       </div>
       <div className="menu-icon search mobile"></div>
       <div className="global-search">
@@ -115,24 +149,31 @@ const Header = () => {
         className="menu-icon forum desktop"
         title="Forum"
       ></Link>
+      {isLogged ? (
+        <Link
+          className="menu-icon contest"
+          data-count="1"
+          title="Contests"
+        ></Link>
+      ) : (
+        ""
+      )}
+      {isLogged ?
       <Link
-        className="menu-icon contest"
+        className="menu-icon mail"
         data-count="1"
-        title="Tournament"
-        href=""
-      ></Link>
+        title="Mail"
+      ></Link> : ""}
       <Link
         className="menu-icon sign_in"
         title="Enter"
+        data-text="Enter"
       >
-        Enter
       </Link>
-      <div className="menu-dropdown profile">
+      { isLogged ?
+      <div className={`menu-dropdown profile${isSubmenuOpened ? " active" : ""}`}>
         <span>
-          <a
-            className="submenu-triangle"
-            href="/"
-          >
+          <Link className="submenu-triangle">
             <img
               alt="SoVladai"
               src="https://desu.shikimori.me/system/users/x48/1227633.png?1673459024"
@@ -140,93 +181,15 @@ const Header = () => {
               title="SoVladai"
             />
             <span className="nickname">SoVladai</span>
-          </a>
+          </Link>
         </span>
-        <div class="submenu">
-          <div class="legend">Account</div>
-          <a
-            class="icon-profile"
-            href="https://shikimori.me/SoVladai"
-            tabindex="-1"
-            title="Профиль"
-          >
-            <span class="text">Profile</span>
-          </a>
-          <a
-            class="icon-anime_list"
-            href="https://shikimori.me/SoVladai/list/anime"
-            tabindex="-1"
-            title="Anime list"
-          >
-            <span class="text">Anime list</span>
-          </a>
-          <a
-            class="icon-manga_list"
-            href="https://shikimori.me/SoVladai/list/manga"
-            tabindex="-1"
-            title="Manga List"
-          >
-            <span class="text">Manga List</span>
-          </a>
-          <a
-            class="icon-mail"
-            href="https://shikimori.me/SoVladai/dialogs"
-            tabindex="-1"
-            title="Mail"
-          >
-            <span class="text">Mail</span>
-          </a>
-          <a
-            class="icon-achievements"
-            href="https://shikimori.me/SoVladai/achievements"
-            tabindex="-1"
-            title="Achievements"
-          >
-            <span class="text">Achievements</span>
-          </a>
-          <a
-            class="icon-clubs"
-            href="https://shikimori.me/SoVladai/clubs"
-            tabindex="-1"
-            title="Clubs"
-          >
-            <span class="text">Clubs</span>
-          </a>
-          <a
-            class="icon-settings"
-            href="https://shikimori.me/SoVladai/edit/account"
-            tabindex="-1"
-            title="Settings"
-          >
-            <span class="text">Settings</span>
-          </a>
-          <div class="legend">Сайт</div>
-          <a
-            class="icon-site_rules"
-            href="https://shikimori.me/forum/site/79042-pravila-sayta"
-            tabindex="-1"
-            title="Site ruled"
-          >
-            <span class="text">Site ruled</span>
-          </a>
-          <a
-            class="icon-faq"
-            href="https://shikimori.me/clubs/1093-faq-chasto-zadavaemye-voprosy"
-            tabindex="-1"
-            title="FAQ"
-          >
-            <span class="text">FAQ</span>
-          </a>
-          <a
-            class="icon-sign_out"
-            data-method="delete"
-            href="https://shikimori.me/users/sign_out"
-            tabindex="-1"
-          >
-            Exit
-          </a>
-        </div>
-      </div>
+        <Dropdown
+          isSubmenuOpened={isSubmenuOpened}
+          mouseEnterMenuHandler={mouseEnterMenuHandler}
+          mouseLeaveMenuHandler={mouseLeaveMenuHandler}
+          dropdownParams={profileDropdown}
+        />
+      </div> : ""}
     </header>
   );
 };
