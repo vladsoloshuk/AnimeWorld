@@ -71,10 +71,10 @@
       align-items: center;
       display: flex;
       height: units.$top-menu-height;
-      padding: 0 15px;
+      padding: 0 10px;
 
       @include responsive.gte_ipad {
-        margin-right: 15px;
+        margin-right: 10px;
       }
 
       .glyph {

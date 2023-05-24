@@ -14,11 +14,13 @@
     border-radius: units.$border-radius-menu;
     align-items: center;
     display: flex;
-    font-family: fonts.$font-alt;
+    font-family: fonts.$font-main;
     height: units.$top-menu-height; // required for mobile profile height
-    outline: none;
     user-select: none;
-    padding: 10px;
+
+    @include responsive.iphone {
+      padding: 10px;
+    }
 
     @include responsive.gte_ipad {
       padding: 15px;
@@ -35,7 +37,7 @@
   .menu-icon:focus,
   .menu-dropdown.active > span,
   .menu-dropdown > span:focus {
-    transition: background 0.2s ease;
+    transition: background 0.25s ease;
     background-color: rgba(colors.$block-color, 0.6);
 
     &::before {
@@ -45,8 +47,7 @@
 
   @include responsive.gte_laptop {
     .menu-icon:hover {
-      transition: background 0.2s ease;
-      background-color: colors.$top_menu_background_hover;
+      transition: background 0.25s ease;
     }
 
     .menu-icon:active {
@@ -63,9 +64,8 @@
 
     &.search {
       @include responsive.lte_ipad {
-        display: block;
         margin-left: auto;
-        padding-top: 1px;
+        padding-top: 15px;
       }
     }
 
@@ -216,14 +216,6 @@
     &.profile {
       @include responsive.gte_laptop {
         margin-left: auto;
-      }
-
-      :hover{
-        & >span {
-          img{
-            border: 2px solid colors.$hover-color;
-          }
-        }
       }
 
       & > span {

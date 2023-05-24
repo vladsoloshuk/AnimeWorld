@@ -5,6 +5,7 @@
 
 @use "./../../units";
 @use "./../../colors";
+@use "./../../fonts";
 
 .l-top_menu .global-search {
   color: colors.$white-color;
@@ -23,12 +24,12 @@
 
   input {
     color: colors.$white-color;
+    font-family: fonts.$font-main;
     background: transparent;
-    border-radius: 2px;
-    border: 1px solid transparent;
+    border-radius: 13px;
     font-size: 14px;
     line-height: units.$input-height - 1px;
-    padding: 1px 42px 0 38px;
+    padding: 0 40px 0 40px;
     text-overflow: ellipsis;
     width: 100%;
 
@@ -51,32 +52,32 @@
   }
 }
 
-.l-top_menu.is-search-focus .global-search {
+.l-top_menu .is-search-focus .global-search {
   .hotkey-marker {
     display: none;
   }
 
   .search-marker {
-    color: colors.$light-color;
+    color: rgba(colors.$light-color, 0.3);
   }
 }
 
 .l-top_menu .global-search {
   .hotkey-marker {
-    border-radius: 3px;
-    border: 1px solid colors.$light-color;
+    border-radius: 50%;
+    border: 1px solid rgba(colors.$light-color, 0.3);
     bottom: 0;
-    color: colors.$light-color;
+    color: rgba(colors.$light-color, 0.3);
     content: "/";
     font-size: 13px;
-    height: 21px;
-    line-height: 21px;
+    height: 25px;
+    line-height: 25px;
     margin: auto 0;
     position: absolute;
     right: 7px;
     text-align: center;
     top: 0;
-    width: 20px;
+    width: 25px;
 
     @include responsive.lte_ipad {
       display: none;
@@ -98,7 +99,7 @@
   }
 
   .search-marker {
-    width: 42px;
+    width: 40px;
     left: 0;
 
     &:before {

@@ -44,15 +44,9 @@
 
       @include responsive.iphone {
         &:first-child {
-          margin-top: 8px;
+          margin-top: 5px;
         }
       }
-
-      // @include responsive.gte_ipad {
-      //   &:first-child {
-      //     margin-top: 3px;
-      //   }
-      // }
     }
 
     & > a {

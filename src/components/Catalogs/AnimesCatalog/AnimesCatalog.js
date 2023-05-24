@@ -36,7 +36,7 @@ const AnimesCatalog = () => {
     studio: studio
   });
 
-  const lastElement = useRef();
+  // const lastElement = useRef();
 
   // const getPagesCount = (totalCount, limit) => {
   //   return Math.ceil(totalCount / limit);
@@ -47,7 +47,7 @@ const AnimesCatalog = () => {
     setAnimes([...response.data]);
   });
 
-  useObserver(lastElement, isAnimesLoading, () => setPage(page + 1));
+  // useObserver(lastElement, isAnimesLoading, () => setPage(page + 1));
 
   // const getPagesArray = (totalPages) => {
   //   let result = [];
@@ -203,7 +203,7 @@ const AnimesCatalog = () => {
             changeFilter={changeFilterHanler}
           />
         </div>
-        <div ref={lastElement}></div>
+        {/* <div ref={lastElement}></div> */}
       </div>
     </section>
   );
