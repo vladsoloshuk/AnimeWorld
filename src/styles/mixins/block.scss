@@ -1,0 +1,40 @@
+@use "./../units";
+
+@mixin block($margin: units.$block-offset) {
+  margin-bottom: $margin;
+  line-height: units.$line_height;
+  position: relative;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@mixin block0 {
+  @include block;
+  margin-bottom: 0;
+}
+
+@mixin block2 {
+  @include block(units.$block-offset * 1.5);
+}
+
+@mixin block3 {
+  @include block(units.$block-offset * 2);
+}
+
+@mixin block_m {
+  @include block;
+
+  &:last-child {
+    margin-bottom: units.$block-offset !important;
+  }
+}
+
+@mixin block2_m {
+  @include block2;
+
+  &:last-child {
+    margin-bottom: units.$block-offset * 1.5 !important;
+  }
+}

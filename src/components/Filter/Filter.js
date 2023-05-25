@@ -12,12 +12,12 @@ const Filter = ({recomendations, filter, filterParams, changeFilter}) => {
           ))}
           </div>
         </div>
-      {filter.sorting.map((sortType) => (
+      {filter.map((sortType) => (
         <div key={sortType.name} className='block'>
           <div className='subheadline'>{sortType.name}</div>
           <ul className='b-block_list'>
             {sortType.params.map((param) => (
-              <FilterItem key={param.title} sortType={sortType} param={param} changeFilter={changeFilter} filterParams={filterParams} method={filter.method}/>
+              <FilterItem key={param.title} sortType={sortType} param={param} changeFilter={changeFilter} filterParams={filterParams} method={changeFilter}/>
             ))}
           </ul>
         </div>

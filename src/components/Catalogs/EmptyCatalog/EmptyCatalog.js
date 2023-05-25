@@ -2,11 +2,11 @@ import EmptyCatalogItem from "./EmptyCatalogItem";
 import { UrlParts, hostUrl } from "../../../const/urlConsts";
 import './../../../styles/app.scss';
 
-const EmptyCatalog = ({elements}) => {
+const EmptyCatalog = ({elementsArr}) => {
 
   return (
     <section className="catalog-section">
-      {elements.map((element) => (
+      {elementsArr.map((element) => (
         <EmptyCatalogItem
           key={element.id}
           title={element.name}

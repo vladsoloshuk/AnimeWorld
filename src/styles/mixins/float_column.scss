@@ -1,0 +1,52 @@
+@use "./block.scss";
+@use "./clear_left.scss";
+@use "./responsive.scss";
+
+@mixin cc {
+  @include block.block;
+  @include clear_left.clear_left;
+}
+
+@mixin column($columns, $column_size: 1 / $columns, $gutter: 4%) {
+  @if $columns == 1 {
+    $gutter: 0%;
+  }
+
+  float: left;
+  margin-right: $gutter;
+  position: relative;
+  width: 100% * $column_size - $gutter * ($columns - 1) / $columns;
+
+  &:nth-child(#{$columns}n) {
+    margin-right: 0;
+  }
+
+  &:nth-child(#{$columns}n + 1) {
+    clear: left;
+  }
+
+  &:last-child {
+    margin-right: 0;
+
+    &.block {
+      margin-bottom: 0;
+    }
+  }
+
+  & > .block:last-child,
+  & > .subcontent:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// column, consisting of block and column
+@mixin column_b($columns, $column_size: 1 / $columns, $gutter: 4%) {
+  @include block.block;
+  @include column($columns, $column_size, $gutter);
+}
+
+// column, consisting of block with margin and column
+@mixin column_bm($columns, $column_size: 1 / $columns, $gutter: 4%) {
+  @include block.block_m;
+  @include column($columns, $column_size, $gutter);
+}
