@@ -1,0 +1,8 @@
+//ready to use
+@mixin clear_left {
+  &:after {
+    clear: left;
+    display: block;
+    content: " ";
+  }
+}

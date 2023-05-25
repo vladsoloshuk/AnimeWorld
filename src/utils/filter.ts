@@ -1,5 +1,5 @@
-export const multipleFilter = (filterState, value) => {
-        let kindArr;
+export const multipleFilter = (filterState: string, value: string) => {
+        let kindArr : string[];
         let kindStr;
         filterState === "" ? (kindArr = []) : (kindArr = filterState.split(","));
         if (kindArr.includes(value)) {
@@ -14,8 +14,4 @@ export const multipleFilter = (filterState, value) => {
         kindStr = kindArr.join(",");
         console.log(kindStr);
         return (kindStr);
-}
-
-export const uniteFilterObj = (filterParams, property, value) => {
-  Object.assign(filterParams, {[property] : value});
 }
