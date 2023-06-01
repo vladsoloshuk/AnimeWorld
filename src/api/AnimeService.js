@@ -14,8 +14,7 @@ export default class AnimeServices {
     const response = await axios.get(hostUrl + UrlParts.API + UrlParts.ANIME_ID + id);
     return response;
   }
-  static async getMangas(limit = 50, page = 1, order = "ranked") {
-    const params = { limit, page, order };
+  static async getMangas(params) {
     const response = await axios.get(hostUrl + UrlParts.API + UrlParts.MANGAS, { params });
     return response;
   }

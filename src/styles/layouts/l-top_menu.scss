@@ -1,7 +1,7 @@
 @use "./l-top_menu/menu.scss";
 @use "./l-top_menu/submenu.scss";
-@use './l-top_menu/icons.scss';
-@use './l-top_menu/search.scss';
+@use "./l-top_menu/icons.scss";
+@use "./l-top_menu/search.scss";
 
 @use "./../mixins/responsive.scss";
 
@@ -51,14 +51,14 @@
     //   }
     // }
 
-    // &.is-search-shade {
-    //   & + .l-page {
-    //     & + .b-shade {
-    //       z-index: 9;
-    //       display: block;
-    //     }
-    //   }
-    // }
+    &.is-search-shade {
+      & + .l-page {
+        & + .b-shade {
+          z-index: 9;
+          display: block;
+        }
+      }
+    }
 
     @include responsive.iphone {
       flex-direction: row-reverse;

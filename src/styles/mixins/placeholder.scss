@@ -1,21 +1,23 @@
+//ready to use
 @use "./ellipsis.scss";
 
 @mixin placeholder {
+  /* Chrome/Opera/Safari */
   &::-webkit-input-placeholder {
     @include ellipsis.ellipsis;
     @content;
   }
-
+  /* Firefox 18- */
   &:-moz-placeholder {
     @include ellipsis.ellipsis;
     @content;
   }
-
+  /* Firefox 19+ */
   &::-moz-placeholder {
     @include ellipsis.ellipsis;
     @content;
   }
-
+  /* IE 10+ */
   &:-ms-input-placeholder {
     @include ellipsis.ellipsis;
     @content;

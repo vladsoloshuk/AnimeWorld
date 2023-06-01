@@ -1,0 +1,36 @@
+@use "./../globals";
+@use './../colors';
+@use './../units';
+
+@use './../mixins/shadow.scss';
+@use "./../mixins/responsive.scss";
+@use "./../mixins/float_column.scss";
+
+$l-page-mobile-padding: 10px;
+$l-page-desktop-padding: 15px;
+
+.l-page {
+  background-color: rgba(colors.$menu-back, 0.98);
+  max-width: 1200px;
+  border-radius: units.$border-radius-base;
+  min-height: 50px;
+  z-index: 1;
+  margin: 15px auto 15px;
+  @include shadow.shadow-base;
+  clear: both;
+  padding: 15px #{$l-page-mobile-padding} 0 #{$l-page-mobile-padding};
+  position: relative;
+
+  @include responsive.gte_desktop {
+    padding-left: #{$l-page-desktop-padding};
+    padding-right: #{$l-page-desktop-padding};
+  }
+
+  .x1200 & {
+    max-width: 1200px;
+  }
+
+  .x1000 & {
+    max-width: 1000px;
+  }
+}

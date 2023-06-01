@@ -15,7 +15,7 @@
   float: left;
   margin-right: $gutter;
   position: relative;
-  width: 100% * $column_size - $gutter * ($columns - 1) / $columns;
+  width: calc(100% * $column_size - $gutter * ($columns - 1) / $columns);
 
   &:nth-child(#{$columns}n) {
     margin-right: 0;
@@ -40,13 +40,13 @@
 }
 
 // column, consisting of block and column
-@mixin column_b($columns, $column_size: 1 / $columns, $gutter: 4%) {
+@mixin column_b($columns, $column_size: calc(1 / $columns), $gutter: 4%) {
   @include block.block;
   @include column($columns, $column_size, $gutter);
 }
 
 // column, consisting of block with margin and column
-@mixin column_bm($columns, $column_size: 1 / $columns, $gutter: 4%) {
+@mixin column_bm($columns, $column_size: calc(1 / $columns), $gutter: 4%) {
   @include block.block_m;
   @include column($columns, $column_size, $gutter);
 }

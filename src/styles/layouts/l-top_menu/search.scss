@@ -1,4 +1,3 @@
-// @import mixins/placeholder
 @use "./../../mixins/placeholder.scss";
 @use "./../../mixins/responsive.scss";
 @use "./../../mixins/font_shikimori.scss";
@@ -90,12 +89,16 @@
 
   .search-marker,
   .clear {
+    transition: color 0.25s ease;
     font-size: 20px;
     height: units.$input-height + 2px;
     line-height: units.$input-height + 2px;
     position: absolute;
     text-align: center;
     top: 0;
+    &:hover{
+      color: colors.$hover-color;
+    }
   }
 
   .search-marker {
@@ -124,7 +127,8 @@
     }
   }
   .search-results {
-    background-color: #fff;
+    background-color: rgba(colors.$menu-back, 0.9);
+    border-radius: 0 0 units.$border-radius-menu units.$border-radius-menu;
     display: none;
     min-height: 42px;
     position: absolute;
@@ -183,11 +187,11 @@
 
     .nothing_found,
     .search-mode {
-      color: #123;
       display: flex;
       font-size: 13px;
       letter-spacing: 0.25px;
-      line-height: 41px;
+      line-height: 40px;
+      border-radius: 20px;
       padding-top: 1px;
       user-select: none;
 
@@ -214,10 +218,16 @@
 
       &:hover {
         @include responsive.gte_laptop {
-          background: linear-gradient(270deg, rgba(colors.$link-4, 0.1) 0%, rgba(colors.$link-4, 0) 100%), rgba(colors.$link-4, 0.01);
+          background: linear-gradient(270deg, rgba(colors.$light-color, 0.1) 0%, rgba(colors.$light-color, 0.05) 100%), rgba(colors.$light-color, 0.05);
 
           &:before {
-            background: rgba(colors.$link-2, 0.35);
+            background: linear-gradient(
+              to right,
+              rgba(colors.$hover-color, 0.5) 0%,
+              rgba(colors.$hover-color, 0.5) 30%,
+              rgba(colors.$hover-color, 0) 75%,
+              rgba(colors.$hover-color, 0) 100%
+            );
           }
         }
       }
@@ -226,8 +236,7 @@
     .nothing_found,
     .b-db_entry-variant-list_item,
     .search-mode {
-      transition: border-top 0.2s ease, background 0.2s ease;
-      border-top: 1px solid rgba(colors.$link-4, 0.2);
+      transition: background 0.25s ease;
       margin-bottom: 0;
 
       &:first-child {
@@ -235,15 +244,23 @@
       }
 
       &:before {
+        width: 32px;
+        background: linear-gradient(
+          to right,
+          rgba(colors.$light-color, 0.5) 0%,
+          rgba(colors.$light-color, 0.5) 30%,
+          rgba(colors.$light-color, 0) 75%,
+          rgba(colors.$light-color, 0) 100%
+        );
+        border-radius: 50% 0 0 50%;
         content: "";
         display: block;
         margin: 0 10px 3px;
-        width: 5px;
       }
 
       &.active,
       &:focus {
-        background: linear-gradient(270deg, rgba(colors.$link-4, 0.2) 0%, rgba(colors.$link-4, 0) 100%), rgba(colors.$link-4, 0.01);
+        background: rgba(colors.$bright-color, 0.05);
         border-top-color: colors.$link-3;
 
         & + .b-db_entry-variant-list_item,
@@ -252,7 +269,13 @@
         }
 
         &:before {
-          background: colors.$link-2;
+          background: linear-gradient(
+            to right,
+            rgba(colors.$light-color, 0.7) 0%,
+            rgba(colors.$light-color, 0.7) 30%,
+            rgba(colors.$light-color, 0) 75%,
+            rgba(colors.$light-color, 0) 100%
+          );
         }
       }
     }
