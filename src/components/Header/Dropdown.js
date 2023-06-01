@@ -14,7 +14,7 @@ const Dropdown = ({ dropdownParams }) => {
                 <Link
                   key={item.title}
                   className={`icon-${item.icon}`}
-                  href={item.link}
+                  to={item.link}
                   tabIndex="-1"
                 >
                   {item.title}

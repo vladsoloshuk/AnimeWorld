@@ -1,0 +1,234 @@
+@use "./../units";
+@use "./../globals";
+@use "./../colors";
+
+@use "./../mixins/float_column.scss";
+@use "./../mixins/responsive.scss";
+@use "./../mixins/font_shikimori.scss";
+// @import mixins/retina
+
+.x1000 .menu-slide-outer {
+  &.x199,
+  &.x240 {
+    .l-menu {
+      @include responsive.gte_ipad-landscape {
+        @include float_column.column(2, 0.2635, 3%);
+      }
+    }
+
+    .l-content {
+      @include responsive.gte_ipad-landscape {
+        @include float_column.column(2, 0.7365, 3%);
+      } // must be 241px
+    }
+  }
+}
+
+.menu-slide-outer {
+  &.x199 {
+    .l-menu {
+      @include responsive.gte_laptop {
+        @include float_column.column(2, 0.221, 3%);
+      }
+      @include responsive.ipad-landscape {
+        @include float_column.column(2, 0.228, 3%);
+      }
+      @include responsive.ipad-portrait {
+        @include float_column.column(2, 0.23, 3%);
+      }
+      @include responsive.iphone-landscape {
+        @include float_column.column(2, 0.32, 3%);
+      }
+      @include responsive.iphone-portrait {
+        @include float_column.column(2, 0.415, 3%);
+      }
+    }
+
+    .l-content {
+      transition: margin 0.25s ease;
+
+      @include responsive.gte_laptop {
+        @include float_column.column(2, 0.779, 3%);
+      } // must be 241px
+      @include responsive.ipad-landscape {
+        @include float_column.column(2, 0.772, 3%);
+      } // must be 241px
+      @include responsive.ipad-portrait {
+        @include float_column.column(2, 0.77, 3%);
+      }
+      @include responsive.iphone-landscape {
+        @include float_column.column(2, 0.67, 3%);
+      }
+      @include responsive.iphone-portrait {
+        @include float_column.column(2, 0.585, 3%);
+      }
+    }
+  }
+  &.x240 {
+    .l-menu {
+      @include responsive.gte_ipad-landscape {
+        @include float_column.column(2, 0.2724, 3%);
+      }
+      @include responsive.ipad-portrait {
+        @include float_column.column(2, 0.25, 3%);
+      }
+      @include responsive.iphone-landscape {
+        @include float_column.column(2, 0.32, 3%);
+      }
+      @include responsive.iphone-portrait {
+        @include float_column.column(2, 0.415, 3%);
+      }
+    }
+  }
+}
+
+.l-content {
+  transition: margin 0.25s ease;
+
+  @include responsive.gte_ipad-landscape {
+    @include float_column.column(2, 0.7276, 3%);
+  } // must be 301px
+  @include responsive.ipad-portrait {
+    @include float_column.column(2, 0.75, 3%);
+  }
+  @include responsive.iphone-landscape {
+    @include float_column.column(2, 0.67, 3%);
+  }
+  @include responsive.iphone-portrait {
+    @include float_column.column(2, 0.585, 3%);
+  }
+}
+
+.menu-slide-outer {
+  &:after {
+    clear: both;
+    display: block;
+    content: " ";
+  }
+}
+
+.l-page {
+  // so that the page does not collapse in width when there is no content
+  .l-content:after {
+    content: "";
+    display: block;
+    height: 1px;
+    line-height: 0;
+    width: 0;
+  }
+
+  &.menu-expanded {
+    .x199 .l-content {
+      @include responsive.ipad {
+        margin-left: -24.5%;
+      }
+    }
+
+    .x240 .l-content {
+      @include responsive.ipad {
+        margin-left: -26%;
+      }
+    }
+
+    .ipad-expanded .l-content {
+      @include responsive.ipad-landscape {
+        margin-left: 0;
+      }
+    }
+
+    .l-content {
+      @include responsive.iphone-landscape {
+        margin-left: -33.5%;
+      }
+      @include responsive.iphone-portrait {
+        margin-left: -43%;
+      }
+    }
+  }
+  @include responsive.lte_ipad {
+    .menu-slide-outer {
+      width: 100%;
+      overflow: hidden;
+    }
+  }
+
+  .menu-slide-outer {
+    .menu-slide-inner {
+      @include responsive.iphone-landscape {
+        width: 152.5%;
+      }
+      @include responsive.iphone-portrait {
+        width: 175%;
+      }
+    }
+
+    &:not(.ipad-expanded) .menu-slide-inner {
+      @include responsive.ipad {
+        width: 132%;
+      }
+    }
+
+    &.x199.ipad-expanded .menu-slide-inner {
+      @include responsive.ipad-portrait {
+        width: 132%;
+      }
+    }
+
+    &.x240.ipad-expanded .menu-slide-inner {
+      @include responsive.ipad-portrait {
+        width: 135%;
+      }
+    }
+  }
+}
+
+.l-page {
+  .menu-toggler {
+    height: 45px;
+    cursor: pointer;
+    position: fixed;
+    -webkit-overflow-scrolling: touch;
+    right: 0;
+    bottom: 15px;
+    z-index: 999;
+    line-height: 45px;
+
+    @include responsive.lte_ipad {
+      width: 45px;
+    }
+
+    @include responsive.gte_laptop {
+      display: none;
+    }
+
+    @include responsive.ipad-landscape {
+      &.ipad-expanded {
+        display: none;
+      }
+    }
+
+    //Filter toggler
+    .toggler {
+      background-color: rgba(colors.$menu-back, 0.95);
+      border-radius: 50% 0 0 50%;
+      overflow: hidden;
+      text-align: center;
+
+      &:after {
+        @include font_shikimori.font_shikimori("\f0b0");
+        font-size: 18px;
+        transition: color 0.5s ease;
+      }
+    }
+  }
+
+  &.menu-expanded {
+    .menu-toggler .toggler:after {
+      content: "\f0b0";
+    }
+  }
+}
+
+.l-menu {
+  margin-bottom: units.$block-offset * 1.5;
+}

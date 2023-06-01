@@ -1,6 +1,6 @@
 //transfered correctly
 
-@mixin font_shikimori($content) {
+@mixin font_shikimori($content: '') {
   font-family: FontAwesome;
   /* Support for all WebKit browsers. */
   -webkit-font-smoothing: antialiased;

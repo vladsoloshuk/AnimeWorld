@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-export const useObserver = (ref, isLoading, callback) => {
+const useObserver = (ref, isLoading, callback) => {
   const observer = useRef();
 
   useEffect(() => {
@@ -15,3 +15,5 @@ export const useObserver = (ref, isLoading, callback) => {
     observer.current.observe(ref.current);
   }, [isLoading]);
 };
+
+export default useObserver;

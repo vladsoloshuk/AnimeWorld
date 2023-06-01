@@ -1,0 +1,329 @@
+// @import mixins/link
+@use "./../mixins/shadow.scss";
+@use "./../mixins/font_shikimori.scss";
+@use "./../mixins/ellipsis.scss";
+@use "./../mixins/ellipsis_two_line.scss";
+@use "./../mixins/responsive.scss";
+@use "./../mixins/float_column.scss";
+
+@use "./../colors";
+@use "./../units";
+@use "./../globals";
+
+$max_minified_width: 162px;
+$max_width: 167px;
+
+.b-catalog_entry {
+  transition: 0.25s ease-out;
+  border-radius: units.$border-radius-base;
+  max-width: 460px;
+  padding: 5px 5px;
+
+  &:hover {
+    @include shadow.shadow-base;
+    transform: scale(1.05);
+  }
+
+  &.cc {
+    & > .cover {
+      @include float_column.column(2, 0.4);
+    }
+    .content {
+      @include float_column.column(2, 0.6);
+    }
+
+    &.column-2 {
+      @include responsive.iphone-landscape {
+        .cover {
+          @include float_column.column(2, 0.35);
+        }
+        .content {
+          @include float_column.column(2, 0.65);
+        }
+      }
+    }
+  }
+
+  @include responsive.gte_laptop {
+    &:hover .cover .image-decor > .text {
+      display: block;
+      max-height: none;
+    }
+  }
+
+  .cover {
+    // +link_color(#333333)
+
+    display: block;
+
+    .image-decor {
+      display: block;
+      line-height: 0px;
+      position: relative;
+
+      .image-cutter {
+        display: block;
+        line-height: 0;
+        overflow: hidden;
+        position: relative; // для кнопки удаления в рекомендациях
+      }
+
+      img {
+        height: 100%;
+        background-size: cover;
+        width: 100%;
+        border-radius: units.$border-radius-base;
+      }
+
+      // используется для отображения текста в коллекциях
+      & > .text {
+        @include ellipsis_two_line.ellipsis_two_line(12px, units.$line_height);
+        transition: all 0.25s ease;
+        background: linear-gradient(to bottom, rgba(#000, 0.6) 5%, rgba(#000, 0.8) 66%);
+        bottom: 0;
+        color: #fff;
+        font-size: 12px;
+        letter-spacing: 0.13px;
+        line-height: 1.45;
+        padding: 2px 5px;
+        position: absolute;
+        width: 100%;
+        z-index: 2;
+
+        &:before {
+          background: rgba(#fff, 0.25);
+          content: "";
+          height: 100%;
+          margin: -2px -5px;
+          pointer-events: none;
+          position: absolute;
+          width: 100%;
+        }
+
+        .b-link {
+          color: #fff;
+          text-decoration: underline;
+        }
+
+        .b-image .marker {
+          display: none;
+        }
+      }
+    }
+
+    .title {
+      @include ellipsis.ellipsis;
+      // +link
+      display: block;
+      font-weight: bold;
+      line-height: units.$line_height;
+      margin-top: 5px;
+
+      &.two_lined {
+        @include ellipsis_two_line.ellipsis_two_line(13px, units.$line_height);
+      }
+    }
+
+    .misc {
+      color: colors.$light-color;
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      line-height: 17px;
+
+      &.centered {
+        text-align: center;
+      }
+
+      span {
+        @include ellipsis_two_line.ellipsis_two_line(13px, units.$line_height);
+        display: block;
+        padding-right: 5px;
+
+        &.relation {
+          line-height: 1.4;
+          margin-top: 2px;
+          padding-right: 0;
+          white-space: normal;
+        }
+
+        &.anons {
+          color: #307a3d;
+        }
+
+        &.released {
+          color: #ca4929;
+        }
+
+        &.right {
+          float: right;
+          padding-right: 0;
+        }
+
+        &.role {
+          overflow: visible;
+          white-space: normal;
+        }
+
+        &.episode {
+          .number {
+            font-weight: bold;
+            // line-height: $line_height;
+            padding-top: 4px;
+          }
+        }
+      }
+    }
+  }
+
+  .content {
+    .tooltip-details {
+      min-height: 100px;
+    }
+  }
+
+  $background-size: 50px;
+  $foreground-size: $background-size - 20px;
+
+  &.planned,
+  &.watching,
+  &.completed,
+  &.rewatching,
+  &.on_hold,
+  &.dropped {
+    .image-decor {
+      position: relative;
+
+      &::before,
+      &::after {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+      }
+
+      &::before {
+        height: $background-size;
+        width: $background-size;
+        line-height: $background-size;
+        content: "";
+        z-index: 1;
+      }
+
+      &::after {
+        @include font_shikimori.font_shikimori;
+        width: $foreground-size;
+        line-height: $foreground-size;
+        font-size: 20px;
+        text-align: center;
+        z-index: 2;
+      }
+    }
+  }
+
+  &.planned {
+    background: rgba(colors.$anime-planned, 0.75);
+    .image-decor {
+      &:before {
+        background: linear-gradient(135deg, transparent 35px, rgba(colors.$anime-planned, 0.75) 0);
+      }
+      &:after {
+        color: colors.$white-color;
+        content: globals.$icon-planned;
+      }
+    }
+  }
+
+  &.on_hold {
+    background: rgba(colors.$anime-onhold, 0.75);
+    .image-decor {
+      &:before {
+        background: linear-gradient(135deg, transparent 35px, rgba(colors.$anime-onhold, 0.75) 0);
+      }
+      &:after {
+        color: colors.$white-color;
+        content: globals.$icon-on_hold;
+      }
+    }
+  }
+
+  &.watching {
+    background: rgba(colors.$anime-inprocess, 0.75);
+    .image-decor {
+      &:before {
+        background: linear-gradient(135deg, transparent 35px, rgba(colors.$anime-inprocess, 0.75) 0);
+      }
+      &:after {
+        color: colors.$white-color;
+        content: globals.$icon-watching;
+      }
+    }
+  }
+
+  &.rewatching {
+    background: rgba(colors.$anime-rewatching, 0.75);
+    .image-decor {
+      &:before {
+        background: linear-gradient(135deg, transparent 35px, rgba(colors.$anime-rewatching, 0.75) 0);
+      }
+      &:after {
+        color: colors.$white-color;
+        content: globals.$icon-rewatching;
+      }
+    }
+  }
+
+  &.completed {
+    background: rgba(colors.$anime-complete, 0.75);
+    .image-decor {
+      &:before {
+        background: linear-gradient(135deg, transparent 35px, rgba(colors.$anime-complete, 0.75) 0);
+      }
+      &:after {
+        color: colors.$white-color;
+        content: globals.$icon-completed;
+      }
+    }
+  }
+
+  &.dropped {
+    background: rgba(colors.$anime-dropped, 0.75);
+    .image-decor {
+      &:before {
+        background: linear-gradient(135deg, transparent 35px, rgba(colors.$anime-dropped, 0.75) 0);
+      }
+      &:after {
+        color: colors.$white-color;
+        content: globals.$icon-dropped;
+      }
+    }
+  }
+
+  &.planned,
+  &.watching,
+  &.completed,
+  &.rewatching,
+  &.on_hold,
+  &.dropped {
+    .user_rates-minified .image-decor {
+      &::before,
+      &::after {
+        right: 3px;
+        top: 3px;
+      }
+
+      &::before {
+        border-width: 1px;
+        border-radius: 0;
+        height: 16px;
+        width: 16px;
+        line-height: 16px;
+      }
+
+      &::after {
+        width: 19px;
+        line-height: 19px;
+        font-size: 13px;
+      }
+    }
+  }
+}
