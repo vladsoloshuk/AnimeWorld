@@ -9,6 +9,8 @@
 @use './layouts/l-menu.scss';
 @use './layouts/l-page.scss';
 
+@use './blocks/b-db_entry-variant-list_item.scss';
+
 * {
   box-sizing: border-box;
   margin: 0;

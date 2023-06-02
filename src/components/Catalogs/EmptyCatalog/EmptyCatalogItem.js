@@ -1,33 +1,23 @@
 import { Link } from "react-router-dom";
-import { hostUrl } from "../../../const/urlConsts";
-import "./../../../styles/pages/p-elements_collection-index.scss";
+import { UrlParts, hostUrl } from "../../../const/urlConsts";
+import Preview from "../../Preview/Preview";
 
-const EmptyCatalogItem = ({ title, preview, year, kind, url }) => {
+const EmptyCatalogItem = ({ element }) => {
   return (
     <article className="c-column b-catalog_entry c-anime">
       <Link
         className="cover anime-tooltip-processed"
-        href={url}
+        href={hostUrl + UrlParts.API + element.url}
       >
         <span className="image-decor">
           <span className="image-cutter">
-            <picture>
-              <source
-                srcSet={hostUrl + preview}
-                type="image/webp"
-              />
-              <img
-                alt={title}
-                src={hostUrl + preview}
-                srcSet={hostUrl + preview}
-              />
-            </picture>
+            <Preview element={element} />
           </span>
         </span>
-        <span className="title left_aligned">{title}</span>
+        <span className="title left_aligned">{element.name}</span>
         <span className="misc">
-          <span>{kind}</span>
-          <span>{year}</span>
+          <span>{element.kind}</span>
+          <span>{element.aired_on ? element.aired_on.split("-")[0] : ""}</span>
         </span>
       </Link>
     </article>

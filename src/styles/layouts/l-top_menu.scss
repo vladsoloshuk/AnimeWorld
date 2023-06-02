@@ -32,6 +32,12 @@
     @include responsive.gte_ipad {
       padding: 0 10px;
     }
+    @include responsive.iphone {
+      flex-direction: row-reverse;
+      .menu-dropdown {
+        margin-right: 10px;
+      }
+    }
 
     // &.is-fullscreen-mode {
     //   z-index: -1;
@@ -57,13 +63,6 @@
           z-index: 9;
           display: block;
         }
-      }
-    }
-
-    @include responsive.iphone {
-      flex-direction: row-reverse;
-      .menu-dropdown {
-        margin-right: 10px;
       }
     }
 

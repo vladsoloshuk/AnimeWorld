@@ -1,0 +1,106 @@
+// @import mixins/brackets_surrounded
+// @import mixins/comma_separated
+// @import mixins/link
+// @import mixins/user_rate-minified
+@use "./../colors";
+@use "./../units";
+
+@use "./../mixins/margins.scss";
+@use "./../mixins/responsive.scss";
+@use "./../mixins/ellipsis";
+
+.b-db_entry-variant-list_item {
+  @include margins.mb(17px);
+  border-top: 1px solid rgba(colors.$bright-color, 0.1);
+  display: flex;
+  padding-top: 10px;
+
+  &:hover {
+    background: linear-gradient(168deg, rgba(colors.$bright-color, 0.05) 0%, rgba(colors.$bright-color, 0.15) 100%);
+  }
+
+  &:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .image {
+    flex-shrink: 0;
+    margin-right: 16px;
+
+    img {
+      height: 75px;
+      width: 48px;
+    }
+  }
+
+  & > .info {
+    line-height: units.$line_height;
+    overflow: hidden;
+
+    .name {
+      align-items: center;
+      display: flex;
+
+      .b-link {
+        @include ellipsis.ellipsis;
+        font-size: 14px;
+        font-weight: bold;
+        line-height: 1;
+      }
+    }
+
+    .line {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      margin-bottom: 5px;
+
+      &.multiline {
+        .value {
+          flex-wrap: wrap;
+        }
+      }
+
+      .key {
+        color: #444;
+        cursor: default;
+        font-weight: bold;
+        margin-right: 2px;
+
+        @include responsive.iphone-portrait {
+          display: none;
+        }
+      }
+
+      .value {
+        display: flex;
+        flex-wrap: wrap;
+        margin: -2.5px 0;
+        flex-shrink: 0;
+
+        & > a,
+        & > div,
+        & > span {
+          flex-shrink: 0;
+          margin-top: 2.5px;
+          margin-bottom: 2.5px;
+          flex-wrap: wrap;
+          overflow: hidden;
+        }
+      }
+
+      .b-anime_status_tag {
+        @include margins.mr(8px);
+        white-space: nowrap;
+        @include ellipsis.ellipsis;
+      }
+    }
+
+    .b-user_rate {
+      margin-top: 16px;
+      // +user_rate-minified;
+    }
+  }
+}

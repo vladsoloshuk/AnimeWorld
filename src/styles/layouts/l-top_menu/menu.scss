@@ -7,6 +7,7 @@
 @use "./../../mixins/responsive.scss";
 @use "./../../mixins/ellipsis.scss";
 @use "./../../mixins/font_shikimori.scss";
+@use "./../../mixins/margins.scss";
 
 .l-top_menu {
   .menu-icon,
@@ -26,12 +27,12 @@
       padding: 15px;
     }
   }
-  // .menu-icon,
-  // .menu-dropdown {
-  //   @include responsive.gte_ipad {
-  //     +mr(2px)
-  //   }
-  // }
+  .menu-icon,
+  .menu-dropdown {
+    @include responsive.gte_ipad {
+      @include margins.mr(2px);
+    }
+  }
 
   .menu-icon.active,
   .menu-icon:focus,
@@ -64,14 +65,14 @@
 
     &.search {
       @include responsive.lte_ipad {
+        display: block;
         margin-left: auto;
-        padding-top: 15px;
+        padding-top: 1px;
       }
     }
 
     &.contest:after {
-      content: "\2713";
-      font-family: FontAwesome;
+      @include font_shikimori.font_shikimori("\2713");
       margin-left: 5px;
     }
 
