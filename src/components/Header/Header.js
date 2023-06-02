@@ -1,28 +1,33 @@
 import "./../../styles/app.scss";
 import { Link } from "react-router-dom";
 import { RoutesNames } from "../../router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Logo from "./Logo";
 import Dropdown from "./Dropdown";
 import Search from "./Search";
 import { menuDropdown, profileDropdown } from "../../const/header";
+import useFetching from "../../hooks/useFetching";
+import AnimeServices from "../../api/AnimeService";
 
 const Header = ({ currentPage, headerParams }) => {
   const [isLogged, setIsLogged] = useState(false);
-  const [isSubmenuOpened, setIsSubmenuOpened] = useState(false);
+
+  const [isSearchMobile, setIsSearchMobile] = useState(false);
+  const [isSubmenu, setIsSubmenu] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isSearchInputEmpty, setIsSearchInputEmpty] = useState(true);
   const [searchResults, setSearchResults] = useState([]);
-
   const [searchParams, setSearchParams] = useState({
     page: 1,
-    limit: 15
+    limit: 15,
+    search: ""
   });
 
   const seacrhInputChangeHandler = (event) => {
     const inputValue = event.target.value;
     inputValue === "" ? setIsSearchInputEmpty(true) : setIsSearchInputEmpty(false);
-    console.log(event.target.value);
+    setSearchParams({ ...searchParams, search: inputValue });
+    fetchElements(searchParams);
   };
 
   const seacrhInputFocusHandler = () => {
@@ -30,22 +35,39 @@ const Header = ({ currentPage, headerParams }) => {
     console.log(isSearchActive);
   };
 
-  const mouseEnterMenuHandler = () => {
-    setIsSubmenuOpened(true);
+  //open mobile search panel
+  const showMobileSearch = () => {
+    setIsSearchMobile(!isSearchMobile);
+    setIsSearchActive(!isSearchActive);
   };
 
-  const mouseLeaveMenuHandler = () => {
-    setIsSubmenuOpened(false);
+  //show main submenu
+  const mouseEnterMainMenuHandler = () => {
+    setIsSubmenu(true);
   };
+  const mouseLeaveMainMenuHandler = () => {
+    setIsSubmenu(false);
+  };
+
+  //fetching setup
+  const [fetchElements, isElementLoading, elementFetchError] = useFetching(async (searchParams) => {
+    const response = await AnimeServices.getAnimes({ ...searchParams });
+    setSearchResults([...response.data]);
+    console.log(response.data);
+  });
 
   return (
-    <header className={`l-top_menu${isSubmenuOpened ? " is-submenu" : ""}${isSearchActive ? " is-search-focus is-search-shade" : ""}`}>
+    <header
+      className={`l-top_menu${isSubmenu ? " is-submenu" : ""}${isSearchActive ? " is-search-focus is-search-shade" : ""}${
+        isSearchMobile ? " is-search-mobile" : ""
+      }`}
+    >
       <div className="menu-logo">
         <Logo />
         <div
-          className={`menu-dropdown main${isSubmenuOpened ? " active" : ""}`}
-          onMouseEnter={mouseEnterMenuHandler}
-          onMouseLeave={mouseLeaveMenuHandler}
+          className={`menu-dropdown main${isSubmenu ? " active" : ""}`}
+          onMouseEnter={mouseEnterMainMenuHandler}
+          onMouseLeave={mouseLeaveMainMenuHandler}
         >
           <span className="menu-icon trigger mobile"></span>
           <span className={`submenu-triangle icon-${headerParams.icon}`}>
@@ -53,17 +75,20 @@ const Header = ({ currentPage, headerParams }) => {
           </span>
 
           <Dropdown
-            isSubmenuOpened={isSubmenuOpened}
-            mouseEnterMenuHandler={mouseEnterMenuHandler}
-            mouseLeaveMenuHandler={mouseLeaveMenuHandler}
             dropdownParams={menuDropdown}
           />
         </div>
       </div>
+      <div
+        className="menu-icon search mobile"
+        onClick={showMobileSearch}
+      ></div>
       <Search
         seacrhInputFocusHandler={seacrhInputFocusHandler}
         seacrhInputChangeHandler={seacrhInputChangeHandler}
         isSearchInputEmpty={isSearchInputEmpty}
+        currentPage={headerParams.icon}
+        items={searchResults}
       />
       <Link
         className="menu-icon forum desktop"
@@ -93,7 +118,7 @@ const Header = ({ currentPage, headerParams }) => {
         data-text="Enter"
       ></Link>
       {isLogged ? (
-        <div className={`menu-dropdown profile${isSubmenuOpened ? " active" : ""}`}>
+        <div className={`menu-dropdown profile${isSubmenu ? " active" : ""}`}>
           <span>
             <Link className="submenu-triangle">
               <img
@@ -106,9 +131,7 @@ const Header = ({ currentPage, headerParams }) => {
             </Link>
           </span>
           <Dropdown
-            isSubmenuOpened={isSubmenuOpened}
-            mouseEnterMenuHandler={mouseEnterMenuHandler}
-            mouseLeaveMenuHandler={mouseLeaveMenuHandler}
+            isSubmenuOpened={isSubmenu}
             dropdownParams={profileDropdown}
           />
         </div>

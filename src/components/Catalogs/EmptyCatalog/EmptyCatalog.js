@@ -63,7 +63,7 @@ const EmptyCatalog = ({ defaultFilter, fetchMethod, elementsFilters, recomendati
   };
 
   //fetching setup
-  const [fetchAnimes, isElementLoading, elementFetchError] = useFetching(async (filterParams) => {
+  const [fetchElements, isElementLoading, elementFetchError] = useFetching(async (filterParams) => {
     const response = await fetchMethod({ ...filterParams });
     setElements([...elements, ...response.data]);
   });
@@ -74,7 +74,7 @@ const EmptyCatalog = ({ defaultFilter, fetchMethod, elementsFilters, recomendati
 
   //rerendering if filter params have been changed
   useEffect(() => {
-    fetchAnimes(filterParams);
+    fetchElements(filterParams);
   }, [filterParams]);
 
   return (

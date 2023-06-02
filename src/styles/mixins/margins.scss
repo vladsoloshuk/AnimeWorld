@@ -1,0 +1,23 @@
+@mixin mb($margin) {
+  margin-bottom: $margin;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@mixin mr($margin) {
+  margin-right: $margin;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+@mixin ml($margin) {
+  margin-left: $margin;
+
+  &:first-child {
+    margin-left: 0;
+  }
+}
