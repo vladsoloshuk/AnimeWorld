@@ -6,14 +6,16 @@ const useObserver = (ref, isLoading, callback) => {
   useEffect(() => {
     if (isLoading) return;
     if (observer.current) observer.current.disconnect();
-    let cb = (entries, observer) => {
+    const observerOptions = {
+      threshold: 1
+    };
+    observer.current = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
         callback();
       }
-    };
-    observer.current = new IntersectionObserver(cb);
+    }, observerOptions);
     observer.current.observe(ref.current);
-  }, [isLoading]);
+  }, [ref, isLoading, callback]);
 };
 
 export default useObserver;

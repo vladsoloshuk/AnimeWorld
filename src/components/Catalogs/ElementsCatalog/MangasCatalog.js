@@ -1,11 +1,11 @@
-import AnimeServices from "../../../api/AnimeService";
+import ShikimoriService from "../../../api/ShikimoriService";
 import { mangaFilters, mangaRecomendaions, defaultMangasFilter} from "../../../const/filters";
 import "./../../../styles/pages/p-elements_collection-index.scss";
 import EmptyCatalog from "../EmptyCatalog/EmptyCatalog";
 
 const MangasCatalog = () => {
 
-  const fetchMangas = AnimeServices.getMangas;
+  const fetchMangas = ShikimoriService.getMangas;
 
   return (
     <EmptyCatalog

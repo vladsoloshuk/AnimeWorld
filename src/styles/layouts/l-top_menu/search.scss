@@ -45,6 +45,7 @@
     }
 
     &.has-value ~ .clear {
+      z-index: 11;
       display: block;
     }
   }
@@ -94,7 +95,7 @@
     position: absolute;
     text-align: center;
     top: 0;
-    &:hover{
+    &:hover {
       color: colors.$hover-color;
     }
   }

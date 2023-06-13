@@ -1,6 +1,5 @@
-import "./../../styles/app.scss";
+import { RouteNames } from "../../const/routeNames";
 import { Link } from "react-router-dom";
-import { RouteNames } from "../../router";
 
 const Logo = () => {
   return (

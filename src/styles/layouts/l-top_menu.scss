@@ -38,63 +38,63 @@
         margin-right: 10px;
       }
     }
+  }
 
-    // &.is-fullscreen-mode {
-    //   z-index: -1;
-    // }
+  &.is-fullscreen-mode {
+    z-index: -1;
+  }
 
-    // &.is-submenu {
-    //   @include responsive.iphone {
-    //     & + .l-page {
-    //       position: fixed;
-    //       width: 100vw;
-
-    //       & + .b-shade {
-    //         z-index: 9;
-    //         display: block;
-    //       }
-    //     }
-    //   }
-    // }
-
-    &.is-search-shade {
+  &.is-submenu {
+    @include responsive.iphone {
       & + .l-page {
+        position: fixed;
+        width: 100vw;
+
         & + .b-shade {
           z-index: 9;
           display: block;
         }
       }
     }
+  }
 
-    .logo-container {
-      align-items: center;
-      display: flex;
-      height: units.$top-menu-height;
-      padding: 0 10px;
-
-      @include responsive.gte_ipad {
-        margin-right: 10px;
+  &.is-search-shade {
+    & + .l-page {
+      & + .b-shade {
+        z-index: 9;
+        display: block;
       }
+    }
+  }
 
-      .glyph {
-        background-image: url("./../../assets/layouts/l-top_menu/glyph.svg");
-        background-size: contain;
-        background-repeat: no-repeat;
-        height: 26px;
-        width: 26px;
-        margin-right: 5px;
+  .logo-container {
+    align-items: center;
+    display: flex;
+    height: units.$top-menu-height;
+    padding: 0 10px;
 
-        @include responsive.iphone-portrait {
-          display: none;
-        }
+    @include responsive.gte_ipad {
+      margin-right: 10px;
+    }
+
+    .glyph {
+      background-image: url("./../../assets/layouts/l-top_menu/glyph.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      height: 26px;
+      width: 26px;
+      margin-right: 5px;
+
+      @include responsive.iphone-portrait {
+        display: none;
       }
-      .logo {
-        background-image: url("./../../assets/layouts/l-top_menu/logo.svg");
-        background-size: contain;
-        background-repeat: no-repeat;
-        height: 19px;
-        width: 151px;
-      }
+    }
+    .logo {
+      background-image: url("./../../assets/layouts/l-top_menu/logo.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      height: 19px;
+      width: 151px;
     }
   }
 }
