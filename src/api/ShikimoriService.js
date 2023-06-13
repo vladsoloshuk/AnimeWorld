@@ -1,7 +1,7 @@
 import axios from "axios";
 import { hostUrl, UrlParts } from "../const/urlConsts";
 
-export default class AnimeServices {
+export default class ShikimoriService {
   static async getAnimes(params) {
     const response = await axios.get(hostUrl + UrlParts.API + UrlParts.ANIMES, {params});
     return response;
@@ -16,6 +16,11 @@ export default class AnimeServices {
   }
   static async getMangas(params) {
     const response = await axios.get(hostUrl + UrlParts.API + UrlParts.MANGAS, { params });
+    return response;
+  }
+
+  static async getRanobe(params) {
+    const response = await axios.get(hostUrl + UrlParts.API + UrlParts.RANOBE, { params });
     return response;
   }
 }

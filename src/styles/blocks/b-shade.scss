@@ -1,0 +1,17 @@
+@use './../colors';
+
+.b-shade {
+  background-color: rgba(colors.$menu-back, 0.5);
+  display: none;
+  position: fixed;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  z-index: -1;
+
+  &.active {
+    display: block;
+    z-index: 1000;
+  }
+}

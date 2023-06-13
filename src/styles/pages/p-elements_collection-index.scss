@@ -21,6 +21,7 @@
 
   .cc-entries {
     @include clear_left.clear_left;
+    min-height: 90vh;
 
     & > .c-column {
       @include responsive.iphone-landscape {

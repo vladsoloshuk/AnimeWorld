@@ -1,5 +1,5 @@
-export const searchMenu = [
-  { title: "Current page", "data-mode": "index" },
+export const defaultSearchMenu = [
+  { title: "Current page", "data-mode": "home" },
   { title: "Anime", "data-mode": "anime" },
   { title: "Manga", "data-mode": "manga" },
   { title: "Ranobe", "data-mode": "ranobe" },
