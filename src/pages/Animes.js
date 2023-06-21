@@ -3,7 +3,7 @@ import { useAppDispatch } from "../hooks/redux";
 import { animeFilters, animeRecomendaions } from "../const/filters";
 import { updateTitle } from "../store/reducers/PageParams";
 import { UrlParts } from "../const/urlConsts";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import EmptyCatalog from "../components/Catalogs/EmptyCatalog/EmptyCatalog";
 import { restoreFilter } from "../store/reducers/FilterSlice";
@@ -16,15 +16,11 @@ const Animes = () => {
     dispatch(restoreFilter());
   });
 
-  const [url, setUrl] = useState(UrlParts.ANIMES);
-  const [recomendations, setRecomendations] = useState(animeRecomendaions);
-  const [filterUI, setFilterUI] = useState(animeFilters);
-
   return (
     <EmptyCatalog
-      url={url}
-      recomendations={recomendations}
-      filterUI={filterUI}
+      url={UrlParts.ANIMES}
+      recomendations={animeRecomendaions}
+      filterUI={animeFilters}
     />
   );
 };

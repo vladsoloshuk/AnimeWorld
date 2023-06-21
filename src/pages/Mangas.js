@@ -4,7 +4,7 @@ import { useAppDispatch } from "../hooks/redux";
 import { mangaFilters, mangaRecomendaions } from "../const/filters";
 import { updateTitle } from "../store/reducers/PageParams";
 import { UrlParts } from "../const/urlConsts";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { restoreFilter } from "../store/reducers/FilterSlice";
 
 const Mangas = () => {
@@ -14,15 +14,11 @@ const Mangas = () => {
     dispatch(restoreFilter());
   });
 
-  const [url, setUrl] = useState(UrlParts.MANGAS);
-  const [recomendations, setRecomendations] = useState(mangaRecomendaions);
-  const [filterUI, setFilterUI] = useState(mangaFilters);
-
   return (
     <EmptyCatalog
-      recomendations={recomendations}
-      filterUI={filterUI}
-      url={url}
+      recomendations={mangaRecomendaions}
+      filterUI={mangaFilters}
+      url={UrlParts.MANGAS}
     />
   );
 };

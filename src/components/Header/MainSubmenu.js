@@ -5,24 +5,26 @@ import lowerCase from "lodash/lowerCase";
 import Dropdown from "./Dropdown";
 import { useState } from "react";
 
-const MainMenu = () => {
+const MainSubmenu = () => {
   const dispatch = useAppDispatch();
   const title = useAppSelector((state) => state.pageParams.title);
-  const menuVisibility = useAppSelector((state) => state.pageParams.mainMenu);
+  const menuVisibility = useAppSelector((state) => state.pageParams.mainSubmenu);
 
   const [isVisible, setIsVisible] = useState(menuVisibility);
 
   const onMouseEnterhandler = () => {
     setIsVisible(true);
-    dispatch(elementVisibility(["mainMenu", true]));
+    dispatch(elementVisibility(["mainSubmenu", true]));
+    dispatch(elementVisibility(["search", false]));
+    dispatch(elementVisibility(["mobile", false]));
   };
   const onMouseLeavehandler = () => {
     setIsVisible(false);
-    dispatch(elementVisibility(["mainMenu", false]));
+    dispatch(elementVisibility(["mainSubmenu", false]));
   };
   const onClickHandler = () => {
     setIsVisible(!isVisible);
-    dispatch(elementVisibility(["mainMenu", !isVisible]));
+    dispatch(elementVisibility(["mainSubmenu", !isVisible]));
   };
 
   return (
@@ -42,4 +44,4 @@ const MainMenu = () => {
   );
 };
 
-export default MainMenu;
+export default MainSubmenu;

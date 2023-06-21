@@ -71,7 +71,8 @@ $max_width: 167px;
       }
 
       img {
-        background-size: cover;
+        // background-size: cover;
+        object-fit: cover;
         width: 100%;
       }
 
