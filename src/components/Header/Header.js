@@ -2,21 +2,21 @@ import "./../../styles/app.scss";
 import { Link } from "react-router-dom";
 import { Fragment, useState } from "react";
 import Logo from "./Logo";
-import Search from "./Search";
-import MainMenu from "./MainMenu";
+import Search from "./Search/Search";
+import MainMenu from "./MainSubmenu";
 import { useAppSelector } from "../../hooks/redux";
-import ProfileMenu from "./ProfileMenu";
+import ProfileMenu from "./ProfileSubmenu";
 
 const Header = () => {
-  const mainMenuVisibility = useAppSelector((state) => state.pageParams.mainMenu);
-  const profileMenuVisibility = useAppSelector((state) => state.pageParams.profileMenu);
-  const searchMenuVisibility = useAppSelector((state) => state.pageParams.searchMenu);
+  const mainMenuVisibility = useAppSelector((state) => state.pageParams.mainSubmenu);
+  const profileMenuVisibility = useAppSelector((state) => state.pageParams.profileSubmenu);
+  const searchMenuVisibility = useAppSelector((state) => state.pageParams.search);
   const isMobile = useAppSelector((state) => state.pageParams.mobile);
   const [isLogged, setIsLogged] = useState(false);
 
   return (
     <header
-      className={`l-top_menu${mainMenuVisibility | profileMenuVisibility ? " is-submenu" : ""}${searchMenuVisibility ? " is-search-focus is-search-shade" : ""}${
+      className={`l-top_menu${mainMenuVisibility | profileMenuVisibility ? " is-submenu" : ""}${searchMenuVisibility && (!mainMenuVisibility && !profileMenuVisibility) ? " is-search-focus is-search-shade" : ""}${
         isMobile ? " is-search-mobile" : ""
       }`}
     >

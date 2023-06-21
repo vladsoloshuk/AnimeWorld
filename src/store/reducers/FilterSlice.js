@@ -12,17 +12,17 @@ const filterSlice = createSlice({
   initialState: initialState,
   reducers: {
     updateFilter(state, action) {
+      const [property, value] = action.payload;
       state.page = 1;
-      if (state.hasOwnProperty(action.payload.property)) {
-        if (action.payload.property === "order") {
-          state[action.payload.property] = action.payload.value;
+      if (state.hasOwnProperty(property)) {
+        if (property === "order" | property === "search") {
+          state[property] = value;
         } else {
-          state[action.payload.property] = multipleFilter(state[action.payload.property], action.payload.value);
+          state[property] = multipleFilter(state[property], value);
         }
       } else {
-        state[action.payload.property] = action.payload.value;
+        state[property] = value;
       }
-      console.log(state);
     },
     changePage(state, action) {
       switch (action.payload) {

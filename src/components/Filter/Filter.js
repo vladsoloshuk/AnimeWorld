@@ -1,7 +1,6 @@
 import "./../../styles/app.scss";
 import FilterItem from "./FilterItem/FilterItem";
 import { useAppSelector } from "../../hooks/redux";
-import { animeFilters } from "../../const/filters";
 
 const Filter = ({ recomendations, filterUI }) => {
   const filterParams = useAppSelector((state) => state.filter);

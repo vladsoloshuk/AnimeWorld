@@ -5,23 +5,25 @@ import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { elementVisibility } from "../../store/reducers/PageParams";
 import { useState } from "react";
 
-const ProfileMenu = () => {
+const ProfileSubmenu = () => {
   const dispatch = useAppDispatch();
-  const menuVisibility = useAppSelector((state) => state.pageParams.profileMenu);
+  const menuVisibility = useAppSelector((state) => state.pageParams.profileSubmenu);
 
   const [isVisible, setIsVisible] = useState(menuVisibility);
 
   const onMouseEnterhandler = () => {
     setIsVisible(true);
-    dispatch(elementVisibility(["profileMenu", true]));
+    dispatch(elementVisibility(["profileSubmenu", true]));
+    dispatch(elementVisibility(["search", false]));
+    dispatch(elementVisibility(["mobile", false]));
   };
   const onMouseLeavehandler = () => {
     setIsVisible(false);
-    dispatch(elementVisibility(["profileMenu", false]));
+    dispatch(elementVisibility(["profileSubmenu", false]));
   };
   const onClickHandler = () => {
     setIsVisible(!isVisible);
-    dispatch(elementVisibility(["profileMenu", !isVisible]));
+    dispatch(elementVisibility(["profileSubmenu", !isVisible]));
   };
 
   return (
@@ -47,4 +49,4 @@ const ProfileMenu = () => {
   );
 };
 
-export default ProfileMenu;
+export default ProfileSubmenu;

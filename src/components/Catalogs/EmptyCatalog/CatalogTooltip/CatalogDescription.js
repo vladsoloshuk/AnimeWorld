@@ -7,7 +7,7 @@ const CatalogDescription = () => {
   return (
     <header className="head">
       <h1>{pageParams.title}</h1>
-      <div className="notice">This page displays {lowerCase(pageParams.title)} sorted.</div>
+      <div className="notice">This page displays sorted {lowerCase(pageParams.title)}.</div>
     </header>
   );
 };

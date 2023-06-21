@@ -3,9 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   title: "Home",
   backdrop: false,
-  mainMenu: false,
-  profileMenu: false,
-  searchMenu: false,
+  mainSubmenu: false,
+  profileSubmenu: false,
+  search: false,
   mobile: false
 };
 
