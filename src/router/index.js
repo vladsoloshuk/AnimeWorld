@@ -9,6 +9,7 @@ const Animes = lazy(() => import("./../pages/Animes"));
 const Mangas = lazy(() => import("../pages/Mangas"));
 const Ranobe = lazy(() => import("../pages/Ranobe"));
 const ErrorPage = lazy(() => import("../pages/ErrorPage"));
+const ElementPage = lazy(() => import("../components/Element/ElementPage"));
 
 export const publicRoutes = [
   {
@@ -36,7 +37,18 @@ export const publicRoutes = [
             <Animes />
           </Suspense>
         ),
-        errorElement: <ErrorPage />
+        errorElement: <ErrorPage />,
+        children: [
+          {
+            path: "status/ongoing",
+            element: (
+              <Suspense fallback={<Spinner />}>
+                <Animes />
+              </Suspense>
+            ),
+            errorElement: <ErrorPage />
+          }
+        ]
       },
       {
         path: RouteNames.MANGAS,
@@ -55,6 +67,19 @@ export const publicRoutes = [
           </Suspense>
         ),
         errorElement: <ErrorPage />
+      },
+      {
+        path: "animes/:url",
+        element: (
+          <Suspense fallback={<Spinner />}>
+            <ElementPage />
+          </Suspense>
+        ),
+        errorElement: <ErrorPage />
+      },
+      {
+        path: "*",
+        element: <ErrorPage />
       }
     ]
   }

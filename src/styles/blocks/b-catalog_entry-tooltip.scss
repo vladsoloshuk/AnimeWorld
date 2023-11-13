@@ -1,9 +1,10 @@
+//final transported
 @use "./../globals";
 @use "./../units";
 @use "./../mixins/clear_left.scss";
 @use "./../mixins/responsive.scss";
-// @import mixins/comma_separated
-// @import mixins/link
+@use "./../mixins/comma_separated.scss";
+@use "./../mixins/link.scss";
 
 .b-catalog_entry-tooltip {
   line-height: units.$line_height;
@@ -70,8 +71,8 @@
       }
 
       &.works .value a {
-        // +comma_separated
-        // +link
+        @include comma_separated.comma_separated;
+        @include link.link;
       }
     }
 

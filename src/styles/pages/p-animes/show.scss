@@ -1,0 +1,313 @@
+@use "./../../mixins/block.scss";
+@use "./../../mixins/comma_separated.scss";
+@use "./../../mixins/float_column.scss";
+@use "./../../mixins/font_shikimori.scss";
+@use "./../../mixins/responsive.scss";
+@use "./../../mixins/icons.scss";
+@use "./../../mixins/link.scss";
+
+@use "./../../units";
+@use './../../colors';
+// @import mixins/clearfix
+// @import mixins/plashka
+
+.p-animes-show,
+.p-mangas-show,
+.p-ranobe-show {
+  .c-screenshots,
+  .c-videos {
+    margin-bottom: units.$block-offset * 1.5 !important;
+  }
+
+  .cc.no-video {
+    .c-screenshots {
+      @include block.block_m;
+    }
+
+    .c-videos {
+      @include block.block_m;
+    }
+  }
+
+  .cc.one-video {
+    @include responsive.gte_ipad {
+      .c-screenshots {
+        @include float_column.column_bm(2, 0.75);
+      }
+
+      .c-videos {
+        @include float_column.column_bm(2, 0.25);
+      }
+
+      .c-screenshot {
+        @include float_column.column(3);
+
+        &.entry-4,
+        &.entry-5 {
+          display: none;
+        }
+      }
+
+      .c-video {
+        @include float_column.column(1);
+
+        &.entry-2,
+        &.entry-3,
+        &.entry-4,
+        &.entry-5 {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .cc.two-videos {
+    @include responsive.gte_ipad {
+      .c-screenshots,
+      .c-videos {
+        @include float_column.column_bm(2);
+      }
+    }
+
+    @include responsive.gte_laptop {
+      .c-screenshot,
+      .c-video {
+        @include float_column.column(2);
+        &.entry-3,
+        &.entry-4,
+        &.entry-5 {
+          display: none;
+        }
+      }
+    }
+
+    @include responsive.ipad {
+      .c-screenshot,
+      .c-video {
+        @include float_column.column(3);
+        &.entry-4,
+        &.entry-5 {
+          display: none;
+        }
+      }
+    }
+
+    @include responsive.iphone {
+      .c-screenshots,
+      .c-videos {
+        @include block.block_m;
+      }
+    }
+  }
+
+  .cc {
+    .c-screenshot,
+    .c-video {
+      margin-bottom: 0;
+
+      @include responsive.iphone-portrait {
+        &.entry-3,
+        &.entry-4,
+        &.entry-5 {
+          display: none;
+        }
+      }
+
+      @include responsive.iphone-landscape {
+        &.entry-4,
+        &.entry-5 {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .c-image {
+    .b-user_rate {
+      margin: 0 auto;
+      max-width: 225px;
+
+      @include responsive.iphone_portrait {
+        margin: 0;
+      }
+
+      .edit-trigger .score-label {
+        display: none;
+      }
+    }
+  }
+
+  .cc {
+    .c-anime,
+    .c-manga {
+      @include responsive.gte_ipad {
+        @include float_column.column(7);
+      }
+
+      @include responsive.iphone-portrait {
+        @include float_column.column(3);
+        &:nth-child(4),
+        &:nth-child(5),
+        &:nth-child(6),
+        &:nth-child(7) {
+          display: none;
+        }
+      }
+
+      @include responsive.iphone-landscape {
+        @include float_column.column(5);
+        &:nth-child(6),
+        &:nth-child(7) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .other-names {
+    // +plashka
+    height: 15px;
+    line-height: 15px;
+    margin-left: 5px;
+    margin-top: 5px;
+    padding: 0 10px;
+    position: absolute;
+    text-align: center;
+
+    .vk-like {
+      min-height: 14px;
+    }
+  }
+
+  .resources-loader {
+    @include block.block;
+
+    &.b-ajax {
+      // +plashka
+      min-height: 70px;
+    }
+  }
+
+  .cc-related-authors {
+    // +clearfix
+    margin-bottom: 0 !important;
+
+    & > .c-column {
+      @include responsive.gte_ipad {
+        @include float_column.column_b(2);
+      }
+      @include responsive.iphone {
+        @include float_column.column_b(1);
+      }
+    }
+
+    & > .c-authors {
+      @include responsive.gte_ipad {
+        float: right;
+      }
+    }
+
+    & > .c-column:first-child:last-child {
+      @include float_column.column(1);
+      @include responsive.gte_ipad {
+        float: none;
+      }
+
+      .b-db_entry-variant-list_item {
+        @include responsive.iphone {
+          @include float_column.column(1);
+        }
+
+        @include responsive.gte_ipad {
+          @include float_column.column(2);
+        }
+
+        &:nth-child(2) {
+          border-top: none;
+          padding-top: 0;
+        }
+      }
+    }
+  }
+
+  .c-info-right {
+    .scores {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .watch-online {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      .line {
+        display: flex;
+        flex-basis: 100%;
+        justify-content: center;
+      }
+
+      .b-link_button {
+        align-items: center;
+        display: flex;
+        margin: 0 0 3px;
+        max-width: 200px;
+
+        &:after {
+          @include font_shikimori.font_shikimori("\f08e");
+          font-size: 13px;
+          font-weight: normal;
+          margin: 1px 0 -1px 6px;
+        }
+      }
+
+      .kind {
+        @include comma_separated.comma_separated(5px);
+        color: colors.$gray-4;
+        font-size: 12px;
+        line-height: 1.55;
+      }
+
+      a.kind {
+        @include link.link;
+
+        span {
+          padding-left: 4px;
+          padding-right: 12px;
+
+          &:after {
+            position: absolute;
+            @include font_shikimori.font_shikimori("\f08e");
+            font-size: 11px;
+            margin-top: 1px;
+            font-weight: normal;
+          }
+        }
+      }
+    }
+  }
+
+  // "show other" block
+  .related-shower {
+    // +plashka
+    border: 1px solid #f2f2f2;
+    clear: left;
+    margin: -5px 0 units.$block-offset 0;
+  }
+
+  .related-hidden {
+    display: none;
+  }
+
+  .studio-logo {
+    display: block;
+    margin: 0 auto;
+    max-width: 195px;
+  }
+
+  .cc-similar {
+    .b-catalog_entry {
+      margin-bottom: 0 !important;
+    }
+  }
+}

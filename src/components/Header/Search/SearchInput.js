@@ -23,11 +23,8 @@ const SearchInput = () => {
   };
 
   const clearInputHandler = (event) => {
-    event.stopPropagation();
-    setSkip(true);
     setSearch("");
-    // console.log(search);
-    // console.log(event);
+    dispatch(updateSearchArray([]));
   };
 
   const seacrhInputChangeHandler = (event) => {
@@ -68,7 +65,7 @@ const SearchInput = () => {
         onClick={showSearchHandler}
         placeholder="Search..."
         type="text"
-        vlue={search}
+        value={search}
       ></input>
       <span
         className="clear"

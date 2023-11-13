@@ -1,10 +1,12 @@
+import { UrlParts } from "./urlConsts";
+
 export const menuDropdown = [
   {
     title: "Database",
     items: [
-      { icon: "anime", title: "Anime", link: "/animes" },
-      { icon: "manga", title: "Manga", link: "/mangas" },
-      { icon: "ranobe", title: "Ranobe", link: "/ranobe" }
+      { icon: "anime", title: "Anime", link: UrlParts.ANIMES },
+      { icon: "manga", title: "Manga", link: UrlParts.MANGAS },
+      { icon: "ranobe", title: "Ranobe", link: UrlParts.RANOBE }
     ]
   },
   {

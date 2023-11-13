@@ -2,15 +2,21 @@
 @use "colors";
 @use "units";
 
-@use './mixins/shadow.scss';
-@use './mixins/responsive.scss';
+@use "./mixins/shadow.scss";
+@use "./mixins/responsive.scss";
 
-@use './layouts/l-top_menu.scss';
-@use './layouts/l-menu.scss';
-@use './layouts/l-page.scss';
+@use "./layouts/l-top_menu.scss";
+@use "./layouts/l-menu.scss";
+@use "./layouts/l-page.scss";
 
-@use './blocks/b-db_entry-variant-list_item.scss';
-@use './blocks/b-shade.scss';
+@use "./blocks/b-rate.scss";
+@use "./blocks/b-entry-info.scss";
+@use "./blocks/b-db_entry.scss";
+@use "./blocks/b-db_entry-variant-list_item.scss";
+@use "./blocks/b-shade.scss";
+
+@use "./pages/p-dashboards/show.scss";
+@use "./pages/p-elements_collection-index.scss";
 
 * {
   box-sizing: border-box;
@@ -30,8 +36,8 @@ body {
   background-size: cover;
   font-size: units.$font-size-base-desktop;
   min-height: 100vh;
-  
-  @include responsive.iphone{
+
+  @include responsive.iphone {
     font-size: units.$font-size-base-mobile;
   }
 }
