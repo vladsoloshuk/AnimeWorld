@@ -1,17 +1,19 @@
 import { hostUrl } from "../../const/urlConsts";
 
-const Preview = ({element}) => {
-  return (<picture>
-    <source
-      srcSet={hostUrl + element.image.preview}
-      type="image/webp"
-    />
-    <img
-      alt={element.name}
-      src={hostUrl + element.image.preview}
-      srcSet={hostUrl + element.image.preview}
-    />
-  </picture>);
-}
+const Preview = ({element, imageType}) => {
+  return (
+    <picture>
+      <source
+        srcSet={hostUrl + imageType}
+        type="image/webp"
+      />
+      <img
+        alt={element.name}
+        src={hostUrl + imageType}
+        srcSet={hostUrl + imageType}
+      />
+    </picture>
+  );
+};
 
 export default Preview;

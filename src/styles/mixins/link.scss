@@ -1,0 +1,79 @@
+//final transported
+
+@use "./responsive.scss";
+@use "./../colors";
+
+/* color that becomes a link color on hover */
+@mixin link_color($color: "null") {
+  //transition: color 0.2s ease
+  @if $color == "null" {
+    color: colors.$white-color;
+  } @else {
+    color: $color;
+  }
+
+  @include responsive.gte_laptop {
+    &:hover {
+      color: colors.$hover-color;
+    }
+  }
+
+  &:active {
+    color: colors.$hover-color;
+  }
+}
+
+/* blue link without underline */
+@mixin link($color: "null") {
+  @include link_color($color);
+  cursor: pointer;
+
+  @include responsive.gte_laptop {
+    &:hover {
+      text-decoration: underline;
+      border-bottom-color: colors.$hover-color;
+    }
+  }
+
+  &:active {
+    border-bottom-color: colors.$hover-color;
+  }
+}
+
+/* blue link with underline */
+@mixin link_underlined($color: "null") {
+  @include link($color) {
+    text-decoration: underline;
+  }
+}
+
+@mixin js-link {
+  @include link;
+  border-bottom-color: colors.$link-border-color;
+  border-bottom-style: dotted;
+  border-bottom-width: 1px;
+  display: inline-block;
+  line-height: 1;
+  user-select: none;
+
+  @include responsive.gte_laptop {
+    &:hover {
+      border-bottom-color: colors.$link-border-hover-color;
+      text-decoration: none !important;
+    }
+  }
+
+  &:active {
+    border-bottom-color: colors.$link-border-active-color;
+    text-decoration: none !important;
+  }
+
+  &.active {
+    font-weight: bold;
+  }
+}
+
+@mixin bordered-link {
+  @include js-link;
+  border-bottom-style: solid;
+}

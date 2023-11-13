@@ -1,0 +1,129 @@
+//final transported
+
+@use "./../mixins/block.scss";
+@use "./../mixins/responsive.scss";
+@use "./../mixins/font_shikimori.scss";
+@use './../colors';
+@use './../fonts';
+
+.b-rate {
+  display: flex;
+  align-items: center;
+
+  .stars,
+  .text-score {
+    @include responsive.gte_ipad {
+      font-size: 30px;
+    }
+
+    @include responsive.iphone_landscape {
+      font-size: 28px;
+    }
+
+    @include responsive.iphone_portrait {
+      font-size: 38px;
+    }
+  }
+
+  .stars-container {
+    display: table-cell;
+    position: relative;
+
+    .hoverable-trigger {
+      height: 100%;
+      position: absolute;
+      width: 100%;
+      z-index: 1;
+    }
+  }
+
+  &.rateable {
+    .stars-container {
+      cursor: pointer;
+    }
+  }
+
+  .text-score {
+    color: colors.$light-color;
+    font-family: Tahoma;
+    margin-left: 6px;
+    text-align: center;
+
+    .score-0 {
+      visibility: hidden;
+    }
+  }
+
+  .score-notice {
+    color: colors.$dark-color;
+    font-family: fonts.$font-main;
+    font-size: 11px;
+    line-height: 1;
+    margin-top: -5px;
+    white-space: nowrap;
+  }
+
+  .stars {
+    &:after {
+      @include font_shikimori.font_shikimori;
+      display: block;
+      letter-spacing: 4px;
+    }
+
+    &.background {
+      color: rgba(colors.$white-color, 0.2);
+
+      &:after {
+        content: "\f005\f005\f005\f005\f005";
+      }
+    }
+
+    &.score {
+      color: colors.$white-color;
+      position: absolute;
+
+      &.hovered {
+        color: #a1a1a1;
+      }
+    }
+
+    &.hover {
+      color: #ff9231;
+      position: absolute;
+    }
+
+    &.score-0:after {
+      content: "";
+    }
+    &.score-1:after {
+      content: "\f089";
+    }
+    &.score-2:after {
+      content: "\f005\f005";
+    }
+    &.score-3:after {
+      content: "\f005\f089";
+    }
+    &.score-4:after {
+      content: "\f005\f005";
+    }
+    &.score-5:after {
+      content: "\f005\f005\f089";
+    }
+    &.score-6:after {
+      content: "\f005\f005\f005";
+    }
+    &.score-7:after {
+      content: "\f005\f005\f005\f089";
+    }
+    &.score-8:after {
+      content: "\f005\f005\f005\f005";
+    }
+    &.score-9:after {
+      content: "\f005\f005\f005\f005\f089";
+    }
+    &.score-10:after {
+      content: "\f005\f005\f005\f005\f005";
+    }
+  }
+}

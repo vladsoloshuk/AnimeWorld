@@ -1,3 +1,4 @@
+//final transported
 @use "./../globals";
 @use "./../fonts";
 @use './../colors';
@@ -18,27 +19,21 @@ $margin-right: 9px;
   line-height: 16px;
   margin-left: $margin-left;
   margin-right: $margin-right;
-  padding-top: 2px;
   text-decoration: none;
   transition: none;
 
   &[href] {
-    // border-bottom-color: $link-4;
     cursor: pointer;
 
     &.active,
     &:hover {
-      // background-color: $link-4;
-      border-bottom-color: transparent;
-      margin-left: 0;
-      margin-right: $margin-right - $margin-left;
-      padding-left: $margin-left;
-      padding-right: $margin-left;
+      background-color: colors.$hover-buttoms-2;
       text-decoration: none;
+      color: colors.$bright-color;
     }
 
     &:active {
-      // background-color: $link-3;
+      background-color: colors.$link-3;
     }
 
     &:last-child &:hover {

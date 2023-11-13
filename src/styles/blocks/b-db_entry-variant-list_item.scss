@@ -1,13 +1,10 @@
-// @import mixins/brackets_surrounded
-// @import mixins/comma_separated
-// @import mixins/link
-// @import mixins/user_rate-minified
+//final transported
 @use "./../colors";
 @use "./../units";
 
 @use "./../mixins/margins.scss";
 @use "./../mixins/responsive.scss";
-@use './../mixins/ellipsis.scss';
+@use "./../mixins/ellipsis.scss";
 
 @use "./../blocks/b-tag.scss";
 
@@ -46,6 +43,8 @@
     flex-direction: column;
 
     .name {
+      display: flex;
+      margin-bottom: 7px;
       .b-link {
         @include ellipsis.ellipsis;
         font-size: 14px;

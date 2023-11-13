@@ -1,0 +1,225 @@
+//final transported
+
+@use "./../mixins/link.scss";
+@use "./../mixins/block.scss";
+@use "./../mixins/clear_left.scss";
+@use "./../mixins/float_column.scss";
+@use "./../mixins/ellipsis.scss";
+@use "./../mixins/responsive.scss";
+@use "./../mixins/font_shikimori.scss";
+@use "./../mixins/comma_separated.scss";
+
+@use "./../colors";
+
+.b-db_entry {
+  @include block.block_m;
+  @include clear_left.clear_left;
+
+  & > .c-image {
+    // additional styles for gte_ipad are defined below
+    @include responsive.gte_ipad {
+      @include float_column.column(2);
+    }
+    @include responsive.iphone-portrait {
+      @include float_column.column_b(1);
+    }
+    @include responsive.iphone-landscape {
+      @include float_column.column_b(2);
+      margin-right: 35px;
+      width: 225px;
+    }
+  }
+
+  & > .c-about {
+    // additional styles for gte_ipad are defined below
+    @include responsive.gte_ipad {
+      @include float_column.column(2);
+    }
+    @include responsive.iphone-portrait {
+      @include float_column.column(1);
+    }
+    @include responsive.iphone-landscape {
+      @include float_column.column(2);
+      width: calc(100% - 260px);
+    }
+  }
+
+  .x1200 & > .c-image {
+    @include responsive.gte_desktop {
+      width: 26%;
+    }
+    @include responsive.ipad_laptop {
+      width: 30.5%;
+    }
+  }
+
+  .x1200 & > .c-about {
+    @include responsive.gte_desktop {
+      width: 70%;
+    }
+    @include responsive.ipad_laptop {
+      width: 65.5%;
+    }
+  }
+
+  .x1200 & > .c-description {
+    @include responsive.gte_desktop {
+      margin-left: 30%;
+    }
+    @include responsive.ipad_laptop {
+      margin-left: 34.6%;
+    }
+  }
+
+  .x1000 & > .c-image {
+    @include responsive.gte_ipad {
+      width: 28.5%;
+    }
+  }
+
+  .x1000 & > .c-about {
+    @include responsive.gte_ipad;
+    width: 67.5%;
+  }
+
+  .x1000 & > .c-description {
+    @include responsive.gte_ipad {
+      margin-left: 32.5%;
+    }
+  }
+
+  & > .c-image {
+    .magnificable {
+      cursor: zoom-in;
+    }
+
+    img {
+      max-width: 100%;
+      // this must fix some styles broken by setting image size inside of poster img tag
+      height: auto;
+    }
+
+    .c-poster {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .c-poster {
+      @include responsive.gte_ipad {
+        margin-bottom: 8px;
+      }
+    }
+
+    @include responsive.iphone-portrait {
+      & > .cc {
+        display: flex;
+      }
+
+      // .c-poster{
+      //   // display: flex
+      //   // justify-content: center
+      //   // +column(2, 0.7, 7%)
+      // }
+
+      .c-actions {
+        flex-grow: 1;
+        margin-left: 10px;
+
+        .b-subposter-action:not(:last-child) {
+          margin-bottom: 16px;
+        }
+      }
+    }
+  }
+
+  & > .c-about {
+    z-index: 1; // without this, the bottom block with description overlaps the current one
+
+    .c-info-left,
+    .c-info-right {
+      @include float_column.column_bm(2, 0.5, 6%);
+
+      @include responsive.iphone {
+        @include float_column.column(1);
+      }
+    }
+
+    .c-info-right .b-rate {
+      margin: 0 auto;
+    }
+
+    .contest_winners {
+      @include block.block;
+      margin-top: -10px;
+
+      .medal {
+        float: left;
+        width: 20px;
+        height: 44px;
+
+        &:before {
+          @include font_shikimori.font_shikimori("\e817");
+          color: #f7b42c;
+          font-size: 37px;
+          line-height: 1.2;
+          text-align: center;
+          width: 20px;
+        }
+      }
+    }
+
+    .winners {
+      margin-left: 30px;
+
+      .winner {
+        @include ellipsis.ellipsis;
+
+        &:first-child:last-child {
+          line-height: 44px;
+        }
+      }
+    }
+
+    &:after {
+      display: block;
+      clear: left;
+    }
+
+    .additional-links {
+      @include clear_left.clear_left;
+      margin-top: 20px;
+
+      .key {
+        color: colors.$gray-3;
+        cursor: default;
+        float: left;
+      }
+
+      .line-container {
+        @include clear_left.clear_left;
+
+        & > .link,
+        & > a {
+          @include comma_separated.comma_separated(0);
+          @include link.link;
+          float: left;
+          margin-left: 5px;
+
+          &:first-child {
+            margin-left: 0;
+          }
+        }
+      }
+    }
+  }
+  & > .c-description {
+    @include block.block;
+    padding-top: 1px; // due to a strange bug in Firefox
+
+    @include responsive.iphone {
+      clear: both;
+      margin-left: 0;
+    }
+  }
+}

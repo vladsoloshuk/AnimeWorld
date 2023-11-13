@@ -1,0 +1,33 @@
+//final transported
+
+@use "./../units";
+@use "./../colors";
+@use "./../mixins/block.scss";
+@use "./../mixins/responsive.scss";
+
+.b-entry-info {
+  @include block.block;
+
+  .line-container {
+    margin-bottom: 4px;
+  }
+
+  .line {
+    line-height: units.$line-height;
+
+    .key {
+      color: colors.$dark-color;
+      cursor: default;
+      display: inline;
+    }
+
+    .value {
+      color: colors.$light-color;
+      display: inline;
+
+      @include responsive.iphone {
+        font-weight: bold;
+      }
+    }
+  }
+}

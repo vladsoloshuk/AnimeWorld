@@ -1,17 +1,21 @@
 import { Link } from "react-router-dom";
-import { UrlParts, hostUrl } from "../../../const/urlConsts";
 import Preview from "../../Preview/Preview";
+import { RouteNames } from "../../../const/routeNames";
 
 const EmptyCatalogItem = ({ element }) => {
+  // console.log(element.url);
+  // console.log(hostUrl + UrlParts.API + element.url);
   return (
     <article className="c-column b-catalog_entry c-anime">
       <Link
+        element={element}
         className="cover anime-tooltip-processed"
-        href={hostUrl + UrlParts.API + element.url}
+        to={`${element.url}`}
+        state={element}
       >
         <span className="image-decor">
           <span className="image-cutter">
-            <Preview element={element} />
+            <Preview element={element} imageType={element.image.preview}/>
           </span>
         </span>
         <span className="title left_aligned">{element.name}</span>

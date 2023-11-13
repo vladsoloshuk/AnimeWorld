@@ -5,7 +5,6 @@ import MenuToggler from "../../UI/MenuToggler/MenuToggler";
 import CatalogDescription from "./CatalogTooltip/CatalogDescription";
 
 import { useState } from "react";
-import "./../../../styles/pages/p-elements_collection-index.scss";
 
 const EmptyCatalog = ({ recomendations, filterUI, url }) => {
   const [isMenuExpanded, setIsMenuExpanded] = useState(false);
@@ -17,7 +16,6 @@ const EmptyCatalog = ({ recomendations, filterUI, url }) => {
 
   return (
     <section className={`p-elements_collection-index x1200 l-page${isMenuExpanded ? " menu-expanded" : ""}`}>
-      <div>
         <MenuToggler menuToggleHandler={menuToggleHandler} />
         <CatalogDescription />
         <Pagination />
@@ -30,7 +28,6 @@ const EmptyCatalog = ({ recomendations, filterUI, url }) => {
             />
           </div>
         </div>
-      </div>
     </section>
   );
 };

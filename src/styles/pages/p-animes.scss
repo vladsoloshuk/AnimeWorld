@@ -1,0 +1,63 @@
+//final transported
+@use "./../mixins/float_column.scss";
+@use "./../mixins/icons.scss";
+@use "./../mixins/link.scss";
+@use "./../mixins/responsive.scss";
+
+@use './../pages/p-animes/show.scss';
+@use './../pages/p-animes/b-animes-menu.scss';
+
+@use './../lib/bar.scss';
+
+@use './../blocks/b-anime_status_tag.scss';
+@use './../blocks/b-subposter-actions.scss';
+
+
+.p-animes {
+  .item-edit {
+    @include icons.icon("\e842");
+    @include link.link(#123);
+  }
+
+  .cc-characters {
+    @include float_column.cc;
+    margin-bottom: 0;
+
+    .c-character,
+    .c-person {
+      @include responsive.gte_ipad {
+        @include float_column.column_bm(7);
+      }
+      @include responsive.iphone-portrait {
+        @include float_column.column_bm(3);
+      }
+      @include responsive.iphone-landscape {
+        @include float_column.column_bm(5);
+      }
+    }
+  }
+
+  .cc .c-video {
+    @include responsive.gte_ipad {
+      @include float_column.column(4, 1/4, 1.5%);
+    }
+    @include responsive.iphone-portrait {
+      @include float_column.column(2);
+    }
+    @include responsive.iphone-landscape {
+      @include float_column.column(3);
+    }
+  }
+
+  .cc .c-screenshot {
+    @include responsive.gte_ipad {
+      @include float_column.column(5, 1/5, 1.5%);
+    }
+    @include responsive.iphone-portrait {
+      @include float_column.column(2);
+    }
+    @include responsive.iphone-landscape {
+      @include float_column.column(3);
+    }
+  }
+}

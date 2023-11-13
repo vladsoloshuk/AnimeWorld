@@ -1,14 +1,14 @@
-// @import mixins/link
-@use "./../mixins/shadow.scss";
-@use "./../mixins/font_shikimori.scss";
+//final transported
+@use "./../globals";
+@use "./../units";
+@use "./../colors";
 @use "./../mixins/ellipsis.scss";
+@use "./../mixins/float_column.scss";
+@use "./../mixins/link.scss";
+@use "./../mixins/font_shikimori.scss";
 @use "./../mixins/ellipsis_two_line.scss";
 @use "./../mixins/responsive.scss";
-@use "./../mixins/float_column.scss";
-
-@use "./../colors";
-@use "./../units";
-@use "./../globals";
+@use "./../mixins/shadow.scss";
 
 $max_minified_width: 162px;
 $max_width: 167px;
@@ -32,7 +32,6 @@ $max_width: 167px;
     .content {
       @include float_column.column(2, 0.6);
     }
-
     &.column-2 {
       @include responsive.iphone-landscape {
         .cover {
@@ -44,17 +43,14 @@ $max_width: 167px;
       }
     }
   }
-
   @include responsive.gte_laptop {
     &:hover .cover .image-decor > .text {
       display: block;
       max-height: none;
     }
   }
-
   .cover {
-    // +link_color(#333333)
-
+    @include link.link_color(#333333);
     display: flex;
     flex-direction: column;
 
@@ -65,18 +61,16 @@ $max_width: 167px;
 
       .image-cutter {
         display: block;
+        line-height: 0;
         overflow: hidden;
-        position: relative; // для кнопки удаления в рекомендациях        
+        position: relative; // for the delete button in recommendations
         border-radius: units.$border-radius-base;
       }
-
       img {
-        // background-size: cover;
         object-fit: cover;
         width: 100%;
       }
-
-      // используется для отображения текста в коллекциях
+      // used to display text in collections
       & > .text {
         @include ellipsis_two_line.ellipsis_two_line(12px, units.$line_height);
         transition: all 0.25s ease;
@@ -100,21 +94,18 @@ $max_width: 167px;
           position: absolute;
           width: 100%;
         }
-
         .b-link {
           color: #fff;
           text-decoration: underline;
         }
-
         .b-image .marker {
           display: none;
         }
       }
     }
-
     .title {
       @include ellipsis.ellipsis;
-      // +link
+      @include link.link;
       display: block;
       font-weight: bold;
       line-height: units.$line_height;
@@ -124,20 +115,24 @@ $max_width: 167px;
         @include ellipsis_two_line.ellipsis_two_line(13px, units.$line_height);
       }
     }
-
+    @include responsive.gte_laptop {
+      &:hover .title {
+        color: colors.$hover-color;
+        text-decoration: none;
+      }
+    }
     .misc {
       color: colors.$light-color;
       display: flex;
       justify-content: space-between;
-      font-size: 11px;
       line-height: 17px;
+      //max-width: $max_width
 
       &.centered {
         text-align: center;
       }
-
       span {
-        @include ellipsis_two_line.ellipsis_two_line(13px, units.$line_height);
+        @include ellipsis.ellipsis;
         display: block;
         padding-right: 5px;
 
@@ -147,36 +142,30 @@ $max_width: 167px;
           padding-right: 0;
           white-space: normal;
         }
-
         &.anons {
           color: #307a3d;
         }
-
         &.released {
           color: #ca4929;
         }
-
         &.right {
           float: right;
           padding-right: 0;
         }
-
         &.role {
           overflow: visible;
           white-space: normal;
         }
-
         &.episode {
           .number {
             font-weight: bold;
-            // line-height: $line_height;
+            line-height: units.$line_height;
             padding-top: 4px;
           }
         }
       }
     }
   }
-
   .content {
     .tooltip-details {
       min-height: 100px;

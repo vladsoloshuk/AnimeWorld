@@ -1,19 +1,24 @@
+//final transported
 @use "./../units";
+@use "./../colors";
+
 @use "./responsive.scss";
 @use "./font_shikimori.scss";
+@use "./link.scss";
+@use "./margins.scss";
 
 @mixin icon_style($desktop-font-size: 14px, $mobile-font-size: 17px) {
   cursor: pointer;
   display: inline-block;
   font-size: $desktop-font-size;
-  line-height: $icon_desktop_size;
+  line-height: units.$icon_desktop_size;
   text-align: center;
-  width: $icon_desktop_size;
+  width: units.$icon_desktop_size;
 
-  @include lte_ipad {
+  @include responsive.lte_ipad {
     font-size: $mobile-font-size;
-    line-height: $icon_mobile_size;
-    width: $icon_mobile_size;
+    line-height: units.$icon_mobile_size;
+    width: units.$icon_mobile_size;
   }
 }
 
@@ -28,8 +33,8 @@
   &:before {
     @include font_shikimori.font_shikimori($content);
   }
-  
-  @include lte_ipad {
+
+  @include responsive.lte_ipad {
     white-space: nowrap;
 
     &:after {
@@ -45,28 +50,35 @@
       float: left;
       margin-right: 2px;
 
-      @include iphone {
+      @include responsive.iphone {
         margin-right: 7px;
       }
     }
   }
 }
 
-// =icon_left_margins
-//   +gte_laptop
-//     +ml(15px)
+@mixin icon_left_margins {
+  @include responsive.gte_laptop {
+    @include margins.ml(15px);
+  }
 
-//   +lte_ipad
-//     +ml(35px)
+  @include responsive.lte_ipad {
+    @include margins.ml(35px);
+  }
+}
 
-// =icon_button($content)
-//   +icon($content, 13px)
-//   +link_color(#444)
-//   +icon_left_margins
+@mixin icon_button($content) {
+  @include icon($content, 13px);
+  @include link.link_color(#444);
+  @include icon_left_margins;
 
-//   &.selected
-//     color: var(--link-hover-color)
+  &.selected {
+    color: colors.$link-hover-color;
+  }
 
-//   +gte_laptop
-//     &:after
-//       display: none
+  @include responsive.gte_laptop {
+    &:after {
+      display: none;
+    }
+  }
+}

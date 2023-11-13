@@ -1,0 +1,98 @@
+@use "./../../mixins/ellipsis.scss";
+@use "./../../mixins/responsive.scss";
+@use "./../../mixins/block.scss";
+@use "./../../mixins/font_shikimori.scss";
+@use "./../../mixins/link.scss";
+
+@use "./../../colors";
+
+.b-animes-menu {
+  #rates_statuses_stats {
+    .x_label {
+      font-weight: normal;
+      font-size: 11px;
+    }
+    .bar-container {
+      margin-right: 92px;
+    }
+  }
+  .total-rates {
+    color: #123;
+    font-size: 12px;
+    margin-top: 10px;
+  }
+  .friend-rate {
+    .status {
+      float: right;
+      font-size: 11px;
+    }
+    .b-user16 {
+      @include ellipsis.ellipsis;
+      display: block;
+      line-height: inherit;
+      position: static; // otherwise avatar will be not visible;
+    }
+  }
+  .menu-topics-block {
+    @include block.block;
+
+    .entry {
+      display: block;
+
+      @include responsive.gte_laptop {
+        &:hover .name {
+          color: colors.$link-hover-color;
+          text-decoration: underline;
+        }
+      }
+      &:active .name {
+        color: colors.$link-active-color;
+      }
+      .name {
+        @include ellipsis.ellipsis;
+        @include link.link;
+        display: block;
+      }
+      .time {
+        color: #777;
+        float: right;
+        font-size: 10px;
+        padding-left: 4px;
+      }
+    }
+    .history-entry-tooltip {
+      display: none;
+
+      .tooltip-details {
+        @include ellipsis.ellipsis;
+
+        a {
+          @include link.link;
+          @include ellipsis.ellipsis;
+          font-size: 12px;
+          display: block;
+        }
+        .ajax-loading {
+          margin-top: 35px;
+        }
+      }
+    }
+  }
+  .copyrighted {
+    font-size: 11px;
+    color: colors.$gray-4;
+    line-height: 1.35;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+
+    &:before {
+      @include font_shikimori.font_shikimori("!");
+      flex-shrink: 0;
+      font-size: 18px;
+      margin-right: 6px;
+      text-align: center;
+      width: 19px;
+    }
+  }
+}

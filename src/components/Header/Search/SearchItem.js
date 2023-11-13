@@ -9,7 +9,7 @@ const SearchItem = ({ element }) => {
       tabIndex="-1"
     >
       <div className="image">
-        <Preview element={element} />
+        <Preview element={element} imageType={element.image.preview}/>
       </div>
       <div className="info">
         <div className="name">

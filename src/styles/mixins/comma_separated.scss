@@ -1,0 +1,17 @@
+@use "./../globals";
+@use './../colors';
+
+@mixin comma_separated($padding: 7px) {
+  &:after {
+    content: ",";
+    color: colors.$gray-2;
+    padding: 0 $padding 0 0;
+    display: inline-block; // so that hover does not allow underlining to appear on links
+  }
+
+  &:last-child {
+    &:after {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,98 @@
+//final transported
+
+@use './../mixins/icons.scss';
+@use './../mixins/responsive.scss';
+@use './../mixins/link.scss';
+@use '../mixins/font_shikimori.scss';
+@use './../units';
+@use './../colors';
+
+.b-subposter-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  @include responsive.iphone-portrait {
+    align-items: center;
+    flex-direction: column;
+  }
+}
+.b-subposter-action {
+  @include link.link_color(colors.$bright-color);
+  cursor: pointer;
+  display: inline-block;
+  height: units.$icon_mobile_size;
+  text-align: center;
+  width: units.$icon_mobile_size;
+
+  &.selected {
+    @include link.link_color;
+  }
+  &:before {
+    display: inline-block;
+    font-size: 18px;
+    line-height: units.$icon_mobile_size;
+
+    @include responsive.iphone {
+      font-size: 22px;
+    }
+  }
+  &:before {
+    @include font_shikimori.font_shikimori;
+    text-align: center;
+  }
+  @include responsive.iphone-portrait {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    height: auto;
+
+    &:not(:last-child) {
+      margin-bottom: 5px;
+    }
+    &:before {
+      font-size: 18px;
+      width: 20px;
+      height: 30px;
+      line-height: 30px;
+    }
+  // db_entry
+  }
+  &.fav-add:before {
+    content: '\f005';
+  }
+  &.fav-remove {
+    @include link.link_color;
+    &:before {
+      content: '\f005';
+    }
+  }
+  &.edit:before {
+    content: '\f085';
+  }
+  &.new_critique:before {
+    content: '\f15b';
+  }
+  &.new_comment:before {
+    content: '\f086';
+  }
+  &.new_review:before {
+    content: '\f52d';
+  }
+  // club
+  &.edit-alt:before {
+    content: '\e84e';
+  }
+  &.upload:before {
+    content: '\e80c';
+  }
+  &.broadcast:before {
+    content: '\e837';
+  }
+  &.invite:before {
+    content: '\e826';
+  }
+  &.leave:before {
+    content: '\e844';
+  }
+}
