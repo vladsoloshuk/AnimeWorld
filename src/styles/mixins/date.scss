@@ -1,0 +1,8 @@
+@use "./../colors";
+
+// standard date design
+@mixin date {
+  color: colors.$date;
+  font-weight: normal;
+  font-size: 11px;
+}

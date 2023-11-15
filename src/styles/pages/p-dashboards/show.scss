@@ -38,7 +38,7 @@
   margin-left: 0;
   margin-right: $gutter;
   margin-top: 0px !important; // overriders margin-top set by swiper
-  width: #{calc(100vw / $columns)} - #{$gutter} - #{calc($container-outer-padding * 2 / $columns) - calc($gutter / $columns)};
+  width: calc(#{100vw / $columns} - #{$gutter} - #{$container-outer-padding * 2 / $columns - $gutter / $columns});
 
   &:last-child {
     margin-right: 0;

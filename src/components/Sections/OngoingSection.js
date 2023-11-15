@@ -31,7 +31,7 @@ const OngoingSection = () => {
   return (
     <Suspense fallback={Spinner}>
       <div className="block2">
-        <div className="subheadline linkheadline">
+        <div className="subheadline linkheadline m15">
           <Link
             to={`${UrlParts.ANIMES}/status/ongoing`}
             onClick={() => dispatch(updateFilter(["status", "ongoing"]))}

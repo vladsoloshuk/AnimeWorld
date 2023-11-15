@@ -319,7 +319,7 @@
       margin-bottom: 57px; // = global-search height
 
       .global-search {
-        background: colors.$top_menu_background_hover;
+        background: rgba(colors.$menu-back, 0.9);
         display: block;
         left: 0;
         padding: 13px 0;
@@ -333,7 +333,7 @@
         }
 
         .search-results {
-          margin-top: 19px;
+          margin-top: 16px;
         }
 
         .clear {

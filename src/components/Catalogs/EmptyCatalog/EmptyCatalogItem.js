@@ -1,10 +1,7 @@
 import { Link } from "react-router-dom";
 import Preview from "../../Preview/Preview";
-import { RouteNames } from "../../../const/routeNames";
 
 const EmptyCatalogItem = ({ element }) => {
-  // console.log(element.url);
-  // console.log(hostUrl + UrlParts.API + element.url);
   return (
     <article className="c-column b-catalog_entry c-anime">
       <Link

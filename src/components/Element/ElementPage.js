@@ -173,16 +173,25 @@ const ElementPage = () => {
                             <div className="block">
                               <div className="subheadline">Studio</div>
                               <div className="block">
-                                <Link
-                                  className="b-tag"
-                                  to={``}
-                                >
-                                  <img
-                                    className="studio-logo"
-                                    src={`https://shikimori.one/${element.studios[0].image}`}
-                                    alt={`Anime made by ${element.studios[0].name} studio`}
-                                  ></img>
-                                </Link>
+                                {element.studios[0].image ? (
+                                  <Link
+                                    to={``}
+                                    title={`Anime made by ${element.studios[0].name} studio`}
+                                  >
+                                    <img
+                                      className="studio-logo"
+                                      src={`https://shikimori.one/${element.studios[0].image}`}
+                                      alt={`Anime made by ${element.studios[0].name} studio`}
+                                    ></img>
+                                  </Link>
+                                ) : (
+                                  <Link
+                                    className="b-tag"
+                                    to={``}
+                                  >
+                                    {element.studios[0].name}
+                                  </Link>
+                                )}
                               </div>
                             </div>
                           </div>
@@ -192,7 +201,7 @@ const ElementPage = () => {
                         <div className="subheadline m5">Description</div>
                         <div
                           className="block"
-                          dangerouslySetInnerHTML={{ __html: element.description_html}}
+                          dangerouslySetInnerHTML={{ __html: element.description_html }}
                         ></div>
                       </div>
                     </div>
