@@ -68,7 +68,6 @@ $max_width: 167px;
       }
       img {
         object-fit: cover;
-        width: 100%;
       }
       // used to display text in collections
       & > .text {
@@ -126,7 +125,7 @@ $max_width: 167px;
       display: flex;
       justify-content: space-between;
       line-height: 17px;
-      //max-width: $max_width
+      // max-width: $max_width;
 
       &.centered {
         text-align: center;

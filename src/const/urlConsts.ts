@@ -8,5 +8,6 @@ export enum UrlParts {
   CONSTANTS = "/constants",
   RANOBE = "/ranobe",
   CHARACTERS = "/characters",
-  PEOPLE = "/people"
+  PEOPLE = "/people",
+  TOPICS = "/topics"
 }

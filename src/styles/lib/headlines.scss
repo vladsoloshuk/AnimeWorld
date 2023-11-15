@@ -1,0 +1,292 @@
+@use "./../colors";
+@use "./../fonts";
+@use "./../units";
+
+@use "./../mixins/shadow.scss";
+@use "./../mixins/brackets_surrounded.scss";
+@use "./../mixins/ellipsis.scss";
+@use "./../mixins/responsive.scss";
+@use "./../mixins/font_shikimori.scss";
+@use "./../mixins/link.scss";
+@use "./../mixins/dash_separated.scss";
+@use "./../mixins/input.scss";
+
+header.head {
+  margin-bottom: 15px;
+
+  h1,
+  h2 {
+    border-bottom: none;
+    display: inline-block;
+    color: colors.$white-color;
+    font-family: fonts.$font-alt;
+    font-size: 30px;
+    font-weight: normal;
+    margin: 0;
+
+    @include responsive.iphone {
+      font-size: 24px;
+    }
+    a.back {
+      @include link.link_color;
+      display: inline-block;
+      font-size: 24px;
+      margin-left: -5px;
+      position: relative;
+      width: 40px;
+
+      &:before {
+        color: colors.$white-color;
+        content: "←";
+        left: 5px;
+        position: absolute;
+        top: -32px;
+      }
+      &:after {
+        content: attr(data-text);
+        font-size: 9px;
+        position: absolute;
+      }
+      body[data-locale="ru"] &:after {
+        margin: -9px 0 0 4px;
+      }
+      body[data-locale="en"] &:after {
+        margin: -9px 0 0 7px;
+      }
+      @include responsive.gte_laptop {
+        &:hover:after {
+          border-bottom: 1px solid colors.$link-border-hover-color;
+        }
+      }
+    }
+  }
+  .misc,
+  a.edit {
+    color: colors.$gray-2;
+    display: inline-block;
+    font-family: fonts.$font-main;
+    font-size: 11px;
+    line-height: 12px;
+    padding: 17px 0 0 10px;
+  }
+  a.misc,
+  a.edit {
+    @include link.link;
+  }
+  @include responsive.iphone {
+    h1,
+    h2 {
+      display: block;
+    }
+    .misc,
+    a.edit {
+      line-height: 1.65;
+      padding: 0 0 0 1px;
+    }
+  }
+  .notice {
+    clear: left;
+    color: colors.$dark-color;
+    font-size: 12px;
+    line-height: units.$line_height;
+    margin: 2px 0 2px 1px;
+  }
+}
+.headline {
+  @include ellipsis.ellipsis;
+  background: colors.$headline-background-color;
+  color: colors.$headline-color;
+  font-family: fonts.$font-alt;
+  font-weight: 700;
+  letter-spacing: 0.13px;
+  line-height: units.$line_height;
+  margin-bottom: 10px;
+  padding: 4px 10px 2px;
+  position: relative;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+  -webkit-font-smoothing: antialiased;
+  height: 28px;
+  border-radius: 14px;
+
+  @include responsive.gte_desktop {
+    margin-bottom: 10px;
+  }
+  & > a {
+    @include ellipsis.ellipsis;
+    @include link.link;
+    display: block;
+    text-decoration: none;
+    padding-right: 20px;
+
+    &:before {
+      @include font_shikimori.font_shikimori("");
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      color: colors.$bright-color;
+      background: linear-gradient(270deg, rgba(colors.$dark-color, 1), rgba(colors.$dark-color, 0.3));
+      position: absolute;
+      margin-top: 5px;
+      right: 10px;
+    }
+    @include responsive.gte_laptop {
+      &:hover:before {
+        background: linear-gradient(270deg, rgba(colors.$hover-color, 1), rgba(colors.$hover-color, 0.3));
+        color: colors.$hover-color;
+      }
+    }
+    &:active:before {
+      color: colors.$hover-color;
+    }
+  }
+  &.linkheadline {
+    & > a {
+      color: inherit;
+
+      &:before {
+        color: inherit;
+      }
+      @include responsive.gte_laptop {
+        &:hover,
+        &:hover:before {
+          color: colors.$hover-color;
+        }
+      }
+      &:active,
+      &:active:before {
+        color: colors.$hover-color;
+      }
+    }
+  }
+  .misc-links {
+    font-family: fonts.$font-main;
+
+    @include responsive.gte_ipad {
+      display: inline;
+      line-height: 1;
+      padding-left: 10px;
+    }
+    @include responsive.iphone {
+      display: block;
+    }
+    & > a {
+      @include link.link;
+      @include dash_separated.dash_separated;
+      display: inline;
+      font-size: 12px;
+      font-weight: normal;
+      padding-right: 0;
+      text-transform: none;
+
+      &.selected {
+        color: colors.$link-hover-color;
+
+        &:hover {
+          color: colors.$link-active-color;
+        }
+      }
+    }
+  }
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  &.headline,
+  &.midheadline,
+  &.subheadline {
+    margin-top: 0;
+  }
+  // midheadline is left here by compatibility reasons. otherwise it could break user styles
+}
+.midheadline,
+.subheadline {
+  @extend .headline;
+  height: 28px;
+  border-radius: 14px;
+  color: colors.$dark-color;
+  background: rgba(colors.$block-color, 0.6);
+  @include shadow.shadow-base;
+  display: block;
+  text-transform: uppercase;
+  align-items: center;
+  margin-bottom: 5px;
+
+  &:hover {
+    background: colors.$block-color;
+    color: colors.$hover-color;
+    & > ::before {
+      background: linear-gradient(270deg, rgba(colors.$hover-color, 1), rgba(colors.$hover-color, 0.3));
+    }
+
+    & > a {
+      text-decoration: none;
+    }
+  }
+
+  .b-user16 img {
+    margin-top: 7px;
+  }
+  .b-link {
+    display: inline;
+    padding-right: 0;
+
+    &:before {
+      display: none;
+    }
+  }
+  .b-user16 {
+    text-transform: none;
+  }
+  .count {
+    @include brackets_surrounded.brackets_surrounded(colors.$gray-3);
+    margin-left: 5px;
+  }
+}
+.mischeadline {
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+// indentation from the right edge of the header
+.subheadline-input {
+  @include input.input;
+  position: absolute;
+  right: 0;
+  width: 248px;
+  z-index: 1;
+
+  @include responsive.iphone-portrait {
+    margin-bottom: 10px;
+    position: initial;
+    width: 100%;
+  }
+  @include responsive.iphone-landscape {
+    line-height: 28px;
+  }
+  @include responsive.gte_laptop {
+    margin-right: 3px;
+    margin-top: 3px;
+    line-height: 22px;
+  }
+  &.downgrade_landscape {
+    @include responsive.iphone-landscape {
+      margin-bottom: 10px !important;
+      position: initial;
+      width: 100% !important;
+    }
+  }
+}
+.subheadline-buttons {
+  margin-top: 3px;
+  position: absolute;
+  right: 15px;
+  z-index: 2;
+
+  @include responsive.lte_ipad {
+    margin-top: 0;
+    right: 4px;
+  }
+}

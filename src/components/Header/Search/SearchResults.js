@@ -3,14 +3,14 @@ import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 import { updateSearchMenu, changeSearchMode } from "../../../store/reducers/SearchSlice";
 import SearchItem from "./SearchItem";
 
-const SearchResults = ({ elements }) => {
+const SearchResults = ({ search, setSearch }) => {
   const dispatch = useAppDispatch();
   const title = useAppSelector((state) => state.pageParams.title);
   const searchMenu = useAppSelector((state) => state.search.searchMenu);
   const searchElements = useAppSelector((state) => state.search.searchElements);
 
   const searchMenuHandler = (event) => {
-    event.stopPropagation()
+    event.stopPropagation();
     dispatch(changeSearchMode(event.target.getAttribute("data-mode")));
   };
 
@@ -40,6 +40,7 @@ const SearchResults = ({ elements }) => {
                   <SearchItem
                     key={item.id}
                     element={item}
+                    setSearch={setSearch}
                   />
                 );
               })}

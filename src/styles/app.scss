@@ -5,6 +5,8 @@
 @use "./mixins/shadow.scss";
 @use "./mixins/responsive.scss";
 
+@use './lib/headlines.scss';
+
 @use "./layouts/l-top_menu.scss";
 @use "./layouts/l-menu.scss";
 @use "./layouts/l-page.scss";
@@ -15,8 +17,14 @@
 @use "./blocks/b-db_entry-variant-list_item.scss";
 @use "./blocks/b-shade.scss";
 
+@use './blocks/b-news_wall-topic.scss';
+@use './blocks/b-shiki_swiper.scss';
+@use './blocks/b-link_button.scss';
+
 @use "./pages/p-dashboards/show.scss";
 @use "./pages/p-elements_collection-index.scss";
+
+@import './lib/colors.scss';
 
 * {
   box-sizing: border-box;
@@ -40,14 +48,6 @@ body {
   @include responsive.iphone {
     font-size: units.$font-size-base-mobile;
   }
-}
-
-h1 {
-  font-size: 30px;
-}
-
-article {
-  display: block;
 }
 
 a {
@@ -76,35 +76,6 @@ a:hover {
   display: none;
   width: 6px;
   background: transparent;
-}
-
-.head {
-  margin-bottom: 15px;
-}
-
-.notice {
-  color: colors.$dark-color;
-  line-height: 1.5;
-}
-
-.block {
-  margin-bottom: 20px;
-  line-height: 1.65;
-  position: relative;
-}
-
-.subheadline {
-  height: 28px;
-  border-radius: 14px;
-  color: colors.$dark-color;
-  background: rgba(colors.$block-color, 0.6);
-  @include shadow.shadow-base;
-  display: flex;
-  text-transform: uppercase;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 0 14px 0;
-  margin-bottom: 5px;
 }
 
 .b-list {

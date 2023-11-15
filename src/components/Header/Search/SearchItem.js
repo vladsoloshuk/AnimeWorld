@@ -1,15 +1,30 @@
 import { Link } from "react-router-dom";
 import Preview from "../../Preview/Preview";
+import { useAppDispatch } from "../../../hooks/redux";
+import { elementVisibility } from "../../../store/reducers/PageParams";
+import { updateSearchArray } from "../../../store/reducers/SearchSlice";
 
-const SearchItem = ({ element }) => {
+const SearchItem = ({ element, setSearch}) => {
+  const dispatch = useAppDispatch();
+  const backdropHandler = () => {
+    dispatch(elementVisibility(["search", false]));
+    dispatch(elementVisibility(["mobile", false]));
+    dispatch(updateSearchArray([]));
+    setSearch("");
+  };
+
   return (
     <Link
+      onClick={backdropHandler}
       className="b-db_entry-variant-list_item"
-      to={element.url}
+      to={`${element.url}`}
       tabIndex="-1"
     >
       <div className="image">
-        <Preview element={element} imageType={element.image.preview}/>
+        <Preview
+          element={element}
+          imageType={element.image.preview}
+        />
       </div>
       <div className="info">
         <div className="name">

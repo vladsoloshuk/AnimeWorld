@@ -1,0 +1,106 @@
+//final transported
+@use "./../mixins/date.scss";
+@use "./../mixins/responsive.scss";
+@use "./../mixins/font_shikimori.scss";
+@use "./../mixins/ellipsis_two_line.scss";
+
+@use "./../colors";
+@use "./../fonts";
+@use "./../units";
+
+.b-news_wall-topic {
+  border-top: none;
+  margin: 0;
+
+  & > a {
+    display: block;
+
+    @include responsive.gte_laptop {
+      &:hover {
+        .title {
+          color: colors.$hover-color;
+        }
+      }
+    }
+    &:active {
+      .title {
+        color: colors.$hover-color;
+      }
+    }
+  }
+  .poster {
+    display: flex;
+    flex-direction: column-reverse;
+    margin-bottom: 10px;
+    pointer-events: none;
+    position: relative;
+
+    &:before {
+      content: "";
+      padding-top: 56.25%; // 16:9 aspect ratio
+    }
+    .b-shiki_swiper {
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      border-radius: units.$border-radius-base;
+
+      &.is-loading,
+      &.to-process {
+        background: #ccc;
+      }
+    }
+  }
+  .status-line {
+    align-items: baseline;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2px;
+
+    .tags {
+      display: inline-flex;
+      margin-right: 12px;
+      margin-bottom: 5px;
+
+      .b-anime_status_tag {
+        &:not(:last-child) {
+          margin-right: 8px;
+        }
+      }
+    }
+    time {
+      @include date.date;
+      line-height: 18px;
+      margin-bottom: 5px;
+      margin-right: auto;
+    }
+    .comments {
+      line-height: 18px;
+      color: colors.$dark-color;
+      font-size: 12px;
+
+      &:before {
+        @include font_shikimori.font_shikimori("\f086");
+        font-size: 13px;
+        padding-right: 5px;
+      }
+    }
+    .is-pinned {
+      color: colors.$dark-color;
+
+      &:before {
+        @include font_shikimori.font_shikimori("📌");
+        font-size: 14px;
+        margin-right: 13px;
+      }
+    }
+  }
+  .title {
+    @include ellipsis_two_line.ellipsis_two_line(15px, 1.55);
+    color: colors.$white-color;
+    font-family: fonts.$font-alt;
+    font-weight: 600;
+  }
+}

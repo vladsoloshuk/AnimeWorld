@@ -7,13 +7,11 @@ import { useSelector } from "react-redux";
 import _ from "lodash";
 import { updateFilter } from "../../../store/reducers/FilterSlice";
 
-const SearchInput = () => {
+const SearchInput = ({search, setSearch}) => {
   const dispatch = useAppDispatch();
   const queryParams = useAppSelector((state) => state.search.searchParams);
   const url = useAppSelector((state) => state.search.searchUrl);
   const searchMenu = useSelector((state) => state.search.searchMenu);
-
-  const [search, setSearch] = useState("");
   const [skip, setSkip] = useState(true);
 
   const { data, isSuccess } = api.useGetElementsQuery({ url, queryParams }, { skip });
@@ -22,7 +20,7 @@ const SearchInput = () => {
     dispatch(elementVisibility(["search", true]));
   };
 
-  const clearInputHandler = (event) => {
+  const clearInputHandler = () => {
     setSearch("");
     dispatch(updateSearchArray([]));
   };

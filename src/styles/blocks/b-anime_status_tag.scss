@@ -1,8 +1,12 @@
 //final transported
 @use './../colors';
+@use './../units';
 @import "./../mixins/static_marker.scss";
 
 .b-anime_status_tag {
+  
+  border-radius: units.$border-radius-base;
+
   &.released {
     @include static_marker(#fff, colors.$released_tag);
   }

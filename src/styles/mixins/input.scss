@@ -1,0 +1,77 @@
+@use './responsive.scss';
+@use './placeholder.scss';
+@use './ellipsis.scss';
+
+@use './../colors';
+
+@mixin input_focus {
+  border-color: colors.$link-4;
+}
+
+@mixin input_colors {
+  background-color: #fcfcfc;
+  border: 1px solid #ddd;
+  color: #123;
+
+  &:focus {
+    @include input_focus;
+  }
+  @include placeholder.placeholder {
+    color: #999;
+  }
+}
+@mixin input_sizes {
+  border-radius: 0;
+  line-height: 27px;
+  margin: 0;
+  padding: 0 7px;
+
+  @include responsive.iphone {
+    line-height: 31px;
+  }
+  @include responsive.lte_ipad {
+    font-size: 16px;
+  }
+}
+@mixin input_disabled {
+  background: #eee;
+  color: #666;
+}
+@mixin input {
+  @include input_colors;
+  @include input_sizes;
+  width: 100%;
+
+  &[type=submit],
+  &[type=text],
+  &[type=password],
+  &[type=email] {
+    -webkit-appearance: none;
+  }
+  &[type=text],
+  &[type=url] {
+    @include ellipsis.ellipsis;
+  }
+  &[type=file] {
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+  &[type=number] {
+    max-width: 100px;
+  }
+  @include placeholder.placeholder {
+    line-height: 27px;
+    padding-top: 1px;
+
+    @include responsive.iphone {
+      padding-top: 0;
+      line-height: 31px;
+    }
+  }
+  @include responsive.gte_ipad {
+    &:not(textarea) {
+      max-width: 375px;
+    }
+  }
+}
