@@ -19,7 +19,7 @@ const OngoingSection = () => {
     season: 2023
   };
   const url = UrlParts.ANIMES;
-  const { data, isFetching, isSuccess } = api.useGetElementsQuery({ url, queryParams });
+  const { data, isSuccess } = api.useGetElementsQuery({ url, queryParams });
 
   //rerendering if data has been changed
   useEffect(() => {

@@ -93,14 +93,14 @@ header.head {
   }
 }
 .headline {
-  @include ellipsis.ellipsis;
-  background: colors.$headline-background-color;
-  color: colors.$headline-color;
+  @include ellipsis.ellipsis;  
+  color: colors.$dark-color;
+  background: rgba(colors.$block-color, 0.6);
   font-family: fonts.$font-alt;
   font-weight: 700;
   letter-spacing: 0.13px;
   line-height: units.$line_height;
-  margin-bottom: 10px;
+  margin: 10px 0 5px;
   padding: 4px 10px 2px;
   position: relative;
   text-transform: uppercase;
@@ -110,7 +110,7 @@ header.head {
   border-radius: 14px;
 
   @include responsive.gte_desktop {
-    margin-bottom: 10px;
+    margin: 10px 0 10px;
   }
   & > a {
     @include ellipsis.ellipsis;
@@ -212,7 +212,7 @@ h5 {
   display: block;
   text-transform: uppercase;
   align-items: center;
-  margin-bottom: 5px;
+  margin: 10px 0 5px;
 
   &:hover {
     background: colors.$block-color;

@@ -6,6 +6,7 @@
 @use "./mixins/responsive.scss";
 
 @use './lib/headlines.scss';
+@use './lib/flex_columns.scss';
 
 @use "./layouts/l-top_menu.scss";
 @use "./layouts/l-menu.scss";
@@ -16,12 +17,14 @@
 @use "./blocks/b-db_entry.scss";
 @use "./blocks/b-db_entry-variant-list_item.scss";
 @use "./blocks/b-shade.scss";
+@use './blocks/b-anime_status_tag.scss';
 
 @use './blocks/b-news_wall-topic.scss';
 @use './blocks/b-shiki_swiper.scss';
 @use './blocks/b-link_button.scss';
 
 @use "./pages/p-dashboards/show.scss";
+@use "./pages/p-dashboards/db_updates";
 @use "./pages/p-elements_collection-index.scss";
 
 @import './lib/colors.scss';
