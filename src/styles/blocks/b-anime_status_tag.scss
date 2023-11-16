@@ -11,16 +11,8 @@
     @include static_marker(#fff, colors.$released_tag);
   }
 
-  // &.light
-  //   background-color: #699e5d
-  //   border: 1px solid darken(#699e5d, 1.5%)
-
   &.anons {
     @include static_marker(#fff, colors.$anons_tag);
-
-    // &.light
-    //   background-color: #c16348
-    //   border: 1px solid darken(#c16348, 1.5%)
   }
 
   &.ongoing {
@@ -38,8 +30,9 @@
   &.episode,
   &.studio,
   &.review {
-    @include static_marker(#123, #e8ebf0);
+    @include static_marker(colors.$bright-color, rgba(colors.$block-color, 0.6));
   }
+
   // copied from b-review_opinion_marker
   &.review-positive {
     @include static_marker(#fff, #549e14, #bee893, darken(#bee893, 6%));
@@ -52,7 +45,7 @@
   }
 
   &.other {
-    @include static_marker(#fff, #678);
+    @include static_marker(colors.$bright-color, rgba(colors.$block-color, 0.6));
   }
   &.contest {
     @include static_marker(#fff, #a063cf);

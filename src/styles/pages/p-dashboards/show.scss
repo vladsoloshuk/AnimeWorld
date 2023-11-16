@@ -384,13 +384,13 @@
       }
     }
 
-    &.other-news {
-      @include responsive.gte_laptop {
-        .b-news_wall-topic:first-child {
-          display: none;
-        }
-      }
-    }
+    // &.other-news {
+    //   @include responsive.gte_laptop {
+    //     .b-news_wall-topic:first-child {
+    //       display: none;
+    //     }
+    //   }
+    // }
 
     .b-postloader {
       width: 100%;

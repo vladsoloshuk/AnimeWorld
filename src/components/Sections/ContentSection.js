@@ -9,15 +9,17 @@ const ContentSection = () => {
           <div className="f-column">
             <div className="headline skyblue">
               Content
-              <div class="misc-links">
-                <a href="https://shikimori.one/collections">коллекции</a>
-                <a href="https://shikimori.one/forum/critiques">рецензии</a>
-                <a href="https://shikimori.one/articles">статьи</a>
+              <div className="misc-links">
+                <a href="https://shikimori.one/collections">Collections</a>
+                <a href="https://shikimori.one/forum/critiques">Critiques</a>
+                <a href="https://shikimori.one/articles">Articles</a>
               </div>
             </div>
             <div className="content-updates"></div>
           </div>
-          <div className="f-column"></div>
+          <div className="f-column">
+            <div className="headline">Topics of the day</div>
+          </div>
         </div>
       </div>
     </Suspense>

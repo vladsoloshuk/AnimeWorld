@@ -173,24 +173,28 @@ const ElementPage = () => {
                             <div className="block">
                               <div className="subheadline">Studio</div>
                               <div className="block">
-                                {element.studios[0].image ? (
-                                  <Link
-                                    to={``}
-                                    title={`Anime made by ${element.studios[0].name} studio`}
-                                  >
-                                    <img
-                                      className="studio-logo"
-                                      src={`https://shikimori.one/${element.studios[0].image}`}
-                                      alt={`Anime made by ${element.studios[0].name} studio`}
-                                    ></img>
-                                  </Link>
+                                {element.studios[0] ? (
+                                  element.studios[0].image ? (
+                                    <Link
+                                      to={``}
+                                      title={`Anime made by ${element.studios[0].name} studio`}
+                                    >
+                                      <img
+                                        className="studio-logo"
+                                        src={`https://shikimori.one/${element.studios[0].image}`}
+                                        alt={`Anime made by ${element.studios[0].name} studio`}
+                                      ></img>
+                                    </Link>
+                                  ) : (
+                                    <Link
+                                      className="b-tag"
+                                      to={``}
+                                    >
+                                      {element.studios[0].name}
+                                    </Link>
+                                  )
                                 ) : (
-                                  <Link
-                                    className="b-tag"
-                                    to={``}
-                                  >
-                                    {element.studios[0].name}
-                                  </Link>
+                                  ""
                                 )}
                               </div>
                             </div>
