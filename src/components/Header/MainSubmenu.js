@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
-import { elementVisibility } from "../../store/reducers/PageParams";
+import { elementVisibility } from "../../store/reducers/MenuParams";
 import { menuDropdown } from "../../const/header";
 import lowerCase from "lodash/lowerCase";
 import Dropdown from "./Dropdown";
@@ -8,7 +8,7 @@ import { useState } from "react";
 const MainSubmenu = () => {
   const dispatch = useAppDispatch();
   const title = useAppSelector((state) => state.pageParams.title);
-  const menuVisibility = useAppSelector((state) => state.pageParams.mainSubmenu);
+  const menuVisibility = useAppSelector((state) => state.menuParams.mainSubmenu);
 
   const [isVisible, setIsVisible] = useState(menuVisibility);
 

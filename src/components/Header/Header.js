@@ -8,10 +8,10 @@ import { useAppSelector } from "../../hooks/redux";
 import ProfileMenu from "./ProfileSubmenu";
 
 const Header = () => {
-  const mainMenuVisibility = useAppSelector((state) => state.pageParams.mainSubmenu);
-  const profileMenuVisibility = useAppSelector((state) => state.pageParams.profileSubmenu);
-  const searchMenuVisibility = useAppSelector((state) => state.pageParams.search);
-  const isMobile = useAppSelector((state) => state.pageParams.mobile);
+  const mainMenuVisibility = useAppSelector((state) => state.menuParams.mainSubmenu);
+  const profileMenuVisibility = useAppSelector((state) => state.menuParams.profileSubmenu);
+  const searchMenuVisibility = useAppSelector((state) => state.menuParams.search);
+  const isMobile = useAppSelector((state) => state.menuParams.mobile);
   const [isLogged, setIsLogged] = useState(false);
 
   return (

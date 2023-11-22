@@ -6,6 +6,7 @@ import Spinner from "../UI/Spinner/Spinner";
 import EmptyCatalogItem from "../Catalogs/EmptyCatalog/EmptyCatalogItem";
 import { useAppDispatch } from "../../hooks/redux";
 import { updateFilter } from "../../store/reducers/FilterSlice";
+import { restoreCollectionFilter} from "../../store/reducers/PageParams";
 
 const OngoingSection = () => {
   const [elements, setElements] = useState([]);
@@ -21,6 +22,12 @@ const OngoingSection = () => {
   const url = UrlParts.ANIMES;
   const { data, isSuccess } = api.useGetElementsQuery({ url, queryParams });
 
+  const param = "/status/ongoing";
+  const loadFuction = () => {
+    dispatch(updateFilter(["status", "ongoing"]));
+    dispatch(restoreCollectionFilter(["restoreCollectionFilter", false]));
+  };
+
   //rerendering if data has been changed
   useEffect(() => {
     if (isSuccess) {
@@ -33,8 +40,9 @@ const OngoingSection = () => {
       <div className="block2">
         <div className="subheadline linkheadline m15">
           <Link
-            to={`${UrlParts.ANIMES}/status/ongoing`}
-            onClick={() => dispatch(updateFilter(["status", "ongoing"]))}
+            to={`${UrlParts.ANIMES}${param}`}
+            onClick={loadFuction}
+            state={{ title: "Anime" }}
           >
             Now on screens
           </Link>

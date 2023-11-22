@@ -1,5 +1,5 @@
 import { useAppDispatch } from "../../../hooks/redux";
-import { elementVisibility } from "../../../store/reducers/PageParams";
+import { elementVisibility } from "../../../store/reducers/MenuParams";
 
 const Backdrop = () => {
   const dispatch = useAppDispatch();

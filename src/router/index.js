@@ -2,12 +2,11 @@ import { lazy, Suspense } from "react";
 import Spinner from "../components/UI/Spinner/Spinner";
 
 import { RouteNames } from "../const/routeNames";
+import { UrlParts } from "../const/urlConsts";
 
 const Root = lazy(() => import("../pages/Root"));
 const Home = lazy(() => import("../pages/Home"));
-const Animes = lazy(() => import("./../pages/Animes"));
-const Mangas = lazy(() => import("../pages/Mangas"));
-const Ranobe = lazy(() => import("../pages/Ranobe"));
+const ElementsCollection = lazy(() => import("../pages/ElementsCollection"));
 const ErrorPage = lazy(() => import("../pages/ErrorPage"));
 const ElementPage = lazy(() => import("../components/Element/ElementPage"));
 
@@ -34,16 +33,16 @@ export const publicRoutes = [
         path: RouteNames.ANIMES,
         element: (
           <Suspense fallback={<Spinner />}>
-            <Animes />
+            <ElementsCollection />
           </Suspense>
         ),
         errorElement: <ErrorPage />,
         children: [
           {
-            path: "status/ongoing",
+            path: "*",
             element: (
               <Suspense fallback={<Spinner />}>
-                <Animes />
+                <ElementsCollection />
               </Suspense>
             ),
             errorElement: <ErrorPage />
@@ -54,7 +53,7 @@ export const publicRoutes = [
         path: RouteNames.MANGAS,
         element: (
           <Suspense fallback={<Spinner />}>
-            <Mangas />
+            <ElementsCollection />
           </Suspense>
         ),
         errorElement: <ErrorPage />
@@ -63,13 +62,31 @@ export const publicRoutes = [
         path: RouteNames.RANOBE,
         element: (
           <Suspense fallback={<Spinner />}>
-            <Ranobe />
+            <ElementsCollection />
           </Suspense>
         ),
         errorElement: <ErrorPage />
       },
       {
-        path: "animes/:url",
+        path: `${UrlParts.ANIMES}/:url`,
+        element: (
+          <Suspense fallback={<Spinner />}>
+            <ElementPage />
+          </Suspense>
+        ),
+        errorElement: <ErrorPage />
+      },
+      {
+        path: `${UrlParts.MANGAS}/:url`,
+        element: (
+          <Suspense fallback={<Spinner />}>
+            <ElementPage />
+          </Suspense>
+        ),
+        errorElement: <ErrorPage />
+      },
+      {
+        path: `${UrlParts.RANOBE}/:url`,
         element: (
           <Suspense fallback={<Spinner />}>
             <ElementPage />

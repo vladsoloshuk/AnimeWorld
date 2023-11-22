@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 import { updateSearchParams, updateSearchArray } from "../../../store/reducers/SearchSlice";
 import { api } from "../../../services/Api";
-import { elementVisibility } from "../../../store/reducers/PageParams";
+import { elementVisibility } from "../../../store/reducers/MenuParams";
 import { useSelector } from "react-redux";
 import _ from "lodash";
 import { updateFilter } from "../../../store/reducers/FilterSlice";
