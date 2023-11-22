@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAppDispatch } from "../../../hooks/redux";
-import { elementVisibility } from "../../../store/reducers/PageParams";
+import { elementVisibility } from "../../../store/reducers/MenuParams";
 
 const SearchMobile = () => {
   const dispatch = useAppDispatch();

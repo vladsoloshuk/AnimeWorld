@@ -2,12 +2,12 @@ import Dropdown from "./Dropdown";
 import { Link } from "react-router-dom";
 import { profileDropdown } from "../../const/header";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
-import { elementVisibility } from "../../store/reducers/PageParams";
+import { elementVisibility } from "../../store/reducers/MenuParams";
 import { useState } from "react";
 
 const ProfileSubmenu = () => {
   const dispatch = useAppDispatch();
-  const menuVisibility = useAppSelector((state) => state.pageParams.profileSubmenu);
+  const menuVisibility = useAppSelector((state) => state.menuParams.profileSubmenu);
 
   const [isVisible, setIsVisible] = useState(menuVisibility);
 

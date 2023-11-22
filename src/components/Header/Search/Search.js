@@ -6,7 +6,7 @@ import SearchMobile from "./SearchMobile";
 import { useState } from "react";
 
 const Search = () => {
-  const searchVisibility = useAppSelector((state) => state.pageParams.search);
+  const searchVisibility = useAppSelector((state) => state.menuParams.search);
   const [search, setSearch] = useState("");
 
   return (

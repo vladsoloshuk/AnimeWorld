@@ -1,8 +1,7 @@
 import { Suspense, useEffect, useState } from "react";
 import Spinner from "../UI/Spinner/Spinner";
-import { useParams } from "react-router";
+import { useLocation } from "react-router";
 import { api } from "../../services/Api";
-import { UrlParts } from "../../const/urlConsts";
 import Preview from "../Preview/Preview";
 import { Link } from "react-router-dom";
 import "./../../styles/pages/p-animes.scss";
@@ -11,9 +10,8 @@ import ElementChart from "./ElementChart";
 const ElementPage = () => {
   const [maxRatesScore, setMaxRatesScore] = useState(0);
   const [maxRatesStatuse, setMaxRatesStatuse] = useState(0);
-  const { url } = useParams();
-  const fetchUrl = UrlParts.ANIMES + "/" + url;
-  const { data, isFetching, isSuccess } = api.useGetElementQuery(fetchUrl);
+  const { pathname } = useLocation();
+  const { data, isSuccess } = api.useGetElementQuery(pathname);
   const element = data;
   useEffect(() => {
     if (isSuccess) {
@@ -170,34 +168,38 @@ const ElementPage = () => {
                                 </div>
                               </div>
                             </div>
-                            <div className="block">
-                              <div className="subheadline">Studio</div>
+                            {element.studios ? (
                               <div className="block">
-                                {element.studios[0] ? (
-                                  element.studios[0].image ? (
-                                    <Link
-                                      to={``}
-                                      title={`Anime made by ${element.studios[0].name} studio`}
-                                    >
-                                      <img
-                                        className="studio-logo"
-                                        src={`https://shikimori.one/${element.studios[0].image}`}
-                                        alt={`Anime made by ${element.studios[0].name} studio`}
-                                      ></img>
-                                    </Link>
+                                <div className="subheadline">Studio</div>
+                                <div className="block">
+                                  {element.studios[0] ? (
+                                    element.studios[0].image ? (
+                                      <Link
+                                        to={``}
+                                        title={`Anime made by ${element.studios[0].name} studio`}
+                                      >
+                                        <img
+                                          className="studio-logo"
+                                          src={`https://shikimori.one/${element.studios[0].image}`}
+                                          alt={`Anime made by ${element.studios[0].name} studio`}
+                                        ></img>
+                                      </Link>
+                                    ) : (
+                                      <Link
+                                        className="b-tag"
+                                        to={``}
+                                      >
+                                        {element.studios[0].name}
+                                      </Link>
+                                    )
                                   ) : (
-                                    <Link
-                                      className="b-tag"
-                                      to={``}
-                                    >
-                                      {element.studios[0].name}
-                                    </Link>
-                                  )
-                                ) : (
-                                  ""
-                                )}
+                                    ""
+                                  )}
+                                </div>
                               </div>
-                            </div>
+                            ) : (
+                              ""
+                            )}
                           </div>
                         </div>
                       </div>

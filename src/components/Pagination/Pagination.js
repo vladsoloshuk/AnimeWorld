@@ -6,12 +6,17 @@ const Pagination = () => {
   const dispatch = useAppDispatch();
   const pageNumber = useAppSelector((state) => state.filter.page);
 
+  function paginationClick(event) {
+    event.preventDefault();
+    dispatch(changePage(event.target.getAttribute("data-field")));
+  }
+
   return (
     <div className="pagination">
       <Link
         className={`link link-prev${pageNumber < 2 ? " disabled" : ""}`}
         data-field="backward"
-        onClick={(event) => dispatch(changePage(event.target.getAttribute("data-field")))}
+        onClick={paginationClick}
       >
         Back
       </Link>
@@ -22,7 +27,7 @@ const Pagination = () => {
       <Link
         className="link link-next"
         data-field="forward"
-        onClick={(event) => dispatch(changePage(event.target.getAttribute("data-field")))}
+        onClick={paginationClick}
       >
         Forward
       </Link>

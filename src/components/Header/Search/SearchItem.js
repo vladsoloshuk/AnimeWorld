@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Preview from "../../Preview/Preview";
 import { useAppDispatch } from "../../../hooks/redux";
-import { elementVisibility } from "../../../store/reducers/PageParams";
+import { elementVisibility } from "../../../store/reducers/MenuParams";
 import { updateSearchArray } from "../../../store/reducers/SearchSlice";
 
 const SearchItem = ({ element, setSearch}) => {

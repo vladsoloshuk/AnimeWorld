@@ -2,11 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   title: "Home",
-  backdrop: false,
-  mainSubmenu: false,
-  profileSubmenu: false,
-  search: false,
-  mobile: false
+  restoreCollectionFilter: true
 };
 
 const pageParamsSlice = createSlice({
@@ -16,18 +12,13 @@ const pageParamsSlice = createSlice({
     updateTitle(state, action) {
       state.title = action.payload;
     },
-    showBackdrop(state, action) {
-      const { property, value } = action.payload;
-      state[property] = value;
-      console.log(state[property]);
-    },
-    elementVisibility(state, action) {
+    restoreCollectionFilter(state, action) {
       const [property, value] = action.payload;
       state[property] = value;
     }
   }
 });
 
-export const { updateTitle, updateVisibility, elementVisibility } = pageParamsSlice.actions;
+export const { updateTitle, restoreCollectionFilter } = pageParamsSlice.actions;
 
 export default pageParamsSlice.reducer;

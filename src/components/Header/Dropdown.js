@@ -16,6 +16,7 @@ const Dropdown = ({ dropdownParams }) => {
                   className={`icon-${item.icon}`}
                   to={item.link}
                   tabIndex="-1"
+                  state={{ title: item.title }}
                 >
                   {item.title}
                 </Link>

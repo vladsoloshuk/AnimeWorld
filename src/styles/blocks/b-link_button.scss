@@ -177,7 +177,7 @@
     @include link_button_icon("\002b");
   }
   &.arrow-right {
-    @include link_button_icon("\E850", false);
+    @include link_button_icon("\f30b", false);
   }
   &.maxi {
     font-size: 18px;
