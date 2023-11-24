@@ -7,8 +7,8 @@
 @use "./../../mixins/link.scss";
 
 @use "./../../units";
-@use './../../colors';
-// @import mixins/clearfix
+@use "./../../colors";
+@use "./../../mixins/clearfix.scss";
 // @import mixins/plashka
 
 .p-animes-show,
@@ -189,7 +189,7 @@
   }
 
   .cc-related-authors {
-    // +clearfix
+    @include clearfix.clearfix;
     margin-bottom: 0 !important;
 
     & > .c-column {
@@ -234,6 +234,7 @@
     .scores {
       display: flex;
       flex-direction: column;
+      margin-bottom: 15px;
     }
 
     .watch-online {
@@ -301,6 +302,7 @@
 
   .studio-logo {
     display: block;
+    padding-top: 30px;
     margin: 0 auto;
     max-width: 195px;
   }

@@ -11,22 +11,22 @@ const Filter = ({ recomendations, filterUI }) => {
         <div className="subheadline">{recomendations.title}</div>
         <div className="b-list">
           {recomendations.list.map((item) => (
-            <li key={item.title}>
-              <a href={item.link}>{item.title}</a>
+            <li key={item.id}>
+              <a href={item.link}>{item.name}</a>
             </li>
           ))}
         </div>
       </div>
       {filterUI.map((sortType) => (
         <div
-          key={sortType.name}
+          key={sortType.id}
           className="block"
         >
-          <div className="subheadline">{sortType.name}</div>
+          <div className="subheadline">{sortType.title}</div>
           <ul className="b-block_list">
             {sortType.params.map((param) => (
               <FilterItem
-                key={param.title}
+                key={param.id}
                 sortType={sortType}
                 param={param}
                 filterParams={filterParams}

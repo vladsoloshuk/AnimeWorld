@@ -12,13 +12,12 @@ const Dropdown = ({ dropdownParams }) => {
             {dropdownItem.items.map((item) => {
               return (
                 <Link
-                  key={item.title}
+                  key={item.name}
                   className={`icon-${item.icon}`}
                   to={item.link}
                   tabIndex="-1"
-                  state={{ title: item.title }}
                 >
-                  {item.title}
+                  {item.name}
                 </Link>
               );
             })}

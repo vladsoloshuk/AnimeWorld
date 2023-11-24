@@ -4,35 +4,35 @@ export const menuDropdown = [
   {
     title: "Database",
     items: [
-      { icon: "anime", title: "Anime", link: UrlParts.ANIMES },
-      { icon: "manga", title: "Manga", link: UrlParts.MANGAS },
-      { icon: "ranobe", title: "Ranobe", link: UrlParts.RANOBE }
+      { icon: "anime", name: "Anime", link: UrlParts.ANIMES },
+      { icon: "manga", name: "Manga", link: UrlParts.MANGAS },
+      { icon: "ranobe", name: "Ranobe", link: UrlParts.RANOBE }
     ]
   },
   {
     title: "Community",
     items: [
-      { icon: "forum", title: "Forum", link: "" },
-      { icon: "clubs", title: "Clubs", link: "" },
-      { icon: "collections", title: "Collections", link: "" },
-      { icon: "critiques", title: "Reviews", link: "" },
-      { icon: "articles", title: "Articles", link: "" },
-      { icon: "users", title: "Users", link: "" }
+      { icon: "forum", name: "Forum", link: "" },
+      { icon: "clubs", name: "Clubs", link: "" },
+      { icon: "collections", name: "Collections", link: "" },
+      { icon: "critiques", name: "Reviews", link: "" },
+      { icon: "articles", name: "Articles", link: "" },
+      { icon: "users", name: "Users", link: "" }
     ]
   },
   {
     title: "Other",
     items: [
-      { icon: "contests", title: "Contests", link: "" },
-      { icon: "calendar", title: "Calendar", link: "" }
+      { icon: "contests", name: "Contests", link: "" },
+      { icon: "calendar", name: "Calendar", link: "" }
     ]
   },
   {
     title: "Information",
     items: [
-      { icon: "info", title: "About us", link: "" },
-      { icon: "socials", title: "Social media", link: "" },
-      { icon: "moderation", title: "Moderation", link: "" }
+      { icon: "info", name: "About us", link: "" },
+      { icon: "socials", name: "Social media", link: "" },
+      { icon: "moderation", name: "Moderation", link: "" }
     ]
   }
 ];
@@ -41,25 +41,25 @@ export const profileDropdown = [
   {
     title: "Profile",
     items: [
-      { icon: "anime_list", title: "Anime list", link: "" },
-      { icon: "manga_list", title: "Manga list", link: "" },
-      { icon: "mail", title: "Mail", link: "" },
-      { icon: "achievements", title: "Achievements", link: "" },
-      { icon: "clubs", title: "Clubs", link: "" },
-      { icon: "settings", title: "Settings", link: "" }
+      { icon: "anime_list", name: "Anime list", link: "" },
+      { icon: "manga_list", name: "Manga list", link: "" },
+      { icon: "mail", name: "Mail", link: "" },
+      { icon: "achievements", name: "Achievements", link: "" },
+      { icon: "clubs", name: "Clubs", link: "" },
+      { icon: "settings", name: "Settings", link: "" }
     ]
   },
   {
     title: "Website",
     items: [
-      { icon: "site_rules", title: "Site ruled", link: "" },
-      { icon: "faq", title: "FAQ", link: "" },
-      { icon: "sign_out", title: "Sign out", link: "" }
+      { icon: "site_rules", name: "Site ruled", link: "" },
+      { icon: "faq", name: "FAQ", link: "" },
+      { icon: "sign_out", name: "Sign out", link: "" }
     ]
   }
 ];
 
 export const headerParams = {
-  title: "",
+  name: "",
   icon: ""
 };

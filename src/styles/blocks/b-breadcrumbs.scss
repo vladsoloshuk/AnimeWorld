@@ -1,0 +1,26 @@
+@use "./../mixins/ellipsis.scss";
+@use "./../mixins/font_shikimori.scss";
+@use "./../units";
+@use "./../colors";
+
+.b-breadcrumbs {
+  @include ellipsis.ellipsis;
+  clear: left;
+  color: colors.$bright-color;
+  line-height: units.$line_height;
+  margin: 2px 0 10px 1px;
+
+  & > span {
+    &:after {
+      @include font_shikimori.font_shikimori("\f101");
+      color: colors.$dark-color;
+      padding: 0 5px;
+    }
+    &:last-child:after {
+      display: none;
+    }
+  }
+  .no-url {
+    color: colors.$gray-3;
+  }
+}

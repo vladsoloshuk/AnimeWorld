@@ -12,11 +12,13 @@ import { useLocation } from "react-router";
 
 const ElementsCollection = () => {
   const dispatch = useAppDispatch();
-  const { state } = useLocation();
+  const { pathname } = useLocation();
+  let title;
+  RegExp(`${UrlParts.ANIMES}`).test(pathname) ? (title = "Anime") : RegExp(`${UrlParts.MANGAS}`).test(pathname) ? (title = "Manga") : (title = "Ranobe");
   const pageParams = useAppSelector((state) => state.pageParams);
 
   useEffect(() => {
-    dispatch(updateTitle(state.title));
+    dispatch(updateTitle(title));
     if (pageParams.restoreCollectionFilter) {
       dispatch(restoreFilter());
     }
@@ -24,9 +26,9 @@ const ElementsCollection = () => {
 
   return (
     <EmptyCatalog
-      url={state.title === "Anime" ? UrlParts.ANIMES : state.title === "Manga" ? UrlParts.MANGAS : UrlParts.RANOBE}
-      recomendations={state.title === "Anime" ? animeRecomendaions : state.title === "Manga" ? mangaRecomendaions : ranobeRecomendaions}
-      filterUI={state.title === "Anime" ? animeFilters : state.title === "Manga" ? mangaFilters : ranobeFilters}
+      url={title === "Anime" ? UrlParts.ANIMES : title === "Manga" ? UrlParts.MANGAS : UrlParts.RANOBE}
+      recomendations={title === "Anime" ? animeRecomendaions : title === "Manga" ? mangaRecomendaions : ranobeRecomendaions}
+      filterUI={title === "Anime" ? animeFilters : title === "Manga" ? mangaFilters : ranobeFilters}
     />
   );
 };

@@ -7,17 +7,17 @@ const FilterItem = ({ sortType, param, filterParams }) => {
 
   return (
     <li
-      data-field={sortType.name}
+      data-field={sortType.title}
       data-value={param.value}
       onClick={(event) => dispatch(updateFilter([event.target.getAttribute("data-field"), event.target.getAttribute("data-value")]))}
-      className={`${param.sub ? "sub" : ""}${filterParams[sortType.name] && filterParams[sortType.name].split(",").includes(param.value) ? " selected" : ""}`}
+      className={`${param.sub ? "sub" : ""}${filterParams[sortType.title] && filterParams[sortType.title].split(",").includes(param.value) ? " selected" : ""}`}
     >
       <input
         data-value={param.value}
         type={sortType.type}
-        name={sortType.name}
+        name={sortType.title}
       />
-      {param.title}
+      {param.name}
     </li>
   );
 };

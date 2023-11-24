@@ -8,7 +8,7 @@ const Root = lazy(() => import("../pages/Root"));
 const Home = lazy(() => import("../pages/Home"));
 const ElementsCollection = lazy(() => import("../pages/ElementsCollection"));
 const ErrorPage = lazy(() => import("../pages/ErrorPage"));
-const ElementPage = lazy(() => import("../components/Element/ElementPage"));
+const ElementPage = lazy(() => import("../components/ElementPage/ElementPage"));
 
 export const publicRoutes = [
   {

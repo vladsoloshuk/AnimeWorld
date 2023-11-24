@@ -1,209 +1,135 @@
+const orderParams = [
+  { id: 1, name: "By rank", value: "ranked" },
+  { id: 2, name: "By popularity", value: "popularity" },
+  { id: 3, name: "In alphabetical order", value: "name" },
+  { id: 4, name: "By release date", value: "aired_on" },
+  { id: 5, name: "Random", value: "random" },
+  { id: 6, name: "By ID", value: "id" }
+];
+
+const statusParams = [
+  { id: 1, name: "Announced", value: "anons" },
+  { id: 2, name: "Ongoing", value: "ongoing" },
+  { id: 3, name: "Released", value: "released" },
+  { id: 4, name: "Latest", value: "latest" }
+];
+
+const seasonParams = [
+  { id: 1, name: "2023", value: "2023" },
+  { id: 2, name: "2022", value: "2022" },
+  { id: 3, name: "2020-2021", value: "2020_2021" },
+  { id: 4, name: "2015-2019", value: "2015_2019" },
+  { id: 5, name: "2010-2014", value: "2010_2014" },
+  { id: 6, name: "2000-2010", value: "2000_2010" },
+  { id: 7, name: "199x", value: "199x" },
+  { id: 8, name: "198x", value: "198x" },
+  { id: 9, name: "Older", value: "ancient" }
+];
+
+const scoreParams = [
+  { id: 1, name: "8+", value: "8" },
+  { id: 2, name: "7+", value: "7" },
+  { id: 3, name: "6+", value: "6" }
+];
+
+const durationParams = [
+  { id: 1, name: "Up to 10 minutes", value: "S" },
+  { id: 2, name: "Up to 30 minutes", value: "D" },
+  { id: 3, name: "More than 30 minutes", value: "F" }
+];
+
+const ratingParams = [
+  { id: 1, name: "G", value: "g" },
+  { id: 2, name: "PG", value: "pg" },
+  { id: 3, name: "PG-13", value: "pg_13" },
+  { id: 4, name: "R-17", value: "r" },
+  { id: 5, name: "R+", value: "r_plus" },
+  { id: 6, name: "Rx", value: "rx" }
+];
+
 //Anime
 export const animeFilters = [
+  { id: 1, title: "order", type: "radio", params: orderParams },
+  { id: 2, title: "status", type: "checkbox", params: statusParams },
   {
-    name: "order",
-    type: "radio",
-    params: [
-      { title: "By rank", value: "ranked" },
-      { title: "By popularity", value: "popularity" },
-      { title: "In alphabetical order", value: "name" },
-      { title: "By release date", value: "aired_on" },
-      { title: "Random", value: "random" },
-      { title: "By ID", value: "id" }
-    ]
-  },
-  {
-    name: "status",
+    id: 3,
+    title: "kind",
     type: "checkbox",
     params: [
-      { title: "Announced", value: "anons" },
-      { title: "Ongoing", value: "ongoing" },
-      { title: "Released", value: "released" },
-      { title: "Latest", value: "latest" }
+      { id: 1, name: "TV Series", value: "tv" },
+      { id: 2, name: "Short", value: "tv_13", sub: true },
+      { id: 3, name: "Medium", value: "tv_24", sub: true },
+      { id: 4, name: "Long", value: "tv_48", sub: true },
+      { id: 5, name: "Movie", value: "movie" },
+      { id: 6, name: "Ova", value: "ova" },
+      { id: 7, name: "Ona", value: "ona" },
+      { id: 8, name: "Special", value: "special" },
+      { id: 9, name: "Music", value: "music" }
     ]
   },
-  {
-    name: "kind",
-    type: "checkbox",
-    params: [
-      { title: "TV Series", value: "tv" },
-      { title: "Short", value: "tv_13", sub: true },
-      { title: "Medium", value: "tv_24", sub: true },
-      { title: "Long", value: "tv_48", sub: true },
-      { title: "Movie", value: "movie" },
-      { title: "Ova", value: "ova" },
-      { title: "Ona", value: "ona" },
-      { title: "Special", value: "special" },
-      { title: "Music", value: "music" }
-    ]
-  },
-  {
-    name: "season",
-    type: "checkbox",
-    params: [
-      { title: "2023", value: "2023" },
-      { title: "2022", value: "2022" },
-      { title: "2020-2021", value: "2020_2021" },
-      { title: "2015-2019", value: "2015_2019" },
-      { title: "2010-2014", value: "2010_2014" },
-      { title: "2000-2010", value: "2000_2010" },
-      { title: "199x", value: "199x" },
-      { title: "198x", value: "198x" },
-      { title: "Older", value: "ancient" }
-    ]
-  },
-  {
-    name: "score",
-    type: "checkbox",
-    params: [
-      { title: "8+", value: "8" },
-      { title: "7+", value: "7" },
-      { title: "6+", value: "6" }
-    ]
-  }
+  { id: 4, title: "season", type: "checkbox", params: seasonParams },
+  { id: 5, title: "score", type: "checkbox", params: scoreParams },
+  { id: 6, title: "duration", type: "checkbox", params: durationParams },
+  { id: 7, title: "rating", type: "checkbox", params: ratingParams }
 ];
 
 export const animeRecomendaions = {
+  id: 1,
   title: "recomendations",
   list: [
-    { title: "Favorites", link: "" },
-    { title: "From the community", link: "" },
-    { title: "Personalized", link: "" }
+    { id: 1, name: "Favorites", link: "" },
+    { id: 2, name: "From the community", link: "" },
+    { id: 3, name: "Personalized", link: "" }
   ]
 };
 
 //Manga
 export const mangaFilters = [
+  { id: 1, title: "order", type: "radio", params: orderParams },
+  { id: 2, title: "status", type: "checkbox", params: statusParams },
   {
-    name: "order",
-    type: "radio",
-    params: [
-      { title: "By rank", value: "ranked" },
-      { title: "By popularity", value: "popularity" },
-      { title: "In alphabetical order", value: "name" },
-      { title: "By release date", value: "aired_on" },
-      { title: "Random", value: "random" },
-      { title: "By ID", value: "id" }
-    ]
-  },
-  {
-    name: "status",
+    id: 3,
+    title: "kind",
     type: "checkbox",
     params: [
-      { title: "Announced", value: "anons" },
-      { title: "Ongoing", value: "ongoing" },
-      { title: "Released", value: "released" },
-      { title: "Latest", value: "latest" }
+      { id: 1, name: "Manga", value: "manga" },
+      { id: 2, name: "Manhwa", value: "manhwa" },
+      { id: 3, name: "Manhua", value: "manhua" },
+      { id: 4, name: "Light novel", value: "light_novel" },
+      { id: 5, name: "Novel", value: "novel" },
+      { id: 6, name: "One shot", value: "one_shot" },
+      { id: 7, name: "Doujin", value: "doujin" }
     ]
   },
-  {
-    name: "kind",
-    type: "checkbox",
-    params: [
-      { title: "Manga", value: "manga" },
-      { title: "Manhwa", value: "manhwa" },
-      { title: "Manhua", value: "manhua" },
-      { title: "Light novel", value: "light_novel" },
-      { title: "Novel", value: "novel" },
-      { title: "One shot", value: "one_shot" },
-      { title: "Doujin", value: "doujin" }
-    ]
-  },
-  {
-    name: "season",
-    type: "checkbox",
-    params: [
-      { title: "2023", value: "2023" },
-      { title: "2022", value: "2022" },
-      { title: "2020-2021", value: "2020_2021" },
-      { title: "2015-2019", value: "2015_2019" },
-      { title: "2010-2014", value: "2010_2014" },
-      { title: "2000-2010", value: "2000_2010" },
-      { title: "199x", value: "199x" },
-      { title: "198x", value: "198x" },
-      { title: "Older", value: "ancient" }
-    ]
-  },
-  {
-    name: "score",
-    type: "checkbox",
-    params: [
-      { title: "8+", value: "8" },
-      { title: "7+", value: "7" },
-      { title: "6+", value: "6" }
-    ]
-  }
+  { id: 4, title: "season", type: "checkbox", params: seasonParams },
+  { id: 5, title: "score", type: "checkbox", params: scoreParams }
 ];
 
 export const mangaRecomendaions = {
+  id: 1,
   title: "recomendations",
   list: [
-    { title: "Favorites", link: "" },
-    { title: "Personalized", link: "" }
+    { id: 1, name: "Favorites", link: "" },
+    { id: 2, name: "Personalized", link: "" }
   ]
 };
 
 //Ranobe
 
 export const ranobeFilters = [
+  { id: 1, title: "order", type: "radio", params: orderParams },
+  { id: 2, title: "status", type: "checkbox", params: statusParams },
   {
-    name: "order",
-    type: "radio",
-    params: [
-      { title: "By rank", value: "ranked" },
-      { title: "By popularity", value: "popularity" },
-      { title: "In alphabetical order", value: "name" },
-      { title: "By release date", value: "aired_on" },
-      { title: "Random", value: "random" },
-      { title: "By ID", value: "id" }
-    ]
-  },
-  {
-    name: "status",
+    id: 3,
+    title: "kind",
     type: "checkbox",
     params: [
-      { title: "Announced", value: "anons" },
-      { title: "Ongoing", value: "ongoing" },
-      { title: "Released", value: "released" },
-      { title: "Paused", value: "paused" },
-      { title: "Discontinued", value: "discontinued" }
+      { id: 1, name: "Light novel", value: "light_novel" },
+      { id: 2, name: "Novel", value: "novel" }
     ]
   },
-  {
-    name: "kind",
-    type: "checkbox",
-    params: [
-      { title: "Light novel", value: "light_novel" },
-      { title: "Novel", value: "novel" }
-    ]
-  },
-  {
-    name: "season",
-    type: "checkbox",
-    params: [
-      { title: "2023", value: "2023" },
-      { title: "2022", value: "2022" },
-      { title: "2020-2021", value: "2020_2021" },
-      { title: "2015-2019", value: "2015_2019" },
-      { title: "2010-2014", value: "2010_2014" },
-      { title: "2000-2010", value: "2000_2010" },
-      { title: "199x", value: "199x" },
-      { title: "198x", value: "198x" },
-      { title: "Older", value: "ancient" }
-    ]
-  },
-  {
-    name: "score",
-    type: "checkbox",
-    params: [
-      { title: "8+", value: "8" },
-      { title: "7+", value: "7" },
-      { title: "6+", value: "6" }
-    ]
-  }
+  { id: 4, title: "season", type: "checkbox", params: seasonParams },
+  { id: 5, title: "score", type: "checkbox", params: scoreParams }
 ];
 
-export const ranobeRecomendaions = {
-  title: "recomendations",
-  list: [{ title: "Favorites", link: "" }]
-};
+export const ranobeRecomendaions = { id: 1, title: "recomendations", list: [{ id: 1, name: "Favorites", link: "" }] };
