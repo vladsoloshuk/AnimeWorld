@@ -15,21 +15,23 @@ export const timeFromPublication = (date: Date) => {
   let days = Math.round(dateDifference / day);
   let years = Math.round(dateDifference / year);
 
-  let result = "";
-
   if (dateDifference < 1 * minute) {
-    return (result = seconds + " seconds ago");
+    return seconds + " seconds ago";
   }
   if (dateDifference > 1 * minute && dateDifference < 1 * hour) {
-    return (result = minutes + " minutes ago");
+    return minutes + " minutes ago";
   }
   if (dateDifference > 1 * hour && dateDifference < 1 * day) {
-    return (result = hours + " hours ago");
+    return hours + " hours ago";
   }
   if (dateDifference > 1 * day && dateDifference < 1 * year) {
-    return (result = days + " days ago");
+    return days + " days ago";
   }
   if (dateDifference > 1 * year) {
-    return (result = years + " years ago");
+    return years + " years ago";
   }
+};
+
+export const getYear = (date: Date) => {
+  return new Date(date).getFullYear();
 };

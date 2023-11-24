@@ -6,7 +6,7 @@ import Spinner from "../UI/Spinner/Spinner";
 import EmptyCatalogItem from "../Catalogs/EmptyCatalog/EmptyCatalogItem";
 import { useAppDispatch } from "../../hooks/redux";
 import { updateFilter } from "../../store/reducers/FilterSlice";
-import { restoreCollectionFilter} from "../../store/reducers/PageParams";
+import { restoreCollectionFilter } from "../../store/reducers/PageParams";
 
 const OngoingSection = () => {
   const [elements, setElements] = useState([]);
@@ -42,7 +42,6 @@ const OngoingSection = () => {
           <Link
             to={`${UrlParts.ANIMES}${param}`}
             onClick={loadFuction}
-            state={{ title: "Anime" }}
           >
             Now on screens
           </Link>

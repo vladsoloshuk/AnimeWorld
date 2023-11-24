@@ -11,14 +11,13 @@ $margin-right: 9px;
   color: colors.$bright-color;
   background-color: colors.$block-color;
   padding: 2px 10px;
+  margin: 3px;
   border-radius: units.$border-radius-base;
   cursor: default;
   display: inline-block;
   font-family: fonts.$font-alt;
   letter-spacing: fonts.$font-alt-text-letter-spacing;
   line-height: 16px;
-  margin-left: $margin-left;
-  margin-right: $margin-right;
   text-decoration: none;
   transition: none;
 

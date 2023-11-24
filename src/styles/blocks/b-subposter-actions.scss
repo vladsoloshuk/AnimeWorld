@@ -14,7 +14,7 @@
 
   @include responsive.iphone-portrait {
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
   }
 }
 .b-subposter-action {

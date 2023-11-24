@@ -1,0 +1,144 @@
+@use "./../mixins/brackets_surrounded.scss";
+@use "./../mixins/dash_separated.scss";
+@use "./../mixins/link.scss";
+@use "./../mixins/responsive.scss";
+
+@use "./../colors";
+@use "./../units";
+
+@mixin top_line_options_floated {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-bottom: 5px;
+  margin-top: 0;
+  padding-right: 0;
+  // position: initial;
+
+  a {
+    @include link.link_color;
+
+    &.selected {
+      color: colors.$link-hover-color;
+
+      @include responsive.gte_laptop {
+        &:hover {
+          color: colors.$link-active-color;
+        }
+      }
+    }
+  }
+}
+.b-options-floated {
+  position: absolute;
+  right: 10px;
+  height: 28px;
+  z-index: 1;  
+  display: inline-flex;
+  align-items: center;
+  // character page - switching types
+  a,
+  .link {
+    @include link.link;
+    @include dash_separated.dash_separated;
+    cursor: pointer;
+    white-space: nowrap;
+
+    span.brackets {
+      @include brackets_surrounded.brackets_surrounded;
+      margin-left: 5px;
+    }
+  }
+  a.rss {
+    margin-left: 10px;
+  }
+  // user list
+  .action {
+    @include link.js-link;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+  .selected {
+    color: colors.$link-hover-color;
+
+    @include responsive.gte_laptop {
+      &:hover {
+        color: colors.$link-active-color;
+      }
+    }
+    &.always-active {
+      @include link.link_color(#123);
+      cursor: pointer;
+    }
+  }
+  &.r-edit {
+    @include responsive.gte_ipad {
+      margin-right: 15px;
+    }
+    @include responsive.lte_ipad {
+      margin-right: 35px;
+    }
+  }
+  &.for-headline {
+    margin-top: 10px;
+  }
+  .pointer {
+    cursor: pointer;
+  }
+  // contests page - options-floated, displaying the number of participants
+  &.count {
+    color: colors.$gray-3;
+  }
+  &.before-buttons-2 {
+    @include responsive.gte_laptop {
+      padding-right: 70px;
+    }
+    @include responsive.ipad {
+      padding-right: 110px;
+    }
+    @include responsive.iphone {
+      padding-right: 0;
+    }
+  }
+  &.before-buttons-3 {
+    @include responsive.gte_laptop {
+      padding-right: 105px;
+    }
+    @include responsive.ipad {
+      padding-right: 165px;
+    }
+    @include responsive.iphone {
+      padding-right: 0;
+    }
+  }
+  &.mobile-desktop {
+    @include top_line_options_floated;
+  }
+  &.mobile-phone_portrait {
+    @include responsive.iphone-portrait {
+      @include top_line_options_floated;
+
+      &.r-edit {
+        margin-right: 0;
+      }
+    }
+  }
+  &.mobile-phone {
+    @include responsive.iphone {
+      @include top_line_options_floated;
+
+      &.r-edit {
+        margin-right: 0;
+      }
+    }
+  }
+  &.mobile-tablet {
+    @include responsive.lte_ipad {
+      @include top_line_options_floated;
+
+      &.r-edit {
+        margin-right: 0;
+      }
+    }
+  }
+}

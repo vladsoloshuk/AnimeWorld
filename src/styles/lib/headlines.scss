@@ -93,7 +93,7 @@ header.head {
   }
 }
 .headline {
-  @include ellipsis.ellipsis;  
+  @include ellipsis.ellipsis;
   color: colors.$dark-color;
   background: rgba(colors.$block-color, 0.6);
   font-family: fonts.$font-alt;
@@ -212,7 +212,8 @@ h5 {
   display: block;
   text-transform: uppercase;
   align-items: center;
-  margin: 10px 0 5px;
+  margin-top: 0;
+  margin-bottom: 10px;
 
   &:hover {
     background: colors.$block-color;
