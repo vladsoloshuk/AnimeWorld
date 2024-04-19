@@ -116,7 +116,7 @@
     // background: rgba(blue, 0.5);
     margin-bottom: $offset;
     margin-left: $gutter;
-    @include fcolumn-size(1 / $columns, $gutter);
+    @include fcolumn-size(calc(1 / $columns), $gutter);
   }
 }
 

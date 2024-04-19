@@ -6,6 +6,7 @@
 .b-anime_status_tag {
   
   border-radius: units.$border-radius-base;
+  margin-right: 5px;
 
   &.released {
     @include static_marker(#fff, colors.$released_tag);

@@ -47,6 +47,376 @@ const ratingParams = [
   { id: 6, name: "Rx", value: "rx" }
 ];
 
+const animeGenresParams = [
+  {
+    id: 8,
+    name: "Drama",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 11,
+    name: "Game",
+    russian: "Игры",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 40,
+    name: "Psychological",
+    russian: "Психологическое",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 19,
+    name: "Music",
+    russian: "Музыка",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 1,
+    name: "Action",
+    russian: "Экшен",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 4,
+    name: "Comedy",
+    russian: "Комедия",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 6,
+    name: "Demons",
+    russian: "Демоны",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 39,
+    name: "Police",
+    russian: "Полиция",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 9,
+    name: "Ecchi",
+    russian: "Этти",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 10,
+    name: "Fantasy",
+    russian: "Фэнтези",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 12,
+    name: "Hentai",
+    russian: "Хентай",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 13,
+    name: "Historical",
+    russian: "Исторический",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 16,
+    name: "Magic",
+    russian: "Магия",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 18,
+    name: "Mecha",
+    russian: "Меха",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 20,
+    name: "Parody",
+    russian: "Пародия",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 21,
+    name: "Samurai",
+    russian: "Самураи",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 22,
+    name: "Romance",
+    russian: "Романтика",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 23,
+    name: "School",
+    russian: "Школа",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 27,
+    name: "Shounen",
+    russian: "Сёнен",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 32,
+    name: "Vampire",
+    russian: "Вампиры",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 33,
+    name: "Yaoi",
+    russian: "Яой",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 34,
+    name: "Yuri",
+    russian: "Юри",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 35,
+    name: "Harem",
+    russian: "Гарем",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 36,
+    name: "Slice of Life",
+    russian: "Повседневность",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 26,
+    name: "Shoujo Ai",
+    russian: "Сёдзё-ай",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 43,
+    name: "Josei",
+    russian: "Дзёсей",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 37,
+    name: "Supernatural",
+    russian: "Сверхъестественное",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 41,
+    name: "Thriller",
+    russian: "Триллер",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 24,
+    name: "Sci-Fi",
+    russian: "Фантастика",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 25,
+    name: "Shoujo",
+    russian: "Сёдзё",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 31,
+    name: "Super Power",
+    russian: "Супер сила",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 38,
+    name: "Military",
+    russian: "Военное",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 7,
+    name: "Mystery",
+    russian: "Детектив",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 15,
+    name: "Kids",
+    russian: "Детское",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 3,
+    name: "Cars",
+    russian: "Машины",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 17,
+    name: "Martial Arts",
+    russian: "Боевые искусства",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 5,
+    name: "Dementia",
+    russian: "Безумие",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 30,
+    name: "Sports",
+    russian: "Спорт",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 42,
+    name: "Seinen",
+    russian: "Сэйнэн",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 28,
+    name: "Shounen Ai",
+    russian: "Сёнен-ай",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 543,
+    name: "Gourmet",
+    russian: "Гурман",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 29,
+    name: "Space",
+    russian: "Космос",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 541,
+    name: "Work Life",
+    russian: "Работа",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 14,
+    name: "Horror",
+    russian: "Ужасы",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 2,
+    name: "Adventure",
+    russian: "Приключения",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  },
+  {
+    id: 539,
+    name: "Erotica",
+    russian: "Эротика",
+    get value() {
+      return `${this.id}-${this.name}`;
+    }
+  }
+];
+
 //Anime
 export const animeFilters = [
   { id: 1, title: "order", type: "radio", params: orderParams },
@@ -64,13 +434,17 @@ export const animeFilters = [
       { id: 6, name: "Ova", value: "ova" },
       { id: 7, name: "Ona", value: "ona" },
       { id: 8, name: "Special", value: "special" },
-      { id: 9, name: "Music", value: "music" }
+      { id: 9, name: "TV Special", value: "tv_special" },
+      { id: 10, name: "Music", value: "music" },
+      { id: 11, name: "Promo clip", value: "pv" },
+      { id: 12, name: "Advertising", value: "cm" }
     ]
   },
   { id: 4, title: "season", type: "checkbox", params: seasonParams },
   { id: 5, title: "score", type: "checkbox", params: scoreParams },
   { id: 6, title: "duration", type: "checkbox", params: durationParams },
-  { id: 7, title: "rating", type: "checkbox", params: ratingParams }
+  { id: 7, title: "rating", type: "checkbox", params: ratingParams },
+  { id: 8, title: "genres", type: "checkbox", params: animeGenresParams }
 ];
 
 export const animeRecomendaions = {
@@ -95,10 +469,8 @@ export const mangaFilters = [
       { id: 1, name: "Manga", value: "manga" },
       { id: 2, name: "Manhwa", value: "manhwa" },
       { id: 3, name: "Manhua", value: "manhua" },
-      { id: 4, name: "Light novel", value: "light_novel" },
-      { id: 5, name: "Novel", value: "novel" },
-      { id: 6, name: "One shot", value: "one_shot" },
-      { id: 7, name: "Doujin", value: "doujin" }
+      { id: 4, name: "One shot", value: "one_shot" },
+      { id: 5, name: "Doujin", value: "doujin" }
     ]
   },
   { id: 4, title: "season", type: "checkbox", params: seasonParams },

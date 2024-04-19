@@ -1,6 +1,5 @@
 // import MainSectionCard from "../components/UI/Cards/MainSectionCard";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
-import { animeFilters, animeRecomendaions, mangaFilters, mangaRecomendaions, ranobeFilters, ranobeRecomendaions } from "../const/filters";
 import { updateTitle } from "../store/reducers/PageParams";
 import { UrlParts } from "../const/urlConsts";
 import { useEffect } from "react";
@@ -13,7 +12,7 @@ import { useLocation } from "react-router";
 const ElementsCollection = () => {
   const dispatch = useAppDispatch();
   const { pathname } = useLocation();
-  let title;
+  let title = "";
   RegExp(`${UrlParts.ANIMES}`).test(pathname) ? (title = "Anime") : RegExp(`${UrlParts.MANGAS}`).test(pathname) ? (title = "Manga") : (title = "Ranobe");
   const pageParams = useAppSelector((state) => state.pageParams);
 
@@ -24,13 +23,7 @@ const ElementsCollection = () => {
     }
   });
 
-  return (
-    <EmptyCatalog
-      url={title === "Anime" ? UrlParts.ANIMES : title === "Manga" ? UrlParts.MANGAS : UrlParts.RANOBE}
-      recomendations={title === "Anime" ? animeRecomendaions : title === "Manga" ? mangaRecomendaions : ranobeRecomendaions}
-      filterUI={title === "Anime" ? animeFilters : title === "Manga" ? mangaFilters : ranobeFilters}
-    />
-  );
+  return <EmptyCatalog />;
 };
 
 export default ElementsCollection;

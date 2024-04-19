@@ -1,4 +1,4 @@
-import Preview from "../Preview/Preview";
+import Preview from "../../Preview/Preview";
 
 const Poster = ({ element }) => {
   return (

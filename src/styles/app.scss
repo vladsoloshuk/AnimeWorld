@@ -7,6 +7,7 @@
 
 @use "./lib/headlines.scss";
 @use "./lib/flex_columns.scss";
+@use "./lib/float_columns.scss";
 @use "./lib/margins.scss";
 
 @use "./layouts/l-top_menu.scss";
@@ -15,12 +16,15 @@
 
 @use "./blocks/b-rate.scss";
 @use "./blocks/b-entry-info.scss";
+@use './blocks/b-image.scss';
 @use "./blocks/b-db_entry.scss";
+@use "./blocks/b-db_entry-poster.scss";
 @use "./blocks/b-db_entry-variant-list_item.scss";
 @use "./blocks/b-shade.scss";
 @use "./blocks/b-anime_status_tag.scss";
 @use "./blocks/b-options-floated.scss";
 @use "./blocks/b-breadcrumbs.scss";
+@use './blocks/b-video.scss';
 
 @use "./blocks/b-news_wall-topic.scss";
 @use "./blocks/b-shiki_swiper.scss";

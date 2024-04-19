@@ -10,5 +10,9 @@ export enum UrlParts {
   CHARACTERS = "/characters",
   PEOPLE = "/people",
   TOPICS = "/topics",
-  UPDATES = "/updates"
+  UPDATES = "/updates",
+  GENRES = '/genres',
+  RELATED = '/related',
+  ROLES = '/roles',
+  SIMILAR = '/similar'
 }

@@ -6,6 +6,7 @@ import { UrlParts } from "../../const/urlConsts";
 import Preview from "../Preview/Preview";
 import { timeFromPublication } from "../../utils/dateCalculations";
 import _ from "lodash";
+import { firstLetterUpperCase, kindTransform } from "../../utils/textTransform";
 
 const AnimeUpdatesSection = () => {
   const [elements, setElements] = useState([]);
@@ -66,12 +67,12 @@ const AnimeUpdatesSection = () => {
                     <div className="status-time">
                       <div
                         className={`b-anime_status_tag ${element.linked.status}`}
-                        data-text={element.linked.status}
+                        data-text={firstLetterUpperCase(element.linked.status)}
                       ></div>
                       <time>{timeFromPublication(element.created_at)}</time>
                     </div>
                     <div className="tags">
-                      <div className="b-anime_status_tag studio">{element.linked.kind}</div>
+                      <div className="b-anime_status_tag studio">{kindTransform(element.linked.kind)}</div>
                     </div>
                   </div>
                 </Link>

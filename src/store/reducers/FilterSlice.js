@@ -15,7 +15,7 @@ const filterSlice = createSlice({
       const [property, value] = action.payload;
       state.page = 1;
       if (state.hasOwnProperty(property)) {
-        if (property === "order" | property === "search") {
+        if ((property === "order") | (property === "search")) {
           state[property] = value;
         } else {
           state[property] = multipleFilter(state[property], value);
@@ -35,10 +35,14 @@ const filterSlice = createSlice({
     },
     restoreFilter(state) {
       return (state = initialState);
+    },
+    restoreUpdateFilter(action) {
+      let state = initialState;
+      updateFilter(state, action);
     }
   }
 });
 
-export const { updateFilter, changePage, restoreFilter } = filterSlice.actions;
+export const { updateFilter, changePage, restoreFilter, restoreUpdateFilter } = filterSlice.actions;
 
 export default filterSlice.reducer;

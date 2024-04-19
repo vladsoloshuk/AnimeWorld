@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../hooks/redux";
 import { UrlParts } from "../../const/urlConsts";
-import { updateFilter } from "../../store/reducers/FilterSlice";
+import { restoreFilter, updateFilter } from "../../store/reducers/FilterSlice";
 import { restoreCollectionFilter } from "../../store/reducers/PageParams";
+import { kindTransform } from "../../utils/textTransform";
 
 const Header = ({ element, title }) => {
   const dispatch = useAppDispatch();
@@ -10,6 +11,7 @@ const Header = ({ element, title }) => {
   let basicUrl = title === "Anime" ? UrlParts.ANIMES : title === "Manga" ? UrlParts.MANGAS : UrlParts.RANOBE;
 
   const kindBreadCrumb = () => {
+    dispatch(restoreFilter());
     dispatch(updateFilter(["kind", element.kind]));
     dispatch(restoreCollectionFilter(["restoreCollectionFilter", false]));
   };
@@ -34,10 +36,10 @@ const Header = ({ element, title }) => {
         <span>
           <Link
             className="b-link"
-            to={`${basicUrl}/kind/${element.kind}`}
+            to={`${basicUrl}`}
             onClick={kindBreadCrumb}
           >
-            {element.kind}
+            {kindTransform(element.kind)}
           </Link>
         </span>
         {/* <span>

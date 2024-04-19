@@ -20,19 +20,16 @@
     color: inherit;
   }
 
-  &:first-child {
-    border-top: none;
-    padding-top: 0;
-  }
-
   .image {
     flex-shrink: 0;
-    margin-right: 16px;
+    margin-right: 10px;
+    margin-left: 10px;
 
     img {
       object-fit: cover;
       height: 75px;
       width: 48px;
+      border-radius: 10px;
     }
   }
 
@@ -45,6 +42,7 @@
     .name {
       display: flex;
       margin-bottom: 7px;
+      margin-right: 10px;
       .b-link {
         @include ellipsis.ellipsis;
         font-size: 14px;

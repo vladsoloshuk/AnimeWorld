@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { getYear } from "../../utils/dateCalculations";
+import { kindTransform } from "../../utils/textTransform";
 
 const RelatedInformation = ({ element, relation }) => {
   return (
@@ -18,7 +19,7 @@ const RelatedInformation = ({ element, relation }) => {
             className="b-tag"
             to={``}
           >
-            {element.kind}
+            {kindTransform(element.kind)}
           </Link>
           <Link
             className="b-tag"

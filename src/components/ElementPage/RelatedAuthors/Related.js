@@ -1,37 +1,37 @@
-import { useLocation } from "react-router";
-import { api } from "../../services/Api";
 import { Suspense, useEffect, useState } from "react";
-import Spinner from "../UI/Spinner/Spinner";
-import { Link } from "react-router-dom";
-import Preview from "../Preview/Preview";
-import RelatedInformation from "./RelatedInformation";
+import Spinner from "../../UI/Spinner/Spinner";
+import { Link, useLocation } from "react-router-dom";
+import Preview from "../../Preview/Preview";
+import RelatedInformation from "../RelatedInformation";
+import { UrlParts } from "../../../const/urlConsts";
+import { api } from "../../../services/Api";
 
 const Related = () => {
   const { pathname } = useLocation();
   const [elements, setElements] = useState([]);
 
-  const { data, isSuccess } = api.useGetElementQuery(pathname + "/related");
+  const { data, isSuccess } = api.useGetElementQuery(pathname + UrlParts.RELATED);
 
   useEffect(() => {
     if (isSuccess) {
       setElements(data);
-      console.log(data);
+      // console.log(data);
     }
-  }, [data]);
+  }, [data, isSuccess]);
 
   return (
     <Suspense fallback={Spinner}>
-      <div className="c-column block_m">
-        <div className="b-options-floated mobile-phone">
-          <Link to={``}>Directly</Link>
-          <Link to={``}>Chronology</Link>
-          <Link to={``}>Franchise</Link>
-        </div>
-        <div className="subheadline">Related</div>
+      {isSuccess && elements.length > 0 ? (
+        <div className="c-column block_m">
+          <div className="b-options-floated mobile-phone">
+            <Link to={``}>Directly</Link>
+            <Link to={``}>Chronology</Link>
+            <Link to={``}>Franchise</Link>
+          </div>
+          <div className="subheadline">Related</div>
 
-        <div className="cc">
-          {isSuccess ? (
-            elements.map((element) => (
+          <div className="cc">
+            {elements.map((element) => (
               <div
                 key={element.anime === null ? element.manga.id : element.anime.id}
                 className="b-db_entry-variant-list_item"
@@ -50,12 +50,12 @@ const Related = () => {
                   relation={element.relation}
                 />
               </div>
-            ))
-          ) : (
-            <Spinner />
-          )}
+            ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        ""
+      )}
     </Suspense>
   );
 };

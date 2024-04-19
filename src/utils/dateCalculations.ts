@@ -35,3 +35,17 @@ export const timeFromPublication = (date: Date) => {
 export const getYear = (date: Date) => {
   return new Date(date).getFullYear();
 };
+
+export const getYearGap = (airDate: string, releaseDate: string) => {
+  return releaseDate ? (`${airDate.substring(0, 4)} - ${releaseDate.substring(0, 4)}`) : (`${airDate.substring(0, 4)}`);
+};
+
+export const transformDate = (inputDate: Date) => {
+  let date = new Date(inputDate);
+  let year = date.getFullYear();
+  let month = ("0" + (date.getMonth() + 1)).slice(-2);
+  let day = ("0" + date.getDate()).slice(-2);
+  let hours = ("0" + date.getHours()).slice(-2);
+  let minutes = ("0" + date.getMinutes()).slice(-2);
+  return `${year}-${month}-${day} - ${hours}:${minutes}`;
+};

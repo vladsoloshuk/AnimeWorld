@@ -57,16 +57,20 @@ const NewsSection = () => {
                     </div>
                   </div>
                   <div className="status-line">
-                    <div className="tags">
-                      <div
-                        className="b-anime_status_tag other"
-                        data-text={element.linked.status}
-                      ></div>
-                      <div
-                        className="b-anime_status_tag other"
-                        data-text={element.linked.kind}
-                      ></div>
-                    </div>
+                    {element.linked ? (
+                      <div className="tags">
+                        <div
+                          className="b-anime_status_tag other"
+                          data-text={element.linked.status}
+                        ></div>
+                        <div
+                          className="b-anime_status_tag other"
+                          data-text={element.linked.kind}
+                        ></div>
+                      </div>
+                    ) : (
+                      <div></div>
+                    )}
                     <time>{timeFromPublication(element.created_at)}</time>
                     <div className="comments">{element.comments_count}</div>
                   </div>

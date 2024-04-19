@@ -23,4 +23,9 @@ export default class ShikimoriService {
     const response = await axios.get(hostUrl + UrlParts.API + UrlParts.RANOBE, { params });
     return response;
   }
+
+  static async getGenres(params) {
+    const response = await axios.get(hostUrl + UrlParts.API + UrlParts.GENRES, { params });
+    return response;
+  }
 }

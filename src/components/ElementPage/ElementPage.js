@@ -4,19 +4,16 @@ import { useLocation } from "react-router";
 import { api } from "../../services/Api";
 import "./../../styles/pages/p-animes.scss";
 import SimpleHorizontalBar from "../UI/Bars/SimpleHorizontalBar";
-import Score from "./Score";
 import { UrlParts } from "../../const/urlConsts";
 import { useAppDispatch } from "../../hooks/redux";
 import { updateTitle } from "../../store/reducers/PageParams";
-import Production from "./Production";
-import Description from "./Description";
-import Information from "./Information";
-import Poster from "./Poster";
-import Subposter from "./Subposter";
-import Related from "./Related";
-import Authors from "./Authors";
-import { Link } from "react-router-dom";
 import Header from "./Header";
+import Entry from "./Entry/Entry";
+import Characters from "./Characters/Characters";
+import Images from "./ImagesVideos/Images";
+import Videos from "./ImagesVideos/Videos";
+import RelatedAuthors from "./RelatedAuthors/RelatedAuthors";
+import Similar from "./Similar";
 
 const ElementPage = () => {
   const dispatch = useAppDispatch();
@@ -55,9 +52,9 @@ const ElementPage = () => {
       );
       setMaxRatesScore(maxRatesScoreCalc);
       setMaxRatesStatuse(maxRatesStatuseCalc);
+      console.log(data);
     }
   }, [data]);
-  console.log(data);
 
   return (
     <Suspense fallback={Spinner}>
@@ -72,44 +69,23 @@ const ElementPage = () => {
               <div className="menu-slide-inner">
                 <div className="l-content">
                   <div className="block">
-                    <div className="b-db_entry">
-                      <div className="c-image">
-                        <div className="cc block">
-                          <Poster element={element} />
-                          <Subposter />
-                        </div>
-                        <div className="b-user_rate"></div>
+                    <Entry
+                      element={element}
+                      title={title}
+                      productionType={productionType}
+                      prosuctionProperty={prosuctionProperty}
+                    />
+                    <RelatedAuthors />
+                    <Characters />
+                    {title === "Anime" ? (
+                      <div className="cc m0 two-videos">
+                        <Images element={element} />
+                        <Videos element={element} />
                       </div>
-                      <div className="c-about">
-                        <div className="cc">
-                          <div className="c-info-left">
-                            <div className="subheadline">Information</div>
-                            <Information
-                              element={element}
-                              title={title}
-                            />
-                          </div>
-                          <div className="c-info-right">
-                            {element.score > 0 ? <Score scoreValue={element.score} /> : ""}
-                            {(element.publishers !== undefined && element.publishers.length > 0) ||
-                            (element.studios !== undefined && element.studios.length > 0) ? (
-                              <Production
-                                productionName={productionType}
-                                title={title}
-                                production={prosuctionProperty}
-                              />
-                            ) : (
-                              ""
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                      <Description descriptionValue={element.description_html} />
-                    </div>
-                    <div className="cc-related-authors">
-                      <Related />
-                      <Authors />
-                    </div>
+                    ) : (
+                      ""
+                    )}
+                    <Similar />
                   </div>
                 </div>
                 <aside className="l-menu">

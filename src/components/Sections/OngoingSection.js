@@ -17,7 +17,7 @@ const OngoingSection = () => {
     limit: 8,
     status: "ongoing",
     order: "popularity",
-    season: 2023
+    season: 2024
   };
   const url = UrlParts.ANIMES;
   const { data, isSuccess } = api.useGetElementsQuery({ url, queryParams });
@@ -55,6 +55,7 @@ const OngoingSection = () => {
                 <EmptyCatalogItem
                   key={element.id}
                   element={element}
+                  imageType="preview"
                 />
               ))
             ) : (
