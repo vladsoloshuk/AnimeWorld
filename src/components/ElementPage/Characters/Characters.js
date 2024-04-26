@@ -13,9 +13,9 @@ const Characters = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      const fillteredData = data.filter((obj) => obj.roles[0] === "Main").map((obj) => obj.character);
+      const fillteredData = data.filter((obj) => obj.roles[0] === "Main" && obj.person === null).map((obj) => obj.character);
       setElements(fillteredData);
-      // console.log(elements);
+      // console.log(fillteredData);
     }
   }, [data, isSuccess]);
 

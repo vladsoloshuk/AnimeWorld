@@ -18,7 +18,7 @@ $height: 87px;
       @include flex_column.fcolumn-responsive($portrait-columns: 1, $landscape-columns: 2, $ipad-columns: 3, $desktop-columns: 4, $gutter: 40px, $offset-mobile: 20px, $offset-tablet: 20px, $offset-desktop: 30px, $selector: '.db-update');
 
       @include responsive.lte_ipad {
-        flex-direction: column;
+        // flex-direction: column;
         height: $height * 2 + 40px; // it is a hack but i don't know any better way to make flex wrap
         margin-left: 0;
 

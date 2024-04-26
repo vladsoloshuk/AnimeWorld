@@ -12,6 +12,6 @@ export const multipleFilter = (filterState: string, value: string) => {
           kindArr.push(value);
         }
         kindStr = kindArr.join(",");
-        console.log(kindStr);
+        // console.log(kindStr);
         return (kindStr);
 }

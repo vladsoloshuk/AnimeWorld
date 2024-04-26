@@ -8,7 +8,8 @@
 @use "./../mixins/float_column.scss";
 @use "./../mixins/font_shikimori.scss";
 
-@use "./../blocks/b-catalog_entry.scss";
+@use './../pages/p-dashboards/db_updates';
+@use './../pages/p-dashboards/show.scss';
 
 .p-elements_collection-index,
 .p-recommendations-index,

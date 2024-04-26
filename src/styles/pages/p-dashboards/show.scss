@@ -4,23 +4,24 @@
 @use "./../../mixins/responsive.scss";
 @use "./../../mixins/font_shikimori.scss";
 @use "./../../mixins/flex_column.scss";
+@use "./../../mixins/link.scss";
+@use "./../../mixins/clearfix.scss";
+@use "./../../mixins/shadow.scss";
 
 @use "./../../units";
+@use "./../../colors";
 
-// @import mixins/clearfix
-// @import mixins/link
-
-@mixin tag($color, $background, $border) {
+@mixin tag($color, $background1, $background2, $border) {
+  background: linear-gradient(45deg, $background1 0%, $background2 50%, $background1);
   color: $color;
-  background-color: $background;
   border: 1px solid $border;
   transition: color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
 
   @include responsive.gte_laptop {
     &:hover {
-      color: darken($color, 4%);
-      background-color: darken($background, 3%);
-      border-color: darken($border, 3%);
+      color: lighten($color, 5%);
+      background: linear-gradient(45deg, lighten($background1, 5%) 0%, lighten($background2, 5%) 50%, lighten($background1, 5%));
+      border-color: lighten($border, 5%);
     }
   }
 }
@@ -99,13 +100,22 @@
   }
 
   .fc-user-sections {
+    padding-top: units.$block-offset;
     @include responsive.gte_ipad {
       display: flex;
     }
 
     .f-user {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: rgba(colors.$block-color, 0.6);
+      padding: 10px;
+      @include shadow.shadow-base;
+      border-radius: units.$border-radius-base;
+
       @include responsive.iphone {
-        @include block.block2;
+        @include block.block0;
         min-height: 121px;
       }
 
@@ -114,84 +124,120 @@
         margin-right: 30px;
       }
 
+      .social {
+        div {
+          padding: 15px 0 5px 0;
+          display: flex;
+          justify-content: space-around;
+          a::before {
+            font-size: 40px;
+          }
+        }
+      }
+      .links {
+        padding-top: 10px;
+        display: flex;
+        justify-content: space-around;
+      }
+
       p.auth-alert {
         // color: $red;
         font-size: 16px;
         padding: 20px 0;
       }
     }
+    .f-tag-sections {
+      display: flex;
+      flex-direction: row;
 
-    .f-sections {
+      @include responsive.iphone {
+        padding-top: 10px;
+        flex-direction: column;
+        width: 100%;
+      }
+
       @include responsive.gte_ipad {
-        width: calc(100% - 300px);
+        width: calc(100% - 270px);
       }
 
-      .fc-headlines,
-      .fc-tags {
-        display: flex;
-
-        @include responsive.iphone-portrait {
-          margin-left: -10px;
-        }
-
-        @include responsive.iphone-landscape-ipad {
-          margin-left: -15px;
-        }
-
-        @include responsive.gte_laptop {
-          margin-left: -30px;
-        }
-      }
-
-      .fc-headlines .f-headline {
-        @include responsive.iphone-portrait {
+      .f-sections {
+        @include responsive.gte_ipad {
           margin-left: 10px;
-          width: calc(33% - 10px);
         }
 
-        @include responsive.iphone-landscape-ipad {
-          margin-left: 15px;
-          width: calc(33% - 15px);
-        }
-      }
+        .fc-headlines,
+        .fc-tags {
+          display: flex;
 
-      .fc-tags {
-        @include responsive.lte_ipad {
-          // +clearfix
-          display: inline-block;
-          margin: -8px 0 0 -10px;
-
-          .f-tags {
-            display: inline;
-          }
-        }
-      }
-
-      .fc-headlines .f-headline,
-      .fc-tags .f-tags {
-        @include responsive.gte_laptop {
-          margin-left: 30px;
-        }
-
-        @include responsive.laptop {
-          &:not(:last-child) {
-            width: calc(38% - 30px);
+          @include responsive.iphone-portrait {
+            margin-left: -10px;
           }
 
-          &:last-child {
-            width: calc(23% - 30px);
+          @include responsive.iphone-landscape-ipad {
+            margin-left: -15px;
+          }
+
+          @include responsive.gte_laptop {
+            margin-left: -30px;
           }
         }
 
-        @include responsive.gte_desktop {
-          width: calc(33% - 30px);
+        .fc-headlines .f-headline {
+          @include responsive.iphone-portrait {
+            margin-left: 10px;
+            width: calc(100% - 10px);
+            //width: calc(33% - 10px);
+          }
+
+          @include responsive.iphone-landscape-ipad {
+            margin-left: 15px;
+            width: calc(100% - 15px);
+            // width: calc(33% - 15px);
+          }
+        }
+
+        .fc-tags {
+          @include responsive.lte_ipad {
+            @include clearfix.clearfix;
+            display: inline-block;
+            margin: -8px 0 0 -10px;
+            padding-bottom: 10px;
+
+            .f-tags {
+              display: inline;
+            }
+          }
+        }
+
+        .fc-headlines .f-headline,
+        .fc-tags .f-tags {
+          @include responsive.gte_laptop {
+            margin-left: 30px;
+          }
+
+          @include responsive.laptop {
+            &:not(:last-child) {
+              width: calc(105% - 30px);
+              // width: calc(38% - 30px);
+            }
+
+            &:last-child {
+              width: calc(90% - 30px);
+              // width: calc(23% - 30px);
+            }
+          }
+
+          @include responsive.gte_desktop {
+            width: calc(100% - 30px);
+            // width: calc(33% - 30px);
+          }
         }
       }
     }
 
     @include responsive.iphone-portrait {
       .midheadline {
-        padding: 0 8px 0 9px;
+        margin-top: 10px;
 
         & > a {
           padding-right: 5px;
@@ -226,12 +272,11 @@
       }
 
       .forum-container {
-        margin-top: auto;
+        padding-top: 10px;
 
         @include responsive.iphone {
           clear: left;
-          margin-left: 8px;
-          padding-top: units.$block-offset;
+          padding-top: 10px;
           margin-bottom: -13px;
         }
 
@@ -242,22 +287,18 @@
         @include responsive.ipad {
           clear: left;
           padding-bottom: 12px;
-          padding-top: 30px;
           position: relative;
           width: 100%;
         }
 
         .b-link_button {
-          min-width: 0;
-
           @include responsive.iphone {
-            margin-bottom: -15px;
+            margin: 8px 0 0 10px;
           }
 
           @include responsive.ipad {
-            position: absolute;
-            right: 0;
-            width: 224px;
+            margin: 8px 0 0 10px;
+            // position: absolute;
           }
 
           @include responsive.gte_laptop {
@@ -274,7 +315,7 @@
     }
 
     .tag-link {
-      border-radius: 3px;
+      border-radius: 12px;
       display: inline-block;
       font-family: var(--font-alt);
       font-size: 12px;
@@ -291,15 +332,15 @@
       }
 
       &.anime-tag {
-        // +tag(hsl(357, 96%, 66%), hsl(365, 94%, 96%), hsl(365, 94%, 94%))
+        @include tag(#a7d8b5, #2c6b41bd, #378551bd, #2c6b41bd);
       }
 
       &.manga-tag {
-        // +tag(hsl(195, 71%, 65%), hsl(193, 94%, 96%), hsl(193, 94%, 94%))
+        @include tag(#d7b2e0, rgb(95 33 81 / 80%), #824c76a8, rgb(95 33 81 / 80%));
       }
 
       &.ranobe-tag {
-        // +tag(hsl(92, 75%, 44%), hsl(100, 94%, 96%), hsl(100, 94%, 90%))
+        @include tag(#97c9e0, rgb(32 63 93 / 80%), #3d6175bd, rgb(32 64 93 / 80%));
       }
 
       &:before {
@@ -318,7 +359,7 @@
       margin-left: auto;
 
       .options {
-        // +link_color(#4bf)
+        @include link.link_color(#4bf);
         cursor: pointer;
 
         &:before {
@@ -330,7 +371,7 @@
   }
 
   .headline.magenta a {
-    // +link_color(#f477ad)
+    @include link.link_color(#f477ad);
   }
 
   .b-admin_panel {
@@ -341,6 +382,7 @@
     @include responsive.iphone {
       min-width: 30px;
       margin-top: 5px;
+      margin-right: 10px;
 
       &:before {
         padding-right: 0;

@@ -15,15 +15,16 @@ const statusParams = [
 ];
 
 const seasonParams = [
-  { id: 1, name: "2023", value: "2023" },
-  { id: 2, name: "2022", value: "2022" },
-  { id: 3, name: "2020-2021", value: "2020_2021" },
-  { id: 4, name: "2015-2019", value: "2015_2019" },
-  { id: 5, name: "2010-2014", value: "2010_2014" },
-  { id: 6, name: "2000-2010", value: "2000_2010" },
-  { id: 7, name: "199x", value: "199x" },
-  { id: 8, name: "198x", value: "198x" },
-  { id: 9, name: "Older", value: "ancient" }
+  { id: 1, name: "2024", value: "2024" },
+  { id: 2, name: "2023", value: "2023" },
+  { id: 3, name: "2022", value: "2022" },
+  { id: 4, name: "2020-2021", value: "2020_2021" },
+  { id: 5, name: "2015-2019", value: "2015_2019" },
+  { id: 6, name: "2010-2014", value: "2010_2014" },
+  { id: 7, name: "2000-2010", value: "2000_2010" },
+  { id: 8, name: "199x", value: "199x" },
+  { id: 9, name: "198x", value: "198x" },
+  { id: 10, name: "Older", value: "ancient" }
 ];
 
 const scoreParams = [

@@ -52,7 +52,7 @@ const ElementPage = () => {
       );
       setMaxRatesScore(maxRatesScoreCalc);
       setMaxRatesStatuse(maxRatesStatuseCalc);
-      console.log(data);
+      // console.log(data);
     }
   }, [data]);
 

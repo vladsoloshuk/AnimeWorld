@@ -7,17 +7,21 @@
   color: #9ab;
 }
 .blue {
-  background: rgba(29, 77, 167, 0.4);
+  background: #3d6175bd;
   color: #98b6da;
   border: none;
+  &:hover {
+    color: lighten(#98b6da, 5%);
+    background: lighten(#3d6175bd, 5%);
+  }
 }
 .text-blue {
   color: #4bf;
 }
 .powderblue {
   color: #7aaebd;
-  background: #f6fcfd;
-  border-left: 5px solid #e6eced;
+  background: #b5e4f2;
+  border: none;
 }
 .text-powderblue {
   color: #b5e4f2;
@@ -33,15 +37,19 @@
 .purple {
   color: #af7ed4;
   background: #f0defa;
-  border-left: 5px solid #f0cefa;
+  border: none;
 }
 .text-purple {
   color: #af7ed4;
 }
 .green {
   background: rgba(16, 130, 67, 0.4);
-    color: #90c7ae;
-    border: none;
+  color: #90c7ae;
+  border: none;
+  &:hover {
+    color: lighten(#90c7ae, 5%);
+    background: lighten(rgba(16, 130, 67, 0.4), 5%);
+  }
 }
 .text-green {
   color: #74d61f;
@@ -82,6 +90,10 @@
   background: rgba(193, 37, 138, 0.4);
   color: #c7a0b9;
   border: none;
+  &:hover {
+    color: lighten(#c7a0b9, 5%);
+    background: lighten(rgba(193, 37, 138, 0.4), 5%);
+  }
 }
 .text-magenta {
   color: #f477ad;

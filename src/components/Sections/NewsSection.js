@@ -28,8 +28,8 @@ const NewsSection = () => {
         <div className="subheadline-buttons">
           <Link
             className="b-link_button dark mini create-topic"
-            href="/"
-            title="Написать новость"
+            to="/"
+            title="Add news"
           >
             <span>Add news</span>
           </Link>
@@ -57,19 +57,15 @@ const NewsSection = () => {
                     </div>
                   </div>
                   <div className="status-line">
-                    {element.linked ? (
+                    {element.linked_type ? (
                       <div className="tags">
                         <div
                           className="b-anime_status_tag other"
-                          data-text={element.linked.status}
-                        ></div>
-                        <div
-                          className="b-anime_status_tag other"
-                          data-text={element.linked.kind}
+                          data-text={element.linked_type}
                         ></div>
                       </div>
                     ) : (
-                      <div></div>
+                      ""
                     )}
                     <time>{timeFromPublication(element.created_at)}</time>
                     <div className="comments">{element.comments_count}</div>
