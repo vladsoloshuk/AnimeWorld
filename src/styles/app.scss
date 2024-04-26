@@ -5,36 +5,62 @@
 @use "./mixins/shadow.scss";
 @use "./mixins/responsive.scss";
 
-@use "./lib/headlines.scss";
-@use "./lib/flex_columns.scss";
-@use "./lib/float_columns.scss";
-@use "./lib/margins.scss";
-
 @use "./layouts/l-top_menu.scss";
 @use "./layouts/l-menu.scss";
 @use "./layouts/l-page.scss";
 
-@use "./blocks/b-rate.scss";
-@use "./blocks/b-entry-info.scss";
-@use './blocks/b-image.scss';
-@use "./blocks/b-db_entry.scss";
-@use "./blocks/b-db_entry-poster.scss";
-@use "./blocks/b-db_entry-variant-list_item.scss";
-@use "./blocks/b-shade.scss";
-@use "./blocks/b-anime_status_tag.scss";
-@use "./blocks/b-options-floated.scss";
-@use "./blocks/b-breadcrumbs.scss";
-@use './blocks/b-video.scss';
-
-@use "./blocks/b-news_wall-topic.scss";
-@use "./blocks/b-shiki_swiper.scss";
-@use "./blocks/b-link_button.scss";
-
-@use "./pages/p-dashboards/show.scss";
-@use "./pages/p-dashboards/db_updates";
+@use "./pages/p-animes.scss";
 @use "./pages/p-elements_collection-index.scss";
 
-@import "./lib/colors.scss";
+// @use "./blocks/b-rate.scss";
+// @use "./blocks/b-entry-info.scss";
+// @use './blocks/b-image.scss';
+// @use "./blocks/b-db_entry.scss";
+// @use "./blocks/b-db_entry-poster.scss";
+// @use "./blocks/b-db_entry-variant-list_item.scss";
+// @use "./blocks/b-shade.scss";
+// @use "./blocks/b-anime_status_tag.scss";
+// @use "./blocks/b-options-floated.scss";
+// @use "./blocks/b-breadcrumbs.scss";
+// @use './blocks/b-video.scss';
+
+// @use "./blocks/b-news_wall-topic.scss";
+// @use "./blocks/b-shiki_swiper.scss";
+// @use "./blocks/b-link_button.scss";
+
+@use "./blocks/b-anime_status_tag.scss";
+@use "./blocks/b-breadcrumbs.scss";
+@use "./blocks/b-catalog_entry-tooltip.scss";
+@use "./blocks/b-catalog_entry.scss";
+@use "./blocks/b-db_entry-poster.scss";
+@use "./blocks/b-db_entry-variant-list_item.scss";
+@use "./blocks/b-db_entry.scss";
+@use "./blocks/b-entry-info.scss";
+@use "./blocks/b-image.scss";
+@use "./blocks/b-link_button.scss";
+@use "./blocks/b-news_wall-topic.scss";
+@use "./blocks/b-oauth_token.scss";
+@use "./blocks/b-options-floated.scss";
+@use "./blocks/b-rate.scss";
+@use "./blocks/b-shade.scss";
+@use "./blocks/b-shiki_swiper.scss";
+@use "./blocks/b-subposter-actions.scss";
+@use "./blocks/b-tag.scss";
+@use "./blocks/b-tooltiped.scss";
+@use "./blocks/b-video.scss";
+
+@use './pages/p-dashboards/show.scss';
+
+
+// @use "./lib/bar.scss";
+@use "./lib/headlines.scss";
+@use "./lib/bubble.scss";
+@use "./lib/colors_fill.scss";
+@use "./lib/flex_columns.scss";
+@use "./lib/float_columns.scss";
+// @use "./lib/headlines.scss";
+@use "./lib/margins.scss";
+@use "./lib/tooltip.scss";
 
 * {
   box-sizing: border-box;

@@ -12,6 +12,7 @@ const AnimeUpdatesSection = () => {
   const [elements, setElements] = useState([]);
 
   const queryParams = {
+    censored: true,
     limit: 30
   };
 

@@ -15,7 +15,7 @@ const menuParamsSlice = createSlice({
     showBackdrop(state, action) {
       const { property, value } = action.payload;
       state[property] = value;
-      console.log(state[property]);
+      // console.log(state[property]);
     },
     elementVisibility(state, action) {
       const [property, value] = action.payload;

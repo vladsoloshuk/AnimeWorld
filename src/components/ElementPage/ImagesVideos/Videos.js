@@ -11,7 +11,7 @@ const Videos = ({ element }) => {
         {element.videos.map((element) => (
           <div
             key={element.id}
-            className={`c-video b-video shrinked-1_3 ${element.hosting}`}
+            className={`c-video b-video ${element.hosting} shrinked-1_3`}
           >
             <Link
               className="video-link"

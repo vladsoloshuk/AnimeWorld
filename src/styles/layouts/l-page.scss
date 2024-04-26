@@ -1,8 +1,8 @@
 @use "./../globals";
-@use './../colors';
-@use './../units';
+@use "./../colors";
+@use "./../units";
 
-@use './../mixins/shadow.scss';
+@use "./../mixins/shadow.scss";
 @use "./../mixins/responsive.scss";
 @use "./../mixins/float_column.scss";
 
@@ -18,7 +18,7 @@ $l-page-desktop-padding: 15px;
   margin: 15px auto 15px;
   @include shadow.shadow-base;
   clear: both;
-  padding: 15px #{$l-page-mobile-padding} 0 #{$l-page-mobile-padding};
+  padding: #{$l-page-mobile-padding};
   position: relative;
 
   @include responsive.gte_desktop {

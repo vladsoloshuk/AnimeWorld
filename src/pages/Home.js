@@ -7,6 +7,7 @@ import ContentSection from "../components/Sections/ContentSection";
 import AnimeUpdatesSection from "../components/Sections/AnimeUpdatesSection";
 import NewsCatalog from "../components/Sections/NewsCatalog";
 import { elementVisibility } from "../store/reducers/MenuParams";
+import UserSection from "../components/Sections/UserSection";
 
 const Home = (props) => {
   const dispatch = useAppDispatch();
@@ -17,6 +18,7 @@ const Home = (props) => {
   return (
     <section className="p-dashboards p-dashboards-show x1200 l-page">
       <OngoingSection />
+      <UserSection />
       <NewsSection />
       <ContentSection />
       <AnimeUpdatesSection />

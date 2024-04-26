@@ -14,7 +14,6 @@ const Similar = () => {
   useEffect(() => {
     if (isSuccess) {
       setElements(data.slice(0, 7));
-      console.log(data);
     }
   }, [data, isSuccess]);
 

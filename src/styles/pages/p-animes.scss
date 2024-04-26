@@ -39,7 +39,7 @@
 
   .cc .c-video {
     @include responsive.gte_ipad {
-      @include float_column.column(4, 1/4, 1.5%);
+      @include float_column.column(4, calc(1/4), 1.5%);
     }
     @include responsive.iphone-portrait {
       @include float_column.column(2);
@@ -51,7 +51,7 @@
 
   .cc .c-screenshot {
     @include responsive.gte_ipad {
-      @include float_column.column(5, 1/5, 1.5%);
+      @include float_column.column(5, calc(1/5), 1.5%);
     }
     @include responsive.iphone-portrait {
       @include float_column.column(2);
